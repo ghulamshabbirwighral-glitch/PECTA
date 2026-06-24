@@ -109,35 +109,22 @@
     menu.appendChild(btn);
   });
 </script>
-     
-  const topics = {
-    "Imperative": {
-      def: "Command, advice, warning, request, or instruction.",
-      ur: "حکم، نصیحت، تنبیہ، درخواست یا ہدایات.",
-      ex: ["Please help me. (Request)", "Close the door. (Order)", "Eat healthy food. (Advice)"]
-    },
-    "Articles": {
-      def: "A: Used before consonant sounds. An: Used before vowel sounds.",
-      ur: "A: کونسوننٹ آواز کے لیے. An: وول آواز کے لیے.",
-      ex: ["A cat", "An ant", "The Sun"]
-    },
-    "Conjunctions": {
-      def: "Joining words.",
-      ur: "حروفِ عطف (الفاظ کو جوڑنے والے).",
-      ex: ["And - اور", "But - مگر/لیکن", "Or - یا"]
-    }
-    // آپ کا باقی ڈیٹا یہاں اسی طرح ترتیب سے جاری رہے گا
-  };
+</head>
 
-  const menu = document.getElementById('menu');
-  Object.keys(topics).forEach(t => {
-    let btn = document.createElement('button');
-    btn.className = "topic-btn";
-    btn.innerText = t;
-    btn.onclick = () => showTopic(t);
-    menu.appendChild(btn);
-  });
-</script>
+<body>
+
+<h3>PECTA Class 8 English Objective</h3>
+<div class="grid" id="menu"></div>
+
+<div id="viewer">
+    <h3 id="v-title"></h3>
+    <p><b>Def:</b> <span id="def-en"></span></p>
+    <p><b>تعریف:</b> <span id="def-ur"></span></p>
+    <div id="ex-content"></div>
+    <button class="opt-btn" onclick="hideViewer()">واپس</button>
+</div>
+
+<script>
      
     const topics = {
         "Imperative": { 
