@@ -9,51 +9,45 @@
      
 </head>
 <style>
-  body { font-family: sans-serif; padding: 15px; background: #f4f7f6; }
-  
-  /* بٹنوں کے لیے */
-  .topic-btn { 
-    display: block !important; 
-    width: 100% !important; 
-    padding: 28px !important; 
-    font-size: 24px !important; 
-    text-align: center !important;
-    background: #ffffff !important; 
-    border: 3px solid #2c3e50 !important; 
-    border-radius: 15px !important;
-    color: #2c3e50 !important;
-    font-weight: bold !important;
-    margin-bottom: 15px !important;
+  body { 
+    font-family: sans-serif; 
+    padding: 10px; 
+    background: #f4f7f6; 
+    margin: 0; 
+    min-height: 100vh;
   }
 
-  /* کنٹینٹ اور ڈیفینیشن باکس کے لیے */
+  /* کنٹینٹ باکس کو پوری سکرین پر پھیلانے کے لیے */
   #viewer { 
-    width: 95% !important; 
-    margin: 40px auto 20px auto !important; 
-    padding: 35px !important; 
+    width: 92% !important; 
+    margin: 20px auto !important; 
+    padding: 25px !important; 
     border: 3px solid #2c3e50 !important; 
-    border-radius: 15px !important; 
+    border-radius: 20px !important; 
     background: #fff !important; 
-    /* فونٹ سائز بڑا کر دیا ہے تاکہ واضح نظر آئے */
-    font-size: 24px !important; 
+    font-size: 26px !important; /* فونٹ مزید بڑا کر دیا */
     line-height: 1.8 !important;
-    min-height: 75vh;
+    min-height: 85vh; /* یہ باکس کو سکرین کے نیچے تک کھینچے گا */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
-  /* "واپس" بٹن کے لیے */
+  /* بٹنوں کو بھی بڑا کرنے کے لیے */
   .opt-btn { 
     display: block !important; 
     width: 100% !important; 
     padding: 25px !important; 
-    font-size: 22px !important; 
+    font-size: 24px !important; 
     background-color: #e74c3c !important; 
     color: white !important; 
     border: none !important; 
-    border-radius: 12px !important; 
-    margin-top: 30px !important;
+    border-radius: 15px !important; 
+    margin-top: auto !important; /* یہ واپس بٹن کو نیچے دھکیلے گا */
     font-weight: bold !important;
   }
 </style>
+     
      
      
      
