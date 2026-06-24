@@ -31,29 +31,38 @@
   /* یہ جواب والے فریم کے لیے ہے، اسے پہلے چھپایا گیا ہے */
   #viewer { 
     display: none; 
-    width: 92% !important; 
-    margin: 40px auto 20px auto !important; /* فریم کو نیچے لانے کے لیے */
-    padding: 30px !important; 
-    border: 3px solid #2c3e50 !important; 
-    border-radius: 20px !important; 
+    width: 95% !important; 
+    margin: 20px auto !important; 
+    padding: 40px !important; 
+    border: 4px solid #2c3e50 !important; 
+    border-radius: 25px !important; 
     background: #fff !important; 
-    font-size: 30px !important; /* ٹیکسٹ کا فونٹ سائز */
-    line-height: 1.6 !important;
-    min-height: 75vh; /* یہ فریم کو باٹم تک پھیلائے گا */
+    
+    /* کنٹینٹ کا سائز مزید بڑا کرنے کے لیے */
+    font-size: 40px !important; 
+    line-height: 1.5 !important;
+    
+    /* باکس کو باٹم تک پھیلانے کے لیے */
+    min-height: 85vh !important; 
+    display: flex;
+    flex-direction: column;
   }
 
+  /* واپس بٹن کو مزید بڑا اور باٹم پر لانے کے لیے */
   .opt-btn { 
     display: block !important; 
     width: 100% !important; 
-    padding: 25px !important; 
-    font-size: 26px !important; /* واپس بٹن کا فونٹ */
+    padding: 30px !important; 
+    font-size: 30px !important; 
     background-color: #e74c3c !important; 
     color: white !important; 
     border: none !important; 
-    border-radius: 15px !important; 
-    margin-top: 40px !important; /* بٹن کو نیچے رکھنے کے لیے */
+    border-radius: 20px !important; 
+    margin-top: auto !important; /* یہ بٹن کو ہمیشہ نیچے رکھے گا */
     font-weight: bold !important;
+    text-align: center !important;
   }
+     
      
 </style>
      
