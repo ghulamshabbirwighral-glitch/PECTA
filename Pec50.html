@@ -42,8 +42,12 @@
   }
 </style>
      
-     
-     
+  </head>
+<head>
+    <meta charset="UTF-8">
+    <title>PECTA انگلش ایپ</title>
+    <!-- یہاں وہ کوڈ پیسٹ کریں جو آپ نے کاپی کیا ہے -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -60,81 +64,6 @@
 </div>
 
 <script>
-
-  // 1. ٹاپک دکھانے کا فنکشن
-  function showTopic(topicName) {
-    document.getElementById('menu').style.display = 'none';
-    document.getElementById('viewer').style.display = 'block';
-
-    const topic = topics[topicName];
-    if (topic) {
-      document.getElementById('v-title').innerText = topicName;
-      document.getElementById('def-en').innerText = topic.def;
-      document.getElementById('def-ur').innerText = topic.ur;
-      
-      let exHtml = "";
-      topic.ex.forEach(e => { exHtml += "<p>" + e + "</p>"; });
-      document.getElementById('ex-content').innerHTML = exHtml;
-    }
-  }
-
-  // 2. واپس جانے کا فنکشن
-  function hideViewer() {
-    document.getElementById('menu').style.display = 'flex';
-    document.getElementById('viewer').style.display = 'none';
-  }
-
-  // 3. آپ کا پورا ڈیٹا (Topics)
-  const topics = {
-    "Imperative": {
-      def: "Command, advice, warning, request, or instruction.",
-      ur: "حکم، نصیحت، تنبیہ، درخواست یا ہدایات.",
-      ex: ["Please help me.", "Close the door.", "Eat healthy food."]
-    },  // بٹن بنانے والا لوپ
-  const menu = document.getElementById('menu');
-  Object.keys(topics).forEach(t => {
-    let btn = document.createElement('button');
-    btn.className = "topic-btn";
-    btn.innerText = t;
-    btn.onclick = () => showTopic(t);
-    menu.appendChild(btn);
-  });
-     
-    "Articles": {
-      def: "Used before consonant or vowel sounds.",
-      ur: "کونسوننٹ یا وول آواز کے لیے.",
-      ex: ["A cat", "An ant", "The Sun"]
-    }
-    // یہاں اپنے باقی تمام ٹاپکس اسی طرح لکھیں
-  };
-
-  // 4. بٹن بنانے والا کوڈ
-  const menu = document.getElementById('menu');
-  Object.keys(topics).forEach(t => {
-    let btn = document.createElement('button');
-    btn.className = "topic-btn";
-    btn.innerText = t;
-    btn.onclick = () => showTopic(t);
-    menu.appendChild(btn);
-  });
-</script>
-</head>
-
-<body>
-
-<h3>PECTA Class 8 English Objective</h3>
-<div class="grid" id="menu"></div>
-
-<div id="viewer">
-    <h3 id="v-title"></h3>
-    <p><b>Def:</b> <span id="def-en"></span></p>
-    <p><b>تعریف:</b> <span id="def-ur"></span></p>
-    <div id="ex-content"></div>
-    <button class="opt-btn" onclick="hideViewer()">واپس</button>
-</div>
-
-<script>
-     
     const topics = {
         "Imperative": { 
             def: "Command, advice, warning, request, or instruction.", 
@@ -278,3 +207,6 @@
 </script>
 </body>
 </html>
+
+     
+            
