@@ -90,7 +90,16 @@
       def: "Command, advice, warning, request, or instruction.",
       ur: "حکم، نصیحت، تنبیہ، درخواست یا ہدایات.",
       ex: ["Please help me.", "Close the door.", "Eat healthy food."]
-    },
+    },  // بٹن بنانے والا لوپ
+  const menu = document.getElementById('menu');
+  Object.keys(topics).forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = "topic-btn";
+    btn.innerText = t;
+    btn.onclick = () => showTopic(t);
+    menu.appendChild(btn);
+  });
+     
     "Articles": {
       def: "Used before consonant or vowel sounds.",
       ur: "کونسوننٹ یا وول آواز کے لیے.",
