@@ -59,28 +59,54 @@
     <button class="opt-btn" onclick="hideViewer()">واپس</button>
 </div>
 
-<script> 
-     <script>
-  // --- یہ نیا فنکشن ہے جو آپ نے شامل کرنا ہے ---
+<script>
   function showTopic(topicName) {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('viewer').style.display = 'block';
-    // ... یہاں نیچے وہ پرانا کوڈ ہے جو پہلے سے موجود ہے، اسے نہ چھیڑیں ...
-    // آپ کا موجودہ کوڈ یہاں ہوگا جو ٹاپک لوڈ کرتا ہے
+
+    const topic = topics[topicName];
+    document.getElementById('v-title').innerText = topicName;
+    document.getElementById('def-en').innerText = topic.def;
+    document.getElementById('def-ur').innerText = topic.ur;
+
+    let exHtml = "";
+    topic.ex.forEach(e => { exHtml += "<p>." + e + "</p>"; });
+    document.getElementById('ex-content').innerHTML = exHtml;
   }
 
   function hideViewer() {
     document.getElementById('menu').style.display = 'flex';
     document.getElementById('viewer').style.display = 'none';
   }
-  // -------------------------------------------
 
-  // آپ کا پرانا ڈیٹا یہاں سے شروع ہو رہا ہے، اسے ایسے ہی رہنے دیں:
   const topics = {
-     "Imperative": { ... },
-     "Articles": { ... },
-     // باقی سارا ڈیٹا
+    "Imperative": {
+      def: "Command, advice, warning, request, or instruction.",
+      ur: "حکم، نصیحت، تنبیہ، درخواست یا ہدایات.",
+      ex: ["Please help me. (Request)", "Close the door. (Order)", "Eat healthy food. (Advice)"]
+    },
+    "Articles": {
+      def: "A: Used before consonant sounds. An: Used before vowel sounds.",
+      ur: "A: کونسوننٹ آواز کے لیے. An: وول آواز کے لیے.",
+      ex: ["A cat", "An ant", "The Sun"]
+    },
+    "Conjunctions": {
+      def: "Joining words.",
+      ur: "حروفِ عطف (الفاظ کو جوڑنے والے).",
+      ex: ["And - اور", "But - مگر/لیکن", "Or - یا"]
+    }
+    // آپ کا باقی ڈیٹا یہاں اسی طرح ترتیب سے جاری رہے گا
   };
+
+  const menu = document.getElementById('menu');
+  Object.keys(topics).forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = "topic-btn";
+    btn.innerText = t;
+    btn.onclick = () => showTopic(t);
+    menu.appendChild(btn);
+  });
+</script>
      
     const topics = {
         "Imperative": { 
