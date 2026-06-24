@@ -5,19 +5,27 @@
     <meta charset="UTF-8">
     <title>English Grammar Hub</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; text-align: center; }
-        h3 { color: #2c3e50; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 600px; margin: auto; }
-        .topic-btn { 
-            padding: 12px; font-size: 12px; background: #ffffff; color: #2c3e50; 
-            border: 2px solid #2c3e50; border-radius: 8px; cursor: pointer; 
-            transition: all 0.3s ease; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .topic-btn:hover { background: #2c3e50; color: white; transform: translateY(-2px); }
-        #viewer { display: none; background: white; padding: 20px; border-radius: 15px; max-width: 600px; margin: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .opt-btn { display: block; width: 100%; padding: 12px; margin-top: 15px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .ex-item { background: #fdfdfd; padding: 8px; margin: 6px 0; border-right: 5px solid #3498db; text-align: right; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  /* یہ کوڈ بٹنوں کو ایک لائن میں دکھائے گا اور سائز بڑا رکھے گا */
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* بٹنوں کے درمیان فاصلہ */
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .topic-btn {
+    width: 100%; /* بٹن پوری اسکرین کی چوڑائی لے لیں گے */
+    padding: 20px; /* بٹن کو بڑا کرنے کے لیے */
+    font-size: 16px; /* ٹیکسٹ کا سائز بڑھانے کے لیے */
+    text-align: center;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
     </style>
+     
 </head>
 <head>
     <meta charset="UTF-8">
