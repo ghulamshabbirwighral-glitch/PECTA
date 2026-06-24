@@ -8,16 +8,18 @@
      
      
 </head>
-<head>
-    <meta charset="UTF-8">
-    <title>PECTA انگلش ایپ</title>
-    <!-- یہاں وہ کوڈ پیسٹ کریں جو آپ نے کاپی کیا ہے -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
-</head> <style>
+<style>
   body { font-family: sans-serif; padding: 10px; background: #f4f7f6; }
   
-  /* گرڈ کو ختم کر کے بٹنوں کو ایک لائن میں (List) کیا ہے */
-  #menu { display: flex; flex-direction: column; gap: 10px; }
+  /* گرڈ کو ہٹا کر بٹنوں کو ایک لائن میں (Stack) کر دیا ہے تاکہ وہ بڑے نظر آئیں */
+  #menu { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 auto; 
+  }
   
   .topic-btn { 
     display: block; 
@@ -26,25 +28,27 @@
     font-size: 20px; 
     text-align: center;
     background: #ffffff; 
-    border: 2px solid #333; 
+    border: 2px solid #2c3e50; 
     border-radius: 12px;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+    color: #2c3e50;
   }
 
-  /* جب آپ کوئی ٹاپک کھولیں گے تو یہ باکس بڑا نظر آئے گا */
+  /* جب آپ کوئی ٹاپک کھولیں گے تو اندر کا کنٹینٹ بڑا اور واضح نظر آئے گا */
   #viewer { 
     width: 95%; 
     margin: 20px auto; 
-    padding: 25px; 
-    border: 2px solid #333; 
+    padding: 30px; 
+    border: 2px solid #2c3e50; 
     border-radius: 15px; 
     background: #fff; 
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 1.6;
   }
 </style>
      
+</head>
 
 <body>
 
