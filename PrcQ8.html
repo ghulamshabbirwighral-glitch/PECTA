@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مکمل 77 سوالات کا کوئز</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f7f6; padding: 20px; }
+        #start-btn { padding: 20px 40px; font-size: 20px; background: #2c3e50; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        #quiz-container { display: none; background: white; padding: 20px; border-radius: 15px; max-width: 600px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .option-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: right; }
+        .option-btn:disabled { opacity: 0.7; }
+        #feedback { font-size: 30px; margin: 10px 0; min-height: 40px; }
+        #correct-answer-display { font-size: 18px; color: #27ae60; font-weight: bold; margin-top: 10px; display: none; }
+        #score-board { font-size: 18px; margin-bottom: 10px; font-weight: bold; }
+        #next-btn { padding: 10px 30px; margin-top: 20px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>PECTA انگلش ایپ</title>
+    <!-- یہاں وہ کوڈ پیسٹ کریں جو آپ نے کاپی کیا ہے -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <button id="start-btn" onclick="startQuiz()">مکمل کوئز شروع کریں</button>
+
+    <div id="quiz-container">
+        <div id="score-board">صحیح: <span id="correct">0</span> | غلط: <span id="wrong">0</span></div>
+        <h2 id="question">سوال</h2>
+        <div id="options"></div>
+        <div id="feedback"></div>
+        <div id="correct-answer-display"></div>
+        <button id="next-btn" onclick="nextQuestion()">اگلا سوال →</button>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "1. Identify the word having a 'Silent letter'.", a: ["Luggage", "Glossary", "Wrapping", "Advantage"], correct: "Wrapping" },
+            { q: "2. Choose the correct 'Syllabic Division' of the word 'Photographer'.", a: ["Pho-to-gra-pher", "Pho-tog-ra-pher", "Ph-oto-graph-er", "P-ho-togr-apher"], correct: "Pho-to-gra-pher" },
+            { q: "3. Identify the word with the correct 'Spelling'.", a: ["Afilieted", "Affliated", "Affliated", "Affiliated"], correct: "Affiliated" },
+            { q: "4. Complete the following 'Proverb': 'Every dark cloud has a ____ lining.'", a: ["golden", "long", "silver", "thin"], correct: "silver" },
+            { q: "5. Identify the 'Adjective' of the word 'Create'.", a: ["Creating", "Creative", "Created", "Creator"], correct: "Creative" },
+            { q: "6. Identify the 'Figure of Speech': 'My brother is a walking encyclopedia.'", a: ["Alliteration", "Simile", "Metaphor", "Personification"], correct: "Metaphor" },
+            { q: "7. What is the 'Connotative Meaning' of 'Blue': 'She has been feeling blue...'", a: ["She is feeling unhappy.", "She is wearing blue clothes.", "She painted her room blue.", "She is travelling with her friends."], correct: "She is feeling unhappy." },
+            { q: "8. Complete the base word 'Grand' to make a 'Compound Word'.", a: ["mother", "palace", "festival", "musician"], correct: "mother" },
+            { q: "9. Identify a word containing a 'Suffix'.", a: ["Incorrect", "Reset", "Happiness", "Disagree"], correct: "Happiness" },
+            { q: "10. Choose the correct 'Antonym' of 'Appreciate'.", a: ["Criticise", "Respect", "Admire", "Cherish"], correct: "Criticise" },
+            { q: "11. Choose the sentence written in 'Past Perfect Tense'.", a: ["She has played...", "She was playing...", "She is playing...", "She had played her role as a responsible doctor in the hospital."], correct: "She had played her role as a responsible doctor in the hospital." },
+            { q: "12. Complete: 'The school has improved significantly ____ last year.'", a: ["for", "as", "to", "since"], correct: "since" },
+            { q: "13. Identify the 'Type': 'Alas! We have lost the match.'", a: ["Imperative", "Declarative", "Exclamatory", "Interrogative"], correct: "Exclamatory" },
+            { q: "14. Complete: 'He speaks English more ____ than his classmates.'", a: ["clear", "clearly", "cleared", "clearing"], correct: "clearly" },
+            { q: "15. Complete with 'Conjunction': 'My teacher always supported and guided me, ____ I needed.'", a: ["neither", "whenever", "however", "though"], correct: "whenever" },
+            { q: "16. Identify the 'Tense': 'The students were participating actively in the English debate competition.'", a: ["Past Perfect", "Past Indefinite", "Past Perfect Continuous", "Past Continuous"], correct: "Past Continuous" },
+            { q: "17. Fill: 'I saw a lion in the forest. ____ lion was chasing a deer.'", a: ["Any", "A", "An", "The"], correct: "The" },
+            { q: "18. Choose an 'Intransitive Verb': 'Sana got up early in the morning and prepared herself for school.'", a: ["up early", "got up", "in the morning", "prepared herself"], correct: "got up" },
+            { q: "19. Identify the sentence having a 'Superlative Degree'.", a: ["Trains go faster...", "He runs the fastest in the football team.", "We must not reach later...", "The last remark was the least clearly stated."], correct: "He runs the fastest in the football team." },
+            { q: "20. Identify the sentence with the correct use of 'Semicolon'.", a: ["My favorite desserts are: chocolate cake; ice cream; and apple pie.", "He wanted to go to the park; however, it was closed for renovations.", "We can go to the store: then, we can pick up some dinner.", "The experiment was a failure; because the measurements were inconsistent."], correct: "He wanted to go to the park; however, it was closed for renovations." },
+            { q: "21. Identify the underlined 'Clause': 'You may sit wherever you want.'", a: ["Subordinate clause", "Relative clause", "Adverb clause", "Adjective clause"], correct: "Adverb clause" },
+            { q: "22. Choose the correct 'Abbreviation' of 'February'.", a: ["Feb.", "Feby.", "Ferb.", "Febr."], correct: "Feb." },
+            { q: "23. Identify the correct 'Indirect Speech': She said, 'I will cook dinner for my family.'", a: ["She said that she would cook dinner for her family."], correct: "She said that she would cook dinner for her family." },
+            { q: "24. Fill: 'Asad speaks English fluently; he ____ have lived in England for many years.'", a: ["might", "could", "should", "must"], correct: "must" },
+            { q: "25. Identify the word that means 'lack of food and grains'.", a: ["Climate", "Famine", "Storm", "War"], correct: "Famine" },
+            { q: "26. Choose an 'Adverbial Phrase': 'Sara ate her breakfast ____ because she was late for school.'", a: ["at the dining table", "incredibly slowly", "in a hurry", "with great care"], correct: "in a hurry" },
+            { q: "27. Change 'You should finish your work immediately' to a 'Command/order'.", a: ["Finish your work immediately."], correct: "Finish your work immediately." },
+            { q: "28. Identify the 'Homophones': 'The hare is running here and there.'", a: ["Hare and there", "Hare and here", "The hare", "There and here"], correct: "Hare and here" },
+            { q: "29. Identify the sentence in 'Future Continuous Tense'.", a: ["She is writing...", "She wrote...", "She will be writing a letter tomorrow.", "She has already written..."], correct: "She will be writing a letter tomorrow." },
+            { q: "30. Identify the 'Figure of Speech': 'After completing their work, they slept like a log.'", a: ["Alliteration", "Personification", "Metaphor", "Simile"], correct: "Simile" },
+            { q: "31. Identify the sentence with correct use of 'Apostrophe'.", a: ["The childrens' toys...", "The car's were parked...", "The teacher checked the students' homework.", "She loves to read story'books..."], correct: "The teacher checked the students' homework." },
+            { q: "32. Which pair of words is of 'Homographs'?", a: ["Lead, Lead", "Buy, By", "Right, Write", "Two, Too"], correct: "Lead, Lead" },
+            { q: "33. Select the correct meaning of the idiom 'Spill the Beans'.", a: ["Reveal a secret", "Spread the beans", "Prepare a meal", "Tell the truth"], correct: "Reveal a secret" },
+            { q: "34. Identify the type of the sentence: 'Go get me some tea and biscuits.'", a: ["Declarative", "Interrogative", "Imperative", "Exclamatory"], correct: "Imperative" },
+            { q: "35. Identify the sentence in which 'Remain' is used as a 'Linking Verb'.", a: ["The plane remained on the ground.", "He always remains positive about the future.", "Five minutes remaining...", "They remained in Lahore..."], correct: "He always remains positive about the future." },
+            { q: "36. The birds chirp in the morning. The underlined verb is:", a: ["Demonstrative", "Transitive verb", "Intransitive verb", "Regular verb"], correct: "Intransitive verb" },
+            { q: "37. Identify the word with correct Spelling:", a: ["Deserves", "Desewis", "Deserv", "Desarves"], correct: "Deserves" },
+            { q: "38. Choose the meaning of the word 'Patriotic':", a: ["Devotion for one's country", "Good citizen", "Love for family", "Kind towards others"], correct: "Devotion for one's country" },
+            { q: "39. Choose correct 'Punctuation Mark' for the blank. 'I do not like coffee ___ I prefer tea.'", a: [";", "\"", ".", "!"], correct: ";" },
+            { q: "40. Identify the 'Type' of the given sentence. 'When I go home, my family was already eating dinner.'", a: ["Simple Sentence", "Compound Sentence", "Complex Sentence", "Compound-Complex Sentence"], correct: "Complex Sentence" },
+            { q: "41. Choose a sentence that contains a 'Transitive Verb':", a: ["The teacher spoke passionately today.", "Millions of people visit Lahore every year.", "The migratory birds feed on aquatic plants.", "Prime Minister wrote to the United Nations."], correct: "Millions of people visit Lahore every year." },
+            { q: "42. Identify the correct 'Indirect Speech' of the sentence. She said, 'Please be quiet'.", a: ["She requested to be quiet.", "She advised to keep quiet.", "She said keep quiet.", "She says keep quiet."], correct: "She requested to be quiet." },
+            { q: "43. Identify the 'Kind' of sentence. 'She went to the store and bought some books.'", a: ["Simple", "Complex", "Compound", "Interrogative"], correct: "Compound" },
+            { q: "44. Choose the word that means free from disturbance.", a: ["patriotic", "quality", "peaceful", "lack"], correct: "peaceful" },
+            { q: "45. Identify the underlined word in the sentence. 'The ants help the caterpillar.'", a: ["Transitive Verb", "Intransitive Verb", "Helping Verb", "Linking Verb"], correct: "Transitive Verb" },
+            { q: "46. Choose the sentence having 'Adjective Phrase'.", a: ["She gave me a cup full of coffee.", "The cake that I bought was delicious.", "He tells a tale story to me.", "They are playing outside."], correct: "She gave me a cup full of coffee." },
+            { q: "47. Choose the correct Indirect form of the following sentence. He said to me, 'Do the exercise'.", a: ["He tells me always do exercise.", "He told me to do the exercise.", "He said to me to do exercise.", "He ordered me to do the exercise."], correct: "He ordered me to do the exercise." },
+            { q: "48. Identify the underlined 'Clause'. 'The story book which I like is on the table'.", a: ["Adjective Clause", "Noun Clause", "Adverb Clause", "Independent Clause"], correct: "Adjective Clause" },
+            { q: "49. Complete the sentence with correct option. 'Ali is a man of ____.'", a: ["book", "quality", "words", "brain"], correct: "words" },
+            { q: "50. Identify the sentence that contains a 'Transitive Verb'.", a: ["She reads an English book.", "The moon shines in the sky.", "They arrived late at the party.", "The hunter hunted hurriedly."], correct: "She reads an English book." },
+            { q: "51. Identify the 'Type' of following sentence. 'The gardener waters the plants.'", a: ["Simple Sentence", "Complex Sentence", "Compound Sentence", "Negative Sentence"], correct: "Simple Sentence" },
+            { q: "52. ____ 5 o'clock comes around, I will leave for Islamabad.", a: ["as soon as", "because", "before", "now that"], correct: "as soon as" },
+            { q: "53. Identify the correct 'Indirect Speech' of the following sentence. Kamran said, 'Does your father take tea?'", a: ["Kamran asked me if my father take tea.", "Kamran asked me if my father took tea.", "Kamran asked me that my father took tea.", "Kamran asked me if my father take tea?"], correct: "Kamran asked me if my father took tea." },
+            { q: "54. Identify the underlined clause. 'The dog that bites does not bark.'", a: ["Adjective Clause", "Adverb Clause", "Relative Clause", "Subordinate Clause"], correct: "Relative Clause" },
+            { q: "55. Choose the word with correct 'Spelling'.", a: ["Witness", "withnes", "witness", "withness"], correct: "witness" },
+            { q: "56. Identify the word that means the position of being citizen of a country.", a: ["Patriot", "Culture", "Citizenship", "Service"], correct: "Citizenship" },
+            { q: "57. The sun sets in the west. The underlined verb is.", a: ["Modal Verb", "Transitive Verb", "Intransitive Verb", "Helping Verb"], correct: "Intransitive Verb" },
+            { q: "58. Choose the sentence with correct use of 'Colon'.", a: ["We knew who would win : the game.", "I finally found them : my pair of gloves.", "It was freezing in Murree; however, we enjoyed.", "He gained : seven pounds."], correct: "I finally found them : my pair of gloves." },
+            { q: "59. Identify the underlined 'Clause'. 'The girl who wants the text book is here'.", a: ["Subordinate Clause", "Noun Clause", "Adjective Clause", "Adverb Clause"], correct: "Adjective Clause" },
+            { q: "60. Identify the sentence with correct 'Compound Sentence'.", a: ["He is poor, but he is honest.", "Amina finishes her work before evening.", "We are celebrating our birthday.", "The teacher has returned the assignments after checking"], correct: "He is poor, but he is honest." },
+            { q: "61. Which sentence correctly uses a comma?", a: ["Ali, likes apples.", "Ali likes apples, bananas and grapes.", "Ali likes, apples bananas grapes.", "Ali likes apples bananas and grapes."], correct: "Ali likes apples, bananas and grapes." },
+            { q: "62. 'She was rewarded for her work.' Here the word rewarded is an example:", a: ["Denotative", "Preposition", "Connotative", "Abbreviation"], correct: "Connotative" },
+            { q: "63. Identify the sentence having 'Intransitive Verb.'", a: ["He made the notes for his exams.", "We should speak politely with kids.", "She opened the door in a hurry.", "They are eating sweet mangoes."], correct: "We should speak politely with kids." },
+            { q: "64. Identify the 'Kind' of sentence. 'They rested in the hotel'.", a: ["Simple", "Compound", "Complex", "Interrogative"], correct: "Simple" },
+            { q: "65. Choose the correct 'Indirect Form of the sentence.' She said, 'Hurrah! I won the match'.", a: ["She exclaimed with joy that she had won the match.", "She said that she won the match.", "She told that she will win the match.", "She exclaimed with sorrow that she won the match."], correct: "She exclaimed with joy that she had won the match." },
+            { q: "66. The following sentence is the example of: 'She is as pretty as picture.'", a: ["Alliteration", "Personification", "Metaphor", "Simile"], correct: "Simile" },
+            { q: "67. Complete the sentence with suitable 'Correlative Conjunction'. '____ hockey ____ cricket are famous in Pakistan.'", a: ["both, and", "either, nor", "neither, or", "but, also"], correct: "both, and" },
+            { q: "68. Choose the word with correct 'Spelling'.", a: ["Productive", "Produtive", "Prodaictive", "Prodective"], correct: "Productive" },
+            { q: "69. Which is the 'Co-ordinating conjunction'?", a: ["whenever", "until", "and", "while"], correct: "and" },
+            { q: "70. Complete the sentence to form 'Future Continuous Tense'. 'He ____ the project in a week.'", a: ["will finish", "will be finishing", "Shall finish", "will have finished"], correct: "will be finishing" },
+            { q: "71. Which of the following sentence has a 'Capitonym'?", a: ["We should talk nicely to others.", "I love to read story books.", "May is my favourite month.", "Poor people should be respected."], correct: "May is my favourite month." },
+            { q: "72. Choose the 'Figure of Speech' in the given sentence. 'The water in rivers, stretching like a sleepy cat'.", a: ["Metaphor", "Simile", "Hyperbole", "Personification"], correct: "Simile" },
+            { q: "73. Identify the 'Interrogative Sentence.'", a: ["May you live long!", "She was singing.", "Did he break the window?", "How beautiful is it!"], correct: "Did he break the window?" },
+            { q: "74. Choose the correct antonym of 'Increase'.", a: ["Large", "Gain", "Decrease", "Fall"], correct: "Decrease" },
+            { q: "75. Choose the sentence having helping verb.", a: ["She is working in the field.", "Ali seems a nice boy.", "I love my new car.", "We are happy."], correct: "She is working in the field." },
+            { q: "76. Choose the correct pair of 'Capitonym'.", a: ["China/china", "Devo, dove", "Write / right", "know, now"], correct: "China/china" },
+            { q: "77. Identify the following sentence. 'He will wait for us.'", a: ["Future Indefinite Tense", "Future Continuous Tense", "Past Indefinite Tense", "Past Continuous Tense"], correct: "Future Indefinite Tense" },// اس لسٹ کو اپنے کوڈ میں پرانے سوالات کے بعد پیسٹ کریں
+{ q: "78. Identify the 'Antonym' of 'Respected'.", a: ["Advanced", "Decreased", "Disrespected", "Rural"], correct: "Disrespected" },
+{ q: "79. Identify the 'Figure of Speech': 'He is a fish out of water.'", a: ["Simile", "Personification", "Metaphor", "Alliteration"], correct: "Metaphor" },
+{ q: "80. Identify the 'Linking Verb' in 'She is a doctor.'", a: ["She", "is", "a", "doctor"], correct: "is" },
+{ q: "81. Complete the proverb: 'A stitch in time saves ____.'", a: ["time", "eight", "twenty", "nine"], correct: "nine" },
+{ q: "82. Fill with 'Adverb of Place': 'There is a garden ____ my house.'", a: ["below", "behind", "under", "above"], correct: "behind" },
+{ q: "83. Identify the 'Type' of the sentence: 'Where is my book?'", a: ["Imperative", "Declarative", "Exclamatory", "Interrogative"], correct: "Interrogative" },
+{ q: "84. Choose the correct 'Abbreviation' of 'Centimeters'.", a: ["cem", "cen.", "cm", "cm."], correct: "cm" },
+{ q: "85. Identify the word that means very unusual.", a: ["showcasing", "affiliated", "extraordinary", "importance"], correct: "extraordinary" },
+{ q: "86. Identify the 'Figure of Speech': 'In June, the sun is always angry.'", a: ["Simile", "Alliteration", "Metaphor", "Personification"], correct: "Personification" },
+{ q: "87. Identify the sentence having an 'Adverb Phrase'.", a: ["He speaks well.", "The sun rises in the east.", "The sun rises.", "You may sit."], correct: "He speaks well." },
+{ q: "88. Change into Passive Voice: 'He writes a letter.'", a: ["A letter is written by him.", "A letter was written by him.", "He is written a letter.", "A letter is writing by him."], correct: "A letter is written by him." },
+{ q: "89. Identify the word with a 'Diphthong'.", a: ["Cat", "Dog", "Coin", "Pen"], correct: "Coin" },
+{ q: "90. Choose the correct collective noun for 'a group of lions'.", a: ["Pride", "Herd", "Flock", "Pack"], correct: "Pride" },
+{ q: "91. Identify the 'Modal Verb' in: 'You must attend the class.'", a: ["You", "must", "attend", "class"], correct: "must" },
+{ q: "92. Choose the correct preposition: 'He is sitting ____ the table.'", a: ["on", "at", "in", "above"], correct: "at" },
+{ q: "93. Identify the 'Gerund' in: 'Swimming is a good exercise.'", a: ["Swimming", "is", "a", "good"], correct: "Swimming" },
+{ q: "94. Choose the 'Countable Noun'.", a: ["Water", "Book", "Sugar", "Love"], correct: "Book" },
+{ q: "95. Identify the 'Proper Noun'.", a: ["city", "Pakistan", "boy", "teacher"], correct: "Pakistan" },
+{ q: "96. Complete: 'She ____ to school every day.'", a: ["go", "goes", "going", "gone"], correct: "goes" },
+{ q: "97. Identify the sentence with the correct Punctuation.", a: ["what is your name", "What is your name?", "What is your name", "What, is your name?"], correct: "What is your name?" }
+
+        ];
+
+        let currentQ = 0, correct = 0, wrong = 0;
+
+        function startQuiz() {
+            document.getElementById('start-btn').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            document.getElementById('feedback').innerText = "";
+            document.getElementById('correct-answer-display').style.display = "none";
+            
+            let q = questions[currentQ];
+            document.getElementById('question').innerText = q.q;
+            let optDiv = document.getElementById('options');
+            optDiv.innerHTML = "";
+            
+            q.a.forEach(opt => {
+                let btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt, q.correct);
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, correctAns) {
+            let buttons = document.getElementsByClassName('option-btn');
+            for(let btn of buttons) { btn.disabled = true; }
+
+            if(selected === correctAns) {
+                document.getElementById('feedback').innerText = "✅ درست";
+                correct++;
+                document.getElementById('correct').innerText = correct;
+                setTimeout(nextQuestion, 1000); 
+            } else {
+                document.getElementById('feedback').innerText = "❌ غلط";
+                wrong++;
+                document.getElementById('wrong').innerText = wrong;
+                let display = document.getElementById('correct-answer-display');
+                display.innerText = "درست جواب: " + correctAns;
+                display.style.display = "block";
+            }
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if(currentQ < questions.length) {
+                showQuestion();
+            } else {
+                alert("کوئز مکمل! آپ کا سکور: " + correct + "/" + questions.length);
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
