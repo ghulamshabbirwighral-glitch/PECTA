@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Matching Game - Level System</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; touch-action: none; overflow: hidden; }
+        
+        #menu-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 500; }
+        button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #2196f3; color: white; border: none; border-radius: 10px; }
+        
+        #score-board { margin-top: 10px; font-size: 20px; font-weight: bold; background: #fff; padding: 10px; border-radius: 10px; display: inline-block; }
+        #lineCanvas { position: absolute; top: 0; left: 0; z-index: 100; pointer-events: none; }
+        .game-area { display: flex; justify-content: center; gap: 150px; margin-top: 30px; position: relative; height: 500px; z-index: 1; }
+        .column { display: flex; flex-direction: column; gap: 15px; }
+        .item { width: 120px; height: 45px; display: flex; align-items: center; justify-content: center; background: #fff; border: 2px solid #333; border-radius: 8px; cursor: crosshair; font-size: 20px; z-index: 1; position: relative; }
+        .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; }
+        #feedback { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px; display: none; z-index: 200; }
+    </style>
+</head>
+<body>
+
+    <div id="menu-screen">
+        <h1 id="menu-title">Matching Game</h1>
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+    </div>
+
+    <div id="score-board">
+        Correct: <span id="correct-count" style="color: green;">0</span> | 
+        Wrong: <span id="wrong-count" style="color: red;">0</span>
+    </div>
+
+    <div id="feedback"></div>
+    <canvas id="lineCanvas"></canvas>
+
+    <div class="game-area">
+        <div class="column" id="numbers"></div>
+        <div class="column" id="items"></div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('lineCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+
+        let currentLevel = 1;
+        let correctCount = 0;
+        let wrongCount = 0;
+        let matchedCount = 0;
+
+        const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const level1Data = ["🍎", "🍌🍌", "🍇🍇🍇", "🍓🍓🍓🍓", "🍒🍒🍒🍒🍒", "🍍🍍🍍🍍🍍🍍", "🥝🥝🥝🥝🥝🥝🥝", "🍉🍉🍉🍉🍉🍉🍉🍉", "🥭🥭🥭🥭🥭🥭🥭🥭🥭", "🍏🍏🍏🍏🍏🍏🍏🍏🍏🍏"];
+        const level2Data = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+
+        function startGame() {
+            document.getElementById('menu-screen').style.display = 'none';
+            loadLevel(1);
+        }
+
+        function loadLevel(level) {
+            currentLevel = level;
+            matchedCount = 0;
+            const numCol = document.getElementById('numbers');
+            const itemCol = document.getElementById('items');
+            numCol.innerHTML = '';
+            itemCol.innerHTML = '';
+
+            let data = (level === 1) ? level1Data : level2Data;
+            let items = data.map((val, i) => ({ val, id: i + 1 }));
+            items.sort(() => Math.random() - 0.5);
+
+            nums.forEach(n => {
+                let div = document.createElement('div');
+                div.className = 'item'; div.innerText = n; div.id = 'n-' + n; div.dataset.id = n;
+                numCol.appendChild(div);
+            });
+
+            items.forEach(item => {
+                let div = document.createElement('div');
+                div.className = 'item'; div.innerText = item.val; div.id = 'i-' + item.id; div.dataset.id = item.id;
+                itemCol.appendChild(div);
+            });
+        }
+
+        let isDrawing = false, startX, startY, startId, startElem;
+
+        window.addEventListener('pointerdown', (e) => {
+            if (e.target.classList.contains('item') && !e.target.classList.contains('matched')) {
+                isDrawing = true;
+                startElem = e.target;
+                const rect = e.target.getBoundingClientRect();
+                startX = rect.left + rect.width / 2;
+                startY = rect.top + rect.height / 2;
+                startId = e.target.dataset.id;
+            }
+        });
+
+        window.addEventListener('pointermove', (e) => {
+            if (!isDrawing) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.strokeStyle = '#2196f3'; ctx.lineWidth = 6; ctx.stroke();
+        });
+
+        window.addEventListener('pointerup', (e) => {
+            if (!isDrawing) return;
+            isDrawing = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            let endElem = document.elementFromPoint(e.clientX, e.clientY);
+            if (endElem && endElem.classList.contains('item') && endElem !== startElem && !endElem.classList.contains('matched')) {
+                let endId = endElem.dataset.id;
+                if (startId == endId) {
+                    showFeedback(true);
+                    startElem.classList.add('matched');
+                    endElem.classList.add('matched');
+                    matchedCount++;
+                    if (matchedCount === 10) levelComplete();
+                } else {
+                    showFeedback(false);
+                }
+            }
+        });
+
+        function showFeedback(isCorrect) {
+            const feed = document.getElementById('feedback');
+            feed.innerText = isCorrect ? "✅" : "❌";
+            feed.style.display = "block";
+            isCorrect ? correctCount++ : wrongCount++;
+            document.getElementById('correct-count').innerText = correctCount;
+            document.getElementById('wrong-count').innerText = wrongCount;
+            setTimeout(() => { feed.style.display = "none"; }, 1000);
+        }
+
+        function levelComplete() {
+            const menu = document.getElementById('menu-screen');
+            menu.style.display = 'flex';
+            document.getElementById('menu-title').innerText = "Level " + currentLevel + " Completed!";
+            const btn = document.getElementById('start-btn');
+            if (currentLevel === 1) {
+                btn.innerText = "Start Level 2";
+                btn.onclick = () => loadLevel(2);
+            } else {
+                btn.innerText = "Play Again";
+                btn.onclick = () => loadLevel(1);
+            }
+        }
+    </script>
+</body>
+</html>
