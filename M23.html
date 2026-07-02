@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>میچنگ گیم - ٹچ سپورٹ کے ساتھ</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; padding: 10px; touch-action: none; }
+        .top-section { display: flex; justify-content: center; gap: 2px; margin-top: 15px; }
+        .column { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+        .num-label { font-weight: bold; font-size: 12px; }
+        .target-box { width: 28px; height: 70px; border: 2px dashed #777; background: #fff; 
+                      display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 10px; }
+        
+        .fruits-wrapper { margin-top: 50px; }
+        .row-1, .row-2 { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
+        .fruit-item { font-size: 25px; cursor: grab; padding: 5px; touch-action: none; }
+        
+        #feedback { font-size: 30px; height: 40px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="feedback"></div>
+    <div class="top-section" id="top-section"></div>
+    <div class="fruits-wrapper">
+        <div class="row-1" id="row-1"></div>
+        <div class="row-2" id="row-2"></div>
+    </div>
+
+    <script>
+        const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const fruits = ["🍎", "🍌🍌", "🍇🍇🍇", "🍓🍓🍓🍓", "🍒🍒🍒🍒🍒", "🍍🍍🍍🍍🍍🍍", "🥝🥝🥝🥝🥝🥝🥝", "🍉🍉🍉🍉🍉🍉🍉🍉", "🥭🥭🥭🥭🥭🥭🥭🥭🥭", "🍏🍏🍏🍏🍏🍏🍏🍏🍏🍏"];
+
+        const topSection = document.getElementById('top-section');
+        const row1 = document.getElementById('row-1');
+        const row2 = document.getElementById('row-2');
+
+        let fruitData = fruits.map((val, i) => ({ val, id: i + 1 }));
+        fruitData.sort(() => Math.random() - 0.5);
+
+        // ہندسے اور ڈبے بنانا
+        nums.forEach(n => {
+            let col = document.createElement('div');
+            col.className = 'column';
+            col.innerHTML = `<div class="num-label">${n}</div><div class="target-box" data-target-id="${n}"></div>`;
+            topSection.appendChild(col);
+        });
+
+        // پھل بنانا
+        fruitData.forEach((item, index) => {
+            let div = document.createElement('div');
+            div.className = 'fruit-item';
+            div.innerText = item.val;
+            div.dataset.id = item.id;
+            
+            // ٹچ ایونٹس
+            div.addEventListener('touchstart', handleTouchStart);
+            div.addEventListener('touchend', handleTouchEnd);
+            
+            if (index < 5) row1.appendChild(div);
+            else row2.appendChild(div);
+        });
+
+        function handleTouchStart(e) {
+            e.target.style.opacity = "0.5";
+        }
+
+        function handleTouchEnd(e) {
+            e.target.style.opacity = "1";
+            const touch = e.changedTouches[0];
+            const dropElement = document.elementFromPoint(touch.clientX, touch.clientY);
+            
+            if (dropElement && dropElement.classList.contains('target-box')) {
+                const fruitId = e.target.dataset.id;
+                const targetId = dropElement.dataset.targetId;
+
+                if (fruitId == targetId) {
+                    dropElement.innerText = e.target.innerText;
+                    dropElement.style.background = "#c8e6c9";
+                    e.target.style.visibility = "hidden";
+                    showFeedback("✅");
+                } else {
+                    showFeedback("❌");
+                }
+            }
+        }
+
+        function showFeedback(msg) {
+            const feed = document.getElementById('feedback');
+            feed.innerText = msg;
+            setTimeout(() => { feed.innerText = ""; }, 1000);
+        }
+    </script>
+</body>
+</html>
