@@ -48,7 +48,7 @@
     font-size: 45px !important; 
     line-height: 1.8 !important;
     min-height: 88vh !important; 
-    display: flex;
+  
     flex-direction: column;
   }
 
@@ -305,7 +305,8 @@ function googleTranslateElementInit() {
             document.getElementById('def-ur').innerText = topics[t].ur;
             document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => `<div class="ex-item">${e}</div>`).join('');
             document.getElementById('viewer').style.display = 'block';
-            menu.style.display = 'none';
+            document.getElementById('viewer').style.display = 'flex';
+          
         };
         menu.appendChild(btn);
     });
