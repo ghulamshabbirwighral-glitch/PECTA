@@ -110,12 +110,17 @@ function googleTranslateElementInit() {
 <h3>PECTA Class 8 English Objective</h3>
 <div class="grid" id="menu"></div>
 
-<div id="viewer">
-    <h3 id="v-title"></h3>
-    <p>Def:<span id="def-en" class="notranslate" style="font-weight:bold;"></span></p>
-    <p><b>تعریف:</b> <span id="def-ur"></span></p>
-    <div id="ex-content"></div>
-    <button class="opt-btn" onclick="hideViewer()">واپس</button>
+<div id="viewer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; padding: 20px; z-index: 1000; overflow-y: auto; box-sizing: border-box;">
+    
+    <!-- مواد کو لپیٹنے والا نیا کنٹینر -->
+    <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: left;">
+        <h3 id="v-title"></h3>
+        <p><strong>Def:</strong> <span id="def-en" class="notranslate" style="font-weight:bold;"></span></p>
+        <p><strong>تعریف:</strong> <span id="def-ur"></span></p>
+        <div id="ex-content"></div>
+        <button class="opt-btn" onclick="hideViewer()" style="width: 100%; margin-top: 20px;">واپس</button>
+    
+    </div>
 </div>
 
 <script>
