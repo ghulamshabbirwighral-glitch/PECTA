@@ -37,15 +37,16 @@
     border-radius: 10px;
       }  
             .modal {
-    display: none;
+    display: none;        /* یہ لائن گیم کو چھپانے کے لیے بہت ضروری ہے */
     position: fixed;
-    z-index: 1;
+    z-index: 1000;        /* تاکہ گیم باقی سب چیزوں کے اوپر کھلے */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
-  }
+    background-color: rgba(0,0,0,0.8); /* پیچھے کا بیک گراؤنڈ دھندلا کرنے کے لیے */
+            }
+            
   .modal-content {
     margin: 10% auto;
     width: 90%;
