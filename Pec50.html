@@ -303,31 +303,44 @@ function googleTranslateElementInit() {
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
         }
 
-    };
 
+      // یقینی بنائیں کہ آپ کا 'topics' ڈیٹا یہاں موجود ہے
     const menu = document.getElementById('menu');
-     btn.onclick = () => {
-    let titleEl = document.getElementById('v-title');
-    titleEl.innerText = t;
-    titleEl.className = "notranslate";
-    titleEl.setAttribute('translate', 'no'); // ٹائٹل کو ٹرانسلیٹ ہونے سے روکا
 
-    let defEn = document.getElementById('def-en');
-    defEn.innerText = topics[t].def;
-    defEn.className = "notranslate";
-    defEn.setAttribute('translate', 'no'); // انگلش ڈیفینیشن کو روکا
+    // یہ حصہ لائن 303 سے آگے پیسٹ کریں
+    Object.keys(topics).forEach(t => {
+        let btn = document.createElement('button');
+        btn.className = 'topic-btn notranslate';
+        btn.setAttribute('translate', 'no');
+        btn.innerText = t;
 
-    document.getElementById('def-ur').innerText = topics[t].ur;
-    // اردو ڈیفینیشن پر کوئی لاک نہیں، یہ ترجمہ ہوگی
+        btn.onclick = () => {
+            // ٹائٹل کے لیے
+            let titleEl = document.getElementById('v-title');
+            titleEl.innerText = t;
+            titleEl.className = "notranslate";
+            titleEl.setAttribute('translate', 'no');
 
-    document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => 
-        "<div class='ex-item notranslate' translate='no'>" + e + "</div>" // مثالوں کو روکا
-    ).join('');
+            // انگلش ڈیفینیشن کے لیے
+            let defEn = document.getElementById('def-en');
+            defEn.innerText = topics[t].def;
+            defEn.className = "notranslate";
+            defEn.setAttribute('translate', 'no');
 
-    document.getElementById('viewer').style.display = 'block';
-    document.getElementById('menu').style.display = 'none';
-};
-  
+            // اردو ڈیفینیشن (یہ ٹرانسلیٹ ہوگی)
+            document.getElementById('def-ur').innerText = topics[t].ur;
+
+            // مثالوں کے لیے (انگلش رہیں گی)
+            let exContent = document.getElementById('ex-content');
+            exContent.innerHTML = topics[t].ex.map(e => 
+                "<div class='ex-item notranslate' translate='no'>" + e + "</div>"
+            ).join('');
+
+            document.getElementById('viewer').style.display = 'block';
+            document.getElementById('menu').style.display = 'none';
+        };
+        menu.appendChild(btn);
+    });
   
 </script>
 </body>
