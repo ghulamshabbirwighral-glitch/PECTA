@@ -303,11 +303,8 @@ function googleTranslateElementInit() {
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
         },
 
-
-      // یقینی بنائیں کہ آپ کا 'topics' ڈیٹا یہاں موجود ہے
     const menu = document.getElementById('menu');
 
-    // یہ حصہ لائن 303 سے آگے پیسٹ کریں
     Object.keys(topics).forEach(t => {
         let btn = document.createElement('button');
         btn.className = 'topic-btn notranslate';
@@ -315,22 +312,18 @@ function googleTranslateElementInit() {
         btn.innerText = t;
 
         btn.onclick = () => {
-            // ٹائٹل کے لیے
             let titleEl = document.getElementById('v-title');
             titleEl.innerText = t;
             titleEl.className = "notranslate";
             titleEl.setAttribute('translate', 'no');
 
-            // انگلش ڈیفینیشن کے لیے
             let defEn = document.getElementById('def-en');
             defEn.innerText = topics[t].def;
             defEn.className = "notranslate";
             defEn.setAttribute('translate', 'no');
 
-            // اردو ڈیفینیشن (یہ ٹرانسلیٹ ہوگی)
             document.getElementById('def-ur').innerText = topics[t].ur;
 
-            // مثالوں کے لیے (انگلش رہیں گی)
             let exContent = document.getElementById('ex-content');
             exContent.innerHTML = topics[t].ex.map(e => 
                 "<div class='ex-item notranslate' translate='no'>" + e + "</div>"
@@ -341,6 +334,7 @@ function googleTranslateElementInit() {
         };
         menu.appendChild(btn);
     });
+  
   
 </script>
 </body>
