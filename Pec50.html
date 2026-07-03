@@ -110,18 +110,21 @@ function googleTranslateElementInit() {
 <h3>PECTA Class 8 English Objective</h3>
 <div class="grid" id="menu"></div>
 
-<div id="viewer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; padding: 20px; z-index: 1000; overflow-y: auto; box-sizing: border-box;">
+<div id="viewer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; padding: 40px; z-index: 1000; overflow-y: auto; box-sizing: border-box;">
     
-    <!-- مواد کو لپیٹنے والا نیا کنٹینر -->
-    <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: left;">
-        <h3 id="v-title"></h3>
+    <div style="width: 100%; max-width: 900px; margin: 0 auto; text-align: left; font-size: 24px; line-height: 1.6;">
+        
+        <h2 id="v-title" style="font-size: 40px;"></h2>
         <p><strong>Def:</strong> <span id="def-en" class="notranslate" style="font-weight:bold;"></span></p>
         <p><strong>تعریف:</strong> <span id="def-ur"></span></p>
-        <div id="ex-content"></div>
-        <button class="opt-btn" onclick="hideViewer()" style="width: 100%; margin-top: 20px;">واپس</button>
-    
+        
+        <div id="ex-content" style="margin-top: 30px;"></div>
+        
+        <button class="opt-btn" onclick="hideViewer()" style="width: 100%; padding: 20px; font-size: 24px; margin-top: 50px;">واپس</button>
     </div>
+
 </div>
+  
 
 <script>
     const topics = {
