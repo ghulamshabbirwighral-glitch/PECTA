@@ -297,15 +297,19 @@ function googleTranslateElementInit() {
         let btn = document.createElement('button');
         btn.className = 'topic-btn';
         btn.innerText = t;
-        btn.onclick = () => {
+                btn.onclick = () => {
             document.getElementById('v-title').innerText = t;
             document.getElementById('def-en').innerText = topics[t].def;
             document.getElementById('def-ur').innerText = topics[t].ur;
             document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => `<div class="ex-item">${e}</div>`).join('');
-            document.getElementById('viewer').style.display = 'block';
+            
+            // یہ لائن مینیو کو غائب کر دے گی
+            document.getElementById('menu').style.display = 'none'; 
+            
+            // یہ لائن ویور کو دکھائے گی
             document.getElementById('viewer').style.display = 'flex';
-          
         };
+      
         menu.appendChild(btn);
     });
 
