@@ -124,13 +124,11 @@ function googleTranslateElementInit() {
         "Imperative": { 
             def: "Command, advice, warning, request, or instruction.", 
             ur: "حکم، نصیحت، تنبیہ، درخواست یا ہدایات۔", 
-            ex: [
-                "Please help me. (Request)", "Kindly sit here. (Request)", "Could you pass the salt? (Request)",
+            ex: [ "Please help me. (Request)", "Kindly sit here. (Request)", "Could you pass the salt? (Request)",
                 "Close the door. (Order)", "Stop talking now. (Order)", "Stand up straight. (Order)",
                 "Eat healthy food. (Advice)", "Don't study too late. (Advice)", "Be kind to others. (Advice)",
                 "Don't touch the wire. (Warning)", "Stay away from fire. (Warning)", "Don't go near the dog. (Warning)",
-                "Mix the flour and sugar. (Instruction)", "Write your name here. (Instruction)", "Press the start button. (Instruction)"
-            ] 
+                "Mix the flour and sugar. (Instruction)", "Write your name here. (Instruction)", "Press the start button. (Instruction)" ] 
         },
         "Articles": { 
             def: "A: Used before consonant sounds. An: Used before vowel sounds (a, e, i, o, u). The: Used for specific or unique things.", 
@@ -295,11 +293,6 @@ function googleTranslateElementInit() {
             ur: "ٹرف تھانگ: ایک ہی آواز میں تین وول ساؤنڈز کا ملاپ۔", 
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
         },
-       "Full Stop (.)": {
-        def: "Used to mark the end of a declarative sentence.",
-        ur: "سادہ جملے کے اختتام پر استعمال ہوتا ہے۔",
-        ex: ["I am a teacher.", "She is reading.", "They play."]
-       }; 
     const menu = document.getElementById('menu');
     Object.keys(topics).forEach(t => {
         let btn = document.createElement('button');
