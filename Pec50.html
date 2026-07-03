@@ -36,20 +36,20 @@
     border-radius: 15px !important;
   }
   
-  #viewer { 
+    #viewer { 
     display: none; 
-    width: 95% !important; 
-    margin: 20px auto !important; 
-    padding: 40px !important; 
-    border: 5px solid #2c3e50 !important; 
-    border-radius: 30px !important; 
-    background: #ffffff !important; 
-    font-size: 45px !important; 
-    line-height: 1.8 !important;
-    min-height: 88vh !important; 
-  
+    position: fixed; /* یہ اسے الگ ونڈو کی طرح فکس کر دے گا */
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background: #ffffff; 
+    z-index: 999; /* یہ اسے سب سے اوپر لائے گا */
+    overflow-y: auto; 
+    padding: 20px;
     flex-direction: column;
-  }
+    }
+  
 
   .opt-btn { 
     display: block !important; 
