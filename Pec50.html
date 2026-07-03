@@ -288,12 +288,13 @@ function googleTranslateElementInit() {
             ur: "ڈفتھانگ: ایک ہی آواز میں دو وول ساؤنڈز کا ملاپ۔", 
             ex: ["Coin (oy)", "Loud (ou)", "Face (ei)"] 
         },
-        "Triphthongs": { 
+                "Triphthongs": { 
             def: "A sound formed by the combination of three vowel sounds.", 
             ur: "ٹرف تھانگ: ایک ہی آواز میں تین وول ساؤنڈز کا ملاپ۔", 
-            ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"],
-        
-       }; // <--- یہ بریکٹ یہاں بند کرنا لازمی ہے
+            ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
+        } 
+    }; // یہاں ابجیکٹ صحیح طریقے سے بند ہوگا
+  
       const menu = document.getElementById('menu');
     Object.keys(topics).forEach(t => {
         let btn = document.createElement('button');
@@ -311,10 +312,11 @@ function googleTranslateElementInit() {
         menu.appendChild(btn);
     });
 
-    function hideViewer() { 
+        function hideViewer() { 
         document.getElementById('viewer').style.display = 'none'; 
-        menu.style.display = 'grid'; 
-    }
+        document.getElementById('menu').style.display = 'flex'; // grid کی جگہ flex کریں
+        }
+  
   
 </script>
   
