@@ -36,19 +36,20 @@
     border-radius: 15px !important;
   }
   
-    #viewer { 
+  #viewer { 
     display: none; 
-    position: fixed; /* یہ اسے الگ ونڈو کی طرح فکس کر دے گا */
+    position: fixed;       /* یہ اسے پیج سے الگ کر دے گا */
     top: 0; 
     left: 0;
     width: 100%; 
-    height: 100%; 
-    background: #ffffff; 
-    z-index: 999; /* یہ اسے سب سے اوپر لائے گا */
-    overflow-y: auto; 
+    height: 100%;          /* پوری اسکرین پر پھیلے گا */
+    background: white;     /* پیچھے والا مینیو چھپ جائے گا */
     padding: 20px;
-    flex-direction: column;
-    }
+    z-index: 1000;         /* یہ اسے مینیو کے اوپر لائے گا */
+    overflow-y: auto;      /* اگر مواد زیادہ ہو تو اسکرول ہو سکے گا */
+    box-shadow: none;      /* پرانی فائل جیسی لک کے لیے */
+  }
+  
   
 
   .opt-btn { 
