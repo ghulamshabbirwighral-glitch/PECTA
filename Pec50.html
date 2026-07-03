@@ -36,18 +36,18 @@
     border-radius: 15px !important;
   }
   
-  #viewer { 
-    display: none; 
-    position: fixed;       /* یہ اسے پیج سے الگ کر دے گا */
-    top: 0; 
+  #viewer {
+    display: flex;             /* یہ کنٹینٹ کو ترتیب دینے کے لیے ہے */
+    flex-direction: column;    /* یہ چیزوں کو ایک کالم (اوپر سے نیچے) میں لائے گا */
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%;          /* پوری اسکرین پر پھیلے گا */
-    background: white;     /* پیچھے والا مینیو چھپ جائے گا */
+    width: 100%;               /* پوری اسکرین کی چوڑائی */
+    height: 100%;              /* پوری اسکرین کی اونچائی */
+    background: white;
     padding: 20px;
-    z-index: 1000;         /* یہ اسے مینیو کے اوپر لائے گا */
-    overflow-y: auto;      /* اگر مواد زیادہ ہو تو اسکرول ہو سکے گا */
-    box-shadow: none;      /* پرانی فائل جیسی لک کے لیے */
+    z-index: 1000;
+    overflow-y: auto;          /* اگر مواد زیادہ ہو تو اسکرول کے لیے */
   }
   
   
