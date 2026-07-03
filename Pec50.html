@@ -301,43 +301,45 @@ function googleTranslateElementInit() {
             def: "A sound formed by the combination of three vowel sounds.", 
             ur: "ٹرف تھانگ: ایک ہی آواز میں تین وول ساؤنڈز کا ملاپ۔", 
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
-        }
-    // یہ کوڈ 'topics' ڈیٹا کے بالکل بعد لگائیں
-    const menu = document.getElementById('menu');
+        },
 
-    Object.keys(topics).forEach(t => {
-        let btn = document.createElement('button');
-        btn.className = 'topic-btn notranslate';
-        btn.setAttribute('translate', 'no');
-        btn.innerText = t;
+              "Full Stop (.)": {
+        def: "Used to mark the end of a declarative sentence.",
+        ur: "سادہ جملے کے اختتام پر استعمال ہوتا ہے۔",
+        ex: ["I am a teacher.", "She is reading.", "They play."]
+    
+}; 
 
-        btn.onclick = () => {
-            // ٹائٹل اور ڈیفینیشن سیٹ کرنا
-            let titleEl = document.getElementById('v-title');
-            titleEl.innerText = t;
-            titleEl.className = "notranslate";
-            titleEl.setAttribute('translate', 'no');
+const menu = document.getElementById('menu');
 
-            let defEn = document.getElementById('def-en');
-            defEn.innerText = topics[t].def;
-            defEn.className = "notranslate";
-            defEn.setAttribute('translate', 'no');
+Object.keys(topics).forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = 'topic-btn notranslate';
+    btn.setAttribute('translate', 'no');
+    btn.innerText = t;
 
-            document.getElementById('def-ur').innerText = topics[t].ur;
+    btn.onclick = () => {
+        document.getElementById('v-title').innerText = t;
+        document.getElementById('def-en').innerText = topics[t].def;
+        document.getElementById('def-ur').innerText = topics[t].ur;
 
-            // مثالیں سیٹ کرنا
-            let exContent = document.getElementById('ex-content');
-            exContent.innerHTML = topics[t].ex.map(e => 
-                "<div class='ex-item notranslate' translate='no'>" + e + "</div>"
-            ).join('');
+        let exContent = document.getElementById('ex-content');
+        exContent.innerHTML = topics[t].ex.map(e => 
+            "<div class='ex-item notranslate' translate='no' style='font-size:20px; margin:5px;'>" + e + "</div>"
+        ).join('');
 
-            // ویور دکھانا اور مینیو چھپانا
-            document.getElementById('viewer').style.display = 'block';
-            document.getElementById('menu').style.display = 'none';
-        };
-        menu.appendChild(btn);
-    });
+        document.getElementById('viewer').style.display = 'flex';
+        document.getElementById('menu').style.display = 'none';
+    };
+    menu.appendChild(btn);
+});
+
+function hideViewer() {
+    document.getElementById('viewer').style.display = 'none';
+    document.getElementById('menu').style.display = 'flex';
+}
 </script>
+  
   
 </body>
 </html>
