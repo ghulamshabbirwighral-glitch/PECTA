@@ -36,6 +36,12 @@
     border: 3px solid #2c3e50 !important; 
     border-radius: 15px !important;
   }
+  /* یہاں سے CSS شروع */
+.notranslate, .notranslate * {
+    -google-translate-custom: none !important;
+}
+/* یہاں CSS ختم */
+  
 
   /* یہ جواب والے فریم کے لیے ہے، اسے پہلے چھپایا گیا ہے */
   #viewer { 
@@ -300,31 +306,28 @@ function googleTranslateElementInit() {
     };
 
     const menu = document.getElementById('menu');
-     Object.keys(topics).forEach(t => {
-    let btn = document.createElement('button');
-    btn.className = 'topic-btn notranslate'; // بٹن انگلش میں لاک
-    btn.setAttribute('translate', 'no');
-    btn.innerText = t;
-    
-    btn.onclick = () => {
-        document.getElementById('v-title').innerText = t;
-        document.getElementById('v-title').className = "notranslate";
-        
-        document.getElementById('def-en').innerText = topics[t].def;
-        document.getElementById('def-en').className = "notranslate";
-        
-        document.getElementById('def-ur').innerText = topics[t].ur;
-        // 'def-ur' پر کوئی notranslate کلاس نہیں ہے، یہ ترجمہ ہوگا
-        
-        document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => 
-            "<div class='ex-item notranslate'>" + e + "</div>"
-        ).join('');
-        
-        document.getElementById('viewer').style.display = 'block';
-        document.getElementById('menu').style.display = 'none';
-    };
-    menu.appendChild(btn); // بٹن کو مینیو میں شامل کیا
-});
+     btn.onclick = () => {
+    let titleEl = document.getElementById('v-title');
+    titleEl.innerText = t;
+    titleEl.className = "notranslate";
+    titleEl.setAttribute('translate', 'no'); // ٹائٹل کو ٹرانسلیٹ ہونے سے روکا
+
+    let defEn = document.getElementById('def-en');
+    defEn.innerText = topics[t].def;
+    defEn.className = "notranslate";
+    defEn.setAttribute('translate', 'no'); // انگلش ڈیفینیشن کو روکا
+
+    document.getElementById('def-ur').innerText = topics[t].ur;
+    // اردو ڈیفینیشن پر کوئی لاک نہیں، یہ ترجمہ ہوگی
+
+    document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => 
+        "<div class='ex-item notranslate' translate='no'>" + e + "</div>" // مثالوں کو روکا
+    ).join('');
+
+    document.getElementById('viewer').style.display = 'block';
+    document.getElementById('menu').style.display = 'none';
+};
+  
   
 </script>
 </body>
