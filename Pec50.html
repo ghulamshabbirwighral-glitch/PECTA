@@ -300,22 +300,32 @@ function googleTranslateElementInit() {
     };
 
     const menu = document.getElementById('menu');
-    Object.keys(topics).forEach(t => {
-        let btn = document.createElement('button');
-        btn.className = 'topic-btn notranslate';
-        btn.innerText = t;
-        btn.onclick = () => {
-            document.getElementById('v-title').innerText = t;
-            document.getElementById('def-en').innerText = topics[t].def;
-            document.getElementById('def-ur').innerText = topics[t].ur;
-            document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => '<div class="ex-item notranslate">' + e + '</div>').join('');
-           document.getElementById('viewer').style.display='block';
-            menu.style.display='none';
-        };
-        menu.appendChild(btn);
-    });
-
-    function hideViewer() { document.getElementById('viewer').style.display = 'none'; menu.style.display = 'grid'; }
+     Object.keys(topics).forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = 'topic-btn notranslate'; // بٹن انگلش میں لاک
+    btn.setAttribute('translate', 'no');
+    btn.innerText = t;
+    
+    btn.onclick = () => {
+        document.getElementById('v-title').innerText = t;
+        document.getElementById('v-title').className = "notranslate";
+        
+        document.getElementById('def-en').innerText = topics[t].def;
+        document.getElementById('def-en').className = "notranslate";
+        
+        document.getElementById('def-ur').innerText = topics[t].ur;
+        // 'def-ur' پر کوئی notranslate کلاس نہیں ہے، یہ ترجمہ ہوگا
+        
+        document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => 
+            "<div class='ex-item notranslate'>" + e + "</div>"
+        ).join('');
+        
+        document.getElementById('viewer').style.display = 'block';
+        document.getElementById('menu').style.display = 'none';
+    };
+    menu.appendChild(btn); // بٹن کو مینیو میں شامل کیا
+});
+  
 </script>
 </body>
 </html>
