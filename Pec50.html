@@ -292,8 +292,9 @@ function googleTranslateElementInit() {
             def: "A sound formed by the combination of three vowel sounds.", 
             ur: "ٹرف تھانگ: ایک ہی آواز میں تین وول ساؤنڈز کا ملاپ۔", 
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
-        },
-    const menu = document.getElementById('menu');
+        }
+       }; // <--- یہ بریکٹ یہاں بند کرنا لازمی ہے
+      const menu = document.getElementById('menu');
     Object.keys(topics).forEach(t => {
         let btn = document.createElement('button');
         btn.className = 'topic-btn';
