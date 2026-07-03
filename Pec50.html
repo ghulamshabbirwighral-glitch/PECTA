@@ -15,8 +15,7 @@
     <title>English Grammar Hub</title>
     
      
-     
-</head>
+  
 <style>
   /* یہ مینیو (بٹنوں) کے لیے ہے */
   #menu { 
@@ -86,9 +85,6 @@
      
      
 </style>
-     
-  </head>
-<head>
     <meta charset="UTF-8">
     <title>PECTA انگلش ایپ</title>
     <!-- یہاں وہ کوڈ پیسٹ کریں جو آپ نے کاپی کیا ہے -->
@@ -293,7 +289,8 @@ function googleTranslateElementInit() {
             ur: "ٹرف تھانگ: ایک ہی آواز میں تین وول ساؤنڈز کا ملاپ۔", 
             ex: ["Fire (ai-uh)", "Hour (au-uh)", "Player (ei-uh)"] 
         } 
-    }; // یہاں ابجیکٹ صحیح طریقے سے بند ہوگا
+    }; // یہاں پر ابجیکٹ صحیح طریقے سے بند ہو رہا ہے
+  
   
       const menu = document.getElementById('menu');
     Object.keys(topics).forEach(t => {
@@ -312,10 +309,15 @@ function googleTranslateElementInit() {
         menu.appendChild(btn);
     });
 
-        function hideViewer() { 
-        document.getElementById('viewer').style.display = 'none'; 
-        document.getElementById('menu').style.display = 'flex'; // grid کی جگہ flex کریں
-        }
+        
+              function hideViewer() { 
+            // ویوور کو چھپائیں
+            document.getElementById('viewer').style.display = 'none'; 
+            
+            // مینیو کو دوبارہ دکھائیں
+            document.getElementById('menu').style.display = 'flex'; 
+              }
+  
   
   
 </script>
