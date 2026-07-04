@@ -279,7 +279,7 @@ function googleTranslateElementInit() {
       const menu = document.getElementById('menu');
     Object.keys(topics).forEach(t => {
         let btn = document.createElement('button');
-        btn.className = 'topic-btn';
+      btn.className = 'topic-btn notranslate';
         btn.innerText = t;
                 btn.onclick = () => {
             document.getElementById('v-title').innerText = t;
