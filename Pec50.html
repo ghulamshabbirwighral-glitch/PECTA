@@ -285,8 +285,10 @@ function googleTranslateElementInit() {
             document.getElementById('v-title').innerText = t;
             document.getElementById('def-en').innerText = topics[t].def;
             document.getElementById('def-ur').innerText = topics[t].ur;
-            document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => `<div class="ex-item">${e}</div>`).join('');
             
+             document.getElementById('ex-content').innerHTML = topics[t].ex.map(e => `<div class="ex-item notranslate">${e}</div>`).join('');
+                  
+                  
             // یہ لائن مینیو کو غائب کر دے گی
             document.getElementById('menu').style.display = 'none'; 
             
