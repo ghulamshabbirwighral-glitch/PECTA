@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Math Dashboard</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #e9ecef; }
+        .nav-btn { 
+            padding: 20px 40px; 
+            margin: 15px; 
+            cursor: pointer; 
+            font-size: 20px; 
+            border-radius: 10px; 
+            border: none; 
+            background: #28a745; 
+            color: white; 
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+    <h1>Math Learning Dashboard</h1>
+    <p>Select a module to open in a new full-screen window:</p>
+    
+    <button class="nav-btn" onclick="openFullscreen('Math3.html')">Basic Math Practice Primary</button>
+    <button class="nav-btn" onclick="openFullscreen('Mathn12.html')">Advance Math Practice Primary</button>
+
+    <script>
+        function openFullscreen(fileName) {
+            // _blank का मतलब है नई विंडो/टैब में खोलना
+            // fullscreen=yes सभी ब्राउज़र्स पर काम नहीं करता, इसलिए हम इसे मैक्सिमाइज्ड खोलने की कोशिश करते हैं
+            window.open(fileName, '_blank', 'width=' + screen.width + ',height=' + screen.height + ',resizable=yes,scrollbars=yes');
+        }
+    </script>
+</body>
+</html>
+
