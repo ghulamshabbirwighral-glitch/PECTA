@@ -44,15 +44,17 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;    /* سکرین کی پوری چوڑائی */
-    min-height: 100vh; /* سکرین کی پوری اونچائی */
+    width: 100vw;
+    min-height: 100vh;
     background: white;
-    padding: 20px;
+    padding: 30px; /* سائیڈ سے تھوڑا اور فاصلہ دینے کے لیے */
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
+    font-size: 22px !important; /* ٹیکسٹ کو واضح بڑا کرنے کے لیے */
+    line-height: 1.8; /* لائنوں کے درمیان فاصلہ بڑھانے کے لیے تاکہ پڑھنے میں آسانی ہو */
 }
-
+  
 body {
     margin: 0;
     padding: 0;
@@ -60,11 +62,6 @@ body {
     height: 100%; /* یہ لائن بھی شامل کریں */
     overflow-x: hidden; /* تاکہ سائیڈ پر غیر ضروری سکرو بار نہ آئے */
 }
-  .viewer {
-    /* اوپر دی گئی سیٹنگز */
-    font-size: 1.2rem; /* ٹیکسٹ کو بڑا کرنے کے لیے */
-  }
-  
 
   
   
