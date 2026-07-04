@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { text-align: center; font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+        .btn { padding: 15px 20px; margin: 10px; cursor: pointer; font-size: 16px; border-radius: 10px; border: none; background: #4CAF50; color: white; }
+        .skip-btn { background: #f44336; }
+        .box { margin-top: 30px; padding: 20px; border: 2px solid #ccc; display: inline-block; border-radius: 15px; background: white; }
+        input { padding: 10px; width: 80px; font-size: 18px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Math Learner (100 Levels)</h1>
+    <p id="levelDisplay">Select a topic to start</p>
+    
+    <button class="btn" onclick="setOp('+')">Addition (+)</button>
+    <button class="btn" onclick="setOp('-')">Subtraction (-)</button>
+    <button class="btn" onclick="setOp('*')">Multiplication (x)</button>
+    <button class="btn" onclick="setOp('/')">Division (÷)</button>
+
+    <div class="box" id="quizBox" style="display:none;">
+        <h2 id="question">?</h2>
+        <input type="number" id="ans" placeholder="Answer">
+        <br>
+        <button class="btn" onclick="checkAnswer()">Check Answer</button>
+        <button class="btn skip-btn" onclick="generateQuestion()">Skip</button>
+        <p id="feedback"></p>
+    </div>
+
+    <script>
+        let currentOp = '';
+        let questionCount = 0;
+        let num1, num2, correctAnswer;
+
+        function setOp(op) {
+            currentOp = op;
+            questionCount = 0;
+            document.getElementById('quizBox').style.display = 'block';
+            generateQuestion();
+        }
+
+        function generateQuestion() {
+            questionCount++;
+            if(questionCount > 100) { alert("Congratulations! You completed 100 questions!"); questionCount = 1; }
+            
+            document.getElementById('levelDisplay').innerText = `Question: ${questionCount} / 100`;
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('ans').value = '';
+
+            // لیول کے حساب سے مشکل بڑھانا
+            let range = Math.floor((questionCount - 1) / 10) * 10 + 10; 
+            
+            num1 = Math.floor(Math.random() * range) + 1;
+            num2 = Math.floor(Math.random() * range) + 1;
+            
+            if(currentOp === '+') correctAnswer = num1 + num2;
+            else if(currentOp === '-') { correctAnswer = Math.abs(num1 - num2); num1 = Math.max(num1, num2); num2 = Math.min(num1, num2); }
+            else if(currentOp === '*') correctAnswer = num1 * num2;
+            else if(currentOp === '/') { correctAnswer = num1; num1 = num1 * num2; }
+            
+            document.getElementById('question').innerText = `${num1} ${currentOp} ${num2} = ?`;
+        }
+
+        function checkAnswer() {
+            let userAns = document.getElementById('ans').value;
+            let feedback = document.getElementById('feedback');
+            
+            if(userAns == correctAnswer) {
+                feedback.innerHTML = "<span style='color:green;'>🎉 Correct! Moving to next...</span>";
+                setTimeout(generateQuestion, 1500);
+            } else {
+                feedback.innerHTML = `<span style='color:red;'>Oops! Correct answer is: <b>${correctAnswer}</b></span>`;
+            }
+        }
+    </script>
+</body>
+</html>
