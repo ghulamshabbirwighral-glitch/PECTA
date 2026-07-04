@@ -35,21 +35,32 @@
     border: 3px solid #2c3e50 !important; 
     border-radius: 15px !important;
   }
-  
-  #viewer {
+  <style>
+/* ... باقی کوڈ ... */
+
+.viewer {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;    /* سکرین کی پوری چوڑائی */
+    min-height: 100vh; /* سکرین کی پوری اونچائی */
     background: white;
     padding: 20px;
     z-index: 1000;
     overflow-y: auto;
-    box-sizing: border-box; /* یہ بہت اہم ہے */
-  }
+    box-sizing: border-box;
+}
+
+/* اگر آپ کا مواد ایک مخصوص کنٹینر میں ہے، تو اسے بھی پوری چوڑائی دیں */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+</style>
+  
   
   
   
