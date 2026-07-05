@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .main-container { background: white; padding: 30px; border-radius: 20px; border: 2px solid #ccc; width: 90%; margin: 0 auto; }
+        .content { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; text-align: center; }
+        .box { height: 45px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; position: relative; }
+        .blank-input { width: 35px; height: 30px; text-align: center; border: 2px solid #333; border-radius: 4px; }
+        .status { font-size: 14px; position: absolute; top: 0; right: 2px; }
+        .correct { color: green; }
+        .wrong { color: red; }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <h1 style="text-align: center;">Counting 1 to 500 (Interactive)</h1>
+        <div class="content" id="numberGrid"></div>
+    </div>
+
+    <script>
+        const grid = document.getElementById('numberGrid');
+
+        for (let i = 1; i <= 500; i++) {
+            let box = document.createElement('div');
+            box.className = 'box';
+
+            // ہر 10 کے گروپ میں 2 رینڈم پوزیشنز نکالنا
+            let groupStart = Math.floor((i - 1) / 10) * 10 + 1;
+            let rand1 = groupStart + Math.floor(Math.random() * 5);
+            let rand2 = groupStart + 5 + Math.floor(Math.random() * 5);
+
+            if (i === rand1 || i === rand2) {
+                box.innerHTML = `<input type="number" class="blank-input" oninput="checkAnswer(this, ${i})">
+                                 <span class="status"></span>`;
+            } else {
+                box.innerText = i;
+            }
+            grid.appendChild(box);
+        }
+
+        function checkAnswer(input, correctValue) {
+            let statusSpan = input.nextElementSibling;
+            if (input.value == correctValue) {
+                statusSpan.innerHTML = '✔';
+                statusSpan.className = 'status correct';
+            } else if (input.value !== "") {
+                statusSpan.innerHTML = '✘';
+                statusSpan.className = 'status wrong';
+            } else {
+                statusSpan.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>
+
