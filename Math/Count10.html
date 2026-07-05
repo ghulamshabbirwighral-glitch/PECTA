@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f4; }
+        /* پوری سائٹ کو 'notranslate' کر دیا تاکہ ترجمہ نہ ہو */
+        .main-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            text-align: center;
+        }
+        .list { list-style: none; padding: 0; margin: 0; }
+        .list li {
+            height: 50px; 
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            font-size: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        h3 { font-size: 24px; border-bottom: 3px solid #333; padding-bottom: 15px; margin-bottom: 0; }
+    </style>
+</head>
+<body class="notranslate"> <div class="main-container">
+        <h1 style="text-align: center; margin-bottom: 30px;">1 سے 100 تک گنتی</h1>
+        
+        <div id="google_translate_element"></div>
+
+        <div class="content">
+            <div class="translate-me"><h3>اردو گنتی</h3><ul class="list" id="urduList"></ul></div>
+            
+            <div class="notranslate"><h3>English</h3><ul class="list" id="engList"></ul></div>
+            <div class="notranslate"><h3>ہندسے</h3><ul class="list" id="numList"></ul></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur',
+                includedLanguages: 'en,hi,ar,fr,es,de,zh-CN', // اپنی مرضی کی زبانیں منتخب کریں
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // آپ کا پچھلا ڈیٹا اور لوپ کوڈ یہاں رہے گا...
+        const units = ["", "ایک", "دو", "تین", "چار", "پانچ", "چھ", "سات", "آٹھ", "نو", "دس", "گیارہ", "بارہ", "تیرہ", "چودہ", "پندرہ", "سولہ", "سترہ", "اٹھارہ", "انیس", "بیس"];
+        const specialUrdu = { 21:"اکیس", 22:"بائیس", 23:"تیئیس", 24:"چوبیس", 25:"پچیس", 26:"چھبیس", 27:"ستائیس", 28:"اٹھائیس", 29:"انتیس", 30:"تیس", 31:"اکتیس", 32:"بتیس", 33:"تینتیس", 34:"چونتیس", 35:"پینتیس", 36:"چھتیس", 37:"سینتیس", 38:"اڑتیس", 39:"انتالیس", 40:"چالیس", 41:"اکتالیس", 42:"بیالیس", 43:"تینتالیس", 44:"چوالیس", 45:"پینتالیس", 46:"چھیالیس", 47:"سینتالیس", 48:"اڑتالیس", 49:"انچاس", 50:"پچاس", 51:"اکاون", 52:"باون", 53:"ترپن", 54:"چون", 55:"پچپن", 56:"چھپن", 57:"ستاون", 58:"اٹھاون", 59:"انسٹھ", 60:"ساٹھ", 61:"اکسٹھ", 62:"باسٹھ", 63:"ترسٹھ", 64:"چونسٹھ", 65:"پینسٹھ", 66:"چھیاسٹھ", 67:"سڑسٹھ", 68:"اڑسٹھ", 69:"انہتر", 70:"ستر", 71:"اکہتر", 72:"بہتر", 73:"تہتر", 74:"چہتر", 75:"پچھتر", 76:"چھہتر", 77:"ستتر", 78:"اٹھتر", 79:"اناسی", 80:"اسی", 81:"اکیاسی", 82:"بیاسی", 83:"تراسی", 84:"چوراسی", 85:"پچاسی", 86:"چھیاسی", 87:"ستاسی", 88:"اٹھاسی", 89:"نواسی", 90:"نوے", 91:"اکانوے", 92:"بانوے", 93:"ترانوے", 94:"چورانوے", 95:"پچانوے", 96:"چھیانوے", 97:"ستانوے", 98:"اٹھانوے", 99:"ننانوے", 100:"سو" };
+        
+        function getUrdu(n) { return (n <= 20) ? units[n] : specialUrdu[n]; }
+        const engUnits = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"];
+        const engTens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety", "Hundred"];
+
+        function getEng(n) {
+            if (n <= 20) return engUnits[n];
+            if (n === 100) return "One Hundred";
+            let t = Math.floor(n / 10);
+            let u = n % 10;
+            return engTens[t] + (u !== 0 ? "-" + engUnits[u] : "");
+        }
+
+        for(let i = 1; i <= 100; i++) {
+            document.getElementById('numList').innerHTML += `<li>${i}</li>`;
+            document.getElementById('engList').innerHTML += `<li>${getEng(i)}</li>`;
+            document.getElementById('urduList').innerHTML += `<li>${getUrdu(i)}</li>`;
+        }
+    </script>
+</body>
+</html>
+
