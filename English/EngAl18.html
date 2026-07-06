@@ -13,14 +13,22 @@
             display: flex; align-items: flex-end; margin-bottom: 50px;
         }
         
-        .letter-pair { display: flex; align-items: baseline; margin-right: 40px; height: 64px; }
+        .letter-pair { display: flex; align-items: baseline; margin-right: 40px; height: 64px; align-items: center; }
         
         .capital { 
-            font-size: 58px; font-weight: bold; line-height: 20px; color: black; transform: translateY(2px); 
+            font-size: 50px; font-weight: bold; color: black; margin-right: 5px;
         }
         
         .small { 
-            font-size: 38px; margin-left: 8px; color: #333; transform: translateY(2px); 
+            font-size: 30px; color: #333; margin-right: 10px;
+        }
+        
+        /* وائس بٹن کی اسٹائلنگ */
+        .voice-btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -32,6 +40,14 @@
     const container = document.getElementById('mainPage');
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
+    // ساؤنڈ چلانے کا فنکشن
+    function speakLetter(char) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(char);
+        msg.lang = 'en-US';
+        window.speechSynthesis.speak(msg);
+    }
+    
     for (let i = 0; i < alphabet.length; i += 3) {
         const lineSet = document.createElement('div');
         lineSet.className = 'line-set';
@@ -40,7 +56,13 @@
             const char = alphabet[j];
             const div = document.createElement('div');
             div.className = 'letter-pair';
-            div.innerHTML = `<span class="capital">${char}</span><span class="small">${char.toLowerCase()}</span>`;
+            
+            // یہاں بٹن کا کوڈ شامل کیا گیا ہے
+            div.innerHTML = `
+                <span class="capital">${char}</span>
+                <span class="small">${char.toLowerCase()}</span>
+                <button class="voice-btn" onclick="speakLetter('${char}')">🔊</button>
+            `;
             lineSet.appendChild(div);
         }
         container.appendChild(lineSet);
