@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <title>English Learning Dashboard</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f8f9fa; }
+        h1 { color: #343a40; }
+        .nav-btn { 
+            padding: 20px 40px; 
+            margin: 15px; 
+            cursor: pointer; 
+            font-size: 20px; 
+            border-radius: 10px; 
+            border: none; 
+            background: #007bff; /* انگلش کے لیے نیلا رنگ */
+            color: white; 
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: #0069d9; }
+    </style>
+    <meta name="description" content="English Learning for kids. Practice alphabets, phonics, and basic English concepts on Wighral Education.">
+    <meta name="keywords" content="English Learning, Kids English, Alphabets, Phonics, English Practice, Wighral Education">
+</head>
+<body>
+
+    <h1>English Learning Dashboard</h1>
+    <p>Select a module to open in a new full-screen window:</p>
+    
+    <button class="nav-btn" onclick="openFullscreen('EngAl18.html')">English Alphabets Learning for Kids</button>
+
+    <script>
+        function openFullscreen(fileName) {
+            window.open(fileName, '_blank', 'width=' + screen.width + ',height=' + screen.height + ',resizable=yes,scrollbars=yes');
+        }
+    </script>
+</body>
+</html>
+
