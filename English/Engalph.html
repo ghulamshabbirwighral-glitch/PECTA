@@ -40,11 +40,7 @@
         U: "umbrella.png", V: "van.png", W: "watch.png", X: "xray.png", Y: "yalk.png", Z: "zebra.png"
     };
 
-    function speakLetter(char) {
-        window.speechSynthesis.cancel();
-        const msg = new SpeechSynthesisUtterance(char);
-        window.speechSynthesis.speak(msg);
-    }
+    
     
     let lineSet = document.createElement('div');
     lineSet.className = 'line-set';
@@ -66,7 +62,10 @@
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
     }
-    
+        for (let i = 0; i < alphabet.length; i++) {
+        const char = alphabet[i];
+        const div = document.createElement('div');
+        div.className = 'letter-box';
         
         div.innerHTML = `
             <span class="capital">${char}</span>
@@ -76,7 +75,6 @@
         `;
         lineSet.appendChild(div);
         
-        // ہر 6 لیٹرز کے بعد نئی لائن
         if ((i + 1) % 6 === 0) {
             container.appendChild(lineSet);
             lineSet = document.createElement('div');
@@ -84,7 +82,7 @@
         }
     }
     container.appendChild(lineSet);
-</script>
+        <script >
 </body>
 </html>
 
