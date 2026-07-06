@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; padding: 20px; }
+        .page { width: 800px; margin: 0 auto; background-color: white; border: 1px solid #ccc; padding: 40px; }
+        
+        .line-set {
+            height: 64px;
+            background-image: repeating-linear-gradient(to bottom, red 0px, red 1px, transparent 1px, transparent 16px);
+            background-size: 100% 16px; 
+            display: flex; align-items: flex-end; margin-bottom: 50px;
+        }
+        
+        .letter-pair { display: flex; align-items: baseline; margin-right: 40px; height: 64px; }
+        
+        .capital { 
+            font-size: 58px; font-weight: bold; line-height: 20px; color: black; transform: translateY(2px); 
+        }
+        
+        .small { 
+            font-size: 38px; margin-left: 8px; color: #333; transform: translateY(2px); 
+        }
+    </style>
+</head>
+<body>
+
+<div class="page" id="mainPage"></div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    for (let i = 0; i < alphabet.length; i += 3) {
+        const lineSet = document.createElement('div');
+        lineSet.className = 'line-set';
+        
+        for (let j = i; j < i + 3 && j < alphabet.length; j++) {
+            const char = alphabet[j];
+            const div = document.createElement('div');
+            div.className = 'letter-pair';
+            div.innerHTML = `<span class="capital">${char}</span><span class="small">${char.toLowerCase()}</span>`;
+            lineSet.appendChild(div);
+        }
+        container.appendChild(lineSet);
+    }
+</script>
+</body>
+</html>
+
