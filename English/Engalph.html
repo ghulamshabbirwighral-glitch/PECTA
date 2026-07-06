@@ -6,21 +6,12 @@
     <style>
         body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; padding: 20px; }
         .page { width: 95%; max-width: 1200px; margin: 0 auto; background-color: white; border: 1px solid #ccc; padding: 20px; }
-        
-        .line-set {
-            display: flex; flex-wrap: wrap; justify-content: space-around; margin-bottom: 30px;
-        }
-        
-        /* ہر لیٹر اور پکچر کے باکس کے لیے اسٹائل */
-        .letter-box {
-            border: 2px solid #ddd; padding: 10px; border-radius: 10px;
-            text-align: center; width: 100px; margin: 10px; background: white;
-        }
-        
-        .capital { font-size: 40px; font-weight: bold; }
-        .small { font-size: 25px; color: #555; }
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+        .letter-box { border: 2px solid #ddd; padding: 10px; border-radius: 10px; text-align: center; width: 120px; margin: 10px; background: white; }
+        .capital { font-size: 40px; font-weight: bold; display: block; }
+        .small { font-size: 25px; color: #555; display: block; }
         .img-box { width: 80px; height: 80px; margin-top: 5px; }
-        .voice-btn { cursor: pointer; background: none; border: none; font-size: 24px; }
+        .voice-btn { cursor: pointer; background: none; border: none; font-size: 24px; margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -29,9 +20,8 @@
 
 <script>
     const container = document.getElementById('mainPage');
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     
-    // تصاویر کے نام (یقینی بنائیں کہ یہ فائلیں آپ کے 'images' فولڈر میں ہوں)
     const images = {
         A: "apple.png", B: "ball.png", C: "cat.png", D: "dog.png", E: "egg.png",
         F: "fish.png", G: "goat.png", H: "hat.png", I: "ice.png", J: "jug.png",
@@ -40,12 +30,6 @@
         U: "umbrella.png", V: "van.png", W: "watch.png", X: "xray.png", Y: "yalk.png", Z: "zebra.png"
     };
 
-    
-    
-    let lineSet = document.createElement('div');
-    lineSet.className = 'line-set';
-
-    // نیا الفاظ کا ڈیٹا
     const words = {
         A: "Apple", B: "Ball", C: "Cat", D: "Dog", E: "Egg",
         F: "Fish", G: "Goat", H: "Hat", I: "Ice", J: "Jug",
@@ -56,34 +40,34 @@
 
     function speakLetter(char) {
         window.speechSynthesis.cancel();
-        // حرف اور لفظ کو ملا کر بولنا
         const textToSpeak = char + " for " + words[char];
         const msg = new SpeechSynthesisUtterance(textToSpeak);
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
     }
-        for (let i = 0; i < alphabet.length; i++) {
-        const char = alphabet[i];
+
+    let currentLine = document.createElement('div');
+    currentLine.className = 'line-set';
+    container.appendChild(currentLine);
+
+    alphabet.forEach((char, index) => {
         const div = document.createElement('div');
         div.className = 'letter-box';
-        
         div.innerHTML = `
             <span class="capital">${char}</span>
-            <span class="small">${char.toLowerCase()}</span><br>
-            <img src="images/${images[char]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=Pic'">
+            <span class="small">${char.toLowerCase()}</span>
+            <img src="images/${images[char]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=No+Img'">
             <br><button class="voice-btn" onclick="speakLetter('${char}')">🔊</button>
         `;
-        lineSet.appendChild(div);
-        
-        if ((i + 1) % 6 === 0) {
-            container.appendChild(lineSet);
-            lineSet = document.createElement('div');
-            lineSet.className = 'line-set';
+        currentLine.appendChild(div);
+
+        if ((index + 1) % 6 === 0) {
+            currentLine = document.createElement('div');
+            currentLine.className = 'line-set';
+            container.appendChild(currentLine);
         }
-    }
-    container.appendChild(lineSet);
-        // ... آپ کا باقی جاوا اسکرپٹ کوڈ ...
-    container.appendChild(lineSet);
-</script> </body>
+    });
+</script>
+</body>
 </html>
 
