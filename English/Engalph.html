@@ -49,10 +49,24 @@
     let lineSet = document.createElement('div');
     lineSet.className = 'line-set';
 
-    for (let i = 0; i < alphabet.length; i++) {
-        const char = alphabet[i];
-        const div = document.createElement('div');
-        div.className = 'letter-box';
+    // نیا الفاظ کا ڈیٹا
+    const words = {
+        A: "Apple", B: "Ball", C: "Cat", D: "Dog", E: "Egg",
+        F: "Fish", G: "Goat", H: "Hat", I: "Ice", J: "Jug",
+        K: "Kite", L: "Lion", M: "Mango", N: "Nest", O: "Owl",
+        P: "Pen", Q: "Queen", R: "Rat", S: "Sun", T: "Tap",
+        U: "Umbrella", V: "Van", W: "Watch", X: "Xray", Y: "Yoyo", Z: "Zebra"
+    };
+
+    function speakLetter(char) {
+        window.speechSynthesis.cancel();
+        // حرف اور لفظ کو ملا کر بولنا
+        const textToSpeak = char + " for " + words[char];
+        const msg = new SpeechSynthesisUtterance(textToSpeak);
+        msg.lang = 'en-US';
+        window.speechSynthesis.speak(msg);
+    }
+    
         
         div.innerHTML = `
             <span class="capital">${char}</span>
