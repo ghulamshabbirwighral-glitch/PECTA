@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; padding: 20px; }
+        .page { width: 95%; max-width: 1200px; margin: 0 auto; background-color: white; border: 1px solid #ccc; padding: 20px; }
+        
+        .line-set {
+            display: flex; flex-wrap: wrap; justify-content: space-around; margin-bottom: 30px;
+        }
+        
+        /* ہر لیٹر اور پکچر کے باکس کے لیے اسٹائل */
+        .letter-box {
+            border: 2px solid #ddd; padding: 10px; border-radius: 10px;
+            text-align: center; width: 100px; margin: 10px; background: white;
+        }
+        
+        .capital { font-size: 40px; font-weight: bold; }
+        .small { font-size: 25px; color: #555; }
+        .img-box { width: 80px; height: 80px; margin-top: 5px; }
+        .voice-btn { cursor: pointer; background: none; border: none; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="page" id="mainPage"></div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    // تصاویر کے نام (یقینی بنائیں کہ یہ فائلیں آپ کے 'images' فولڈر میں ہوں)
+    const images = {
+        A: "apple.png", B: "ball.png", C: "cat.png", D: "dog.png", E: "egg.png",
+        F: "fish.png", G: "goat.png", H: "hat.png", I: "ice.png", J: "jug.png",
+        K: "kite.png", L: "lion.png", M: "mango.png", N: "nest.png", O: "owl.png",
+        P: "pen.png", Q: "queen.png", R: "rat.png", S: "sun.png", T: "tap.png",
+        U: "umbrella.png", V: "van.png", W: "watch.png", X: "xray.png", Y: "yoyo.png", Z: "zebra.png"
+    };
+
+    function speakLetter(char) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(char);
+        window.speechSynthesis.speak(msg);
+    }
+    
+    let lineSet = document.createElement('div');
+    lineSet.className = 'line-set';
+
+    for (let i = 0; i < alphabet.length; i++) {
+        const char = alphabet[i];
+        const div = document.createElement('div');
+        div.className = 'letter-box';
+        
+        div.innerHTML = `
+            <span class="capital">${char}</span>
+            <span class="small">${char.toLowerCase()}</span><br>
+            <img src="images/${images[char]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=Pic'">
+            <br><button class="voice-btn" onclick="speakLetter('${char}')">🔊</button>
+        `;
+        lineSet.appendChild(div);
+        
+        // ہر 6 لیٹرز کے بعد نئی لائن
+        if ((i + 1) % 6 === 0) {
+            container.appendChild(lineSet);
+            lineSet = document.createElement('div');
+            lineSet.className = 'line-set';
+        }
+    }
+    container.appendChild(lineSet);
+</script>
+</body>
+</html>
+
