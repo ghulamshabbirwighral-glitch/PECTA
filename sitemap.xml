@@ -16,5 +16,18 @@
     <loc>https://wighraleducation.online/about.html</loc>
     <changefreq>monthly</changefreq>
   </url>
+      <url>
+        <loc>https://wighraleducation.online/Math/index.html</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://wighraleducation.online/English/index.html</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://wighraleducation.online/Games/index.html</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+  
 </urlset>
 
