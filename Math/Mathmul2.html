@@ -58,7 +58,7 @@
 
     <h1>Multiplication Board</h1>
     <p class="subtitle">Practice 3 or 4 digits by 2 digits multiplication</p>
-<div id="google_translate_element" style="margin: 15px auto; padding: 5px; text-align: center;"></div>
+    <div id="google_translate_element" style="margin: 15px auto; padding: 5px; text-align: center;"></div>
     
     <div class="board">
         <div class="math-container">
@@ -229,17 +229,14 @@
         }
 
         function checkAnswer() {
-            // پہلی لائن کا یوزر جواب ٹریک کرنا
             let uStep1 = "";
             let r1Cells = document.getElementById('row1Inputs').getElementsByTagName('input');
             for(let i = r1Cells.length - 1; i >= 0; i--) uStep1 += r1Cells[i].value;
 
-            // دوسری لائن کا یوزر جواب ٹریک کرنا
             let uStep2 = "";
             let r2Cells = document.getElementById('row2Inputs').getElementsByTagName('input');
             for(let i = r2Cells.length - 1; i >= 0; i--) uStep2 += r2Cells[i].value;
 
-            // فائنل لائن کا یوزر جواب ٹریک کرنا
             let uFinal = "";
             let ansCells = document.getElementById('ansInputs').getElementsByTagName('input');
             for(let i = ansCells.length - 1; i >= 0; i--) uFinal += ansCells[i].value;
@@ -263,7 +260,9 @@
 
         function nextQuestion() {
             generateQuestion();
-                    // Google Translate Engine Initialization
+        }
+
+        // Google Translate Engine Initialization (آزادانہ طور پر باہر رکھا گیا ہے)
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en', 
@@ -271,10 +270,8 @@
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
-            
-        }
     </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
+
