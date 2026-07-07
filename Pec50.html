@@ -23,10 +23,11 @@
 #menu { display: flex; flex-direction: column; gap: 15px; width: 95%; margin: 20px auto; }
 .topic-btn { display: block !important; width: 100% !important; padding: 30px !important; font-size: 26px !important; background: #ffffff !important; border: 3px solid #2c3e50 !important; border-radius: 15px !important; }
 
-/* ویور - سکرین اور ٹیکسٹ کے لیے */
+/* ویور - اسکرین اور ٹیکسٹ کے لیے */
 .viewer {
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* یہ مواد کو اوپر اور واپس بٹن کو بالکل نیچے پش کر دے گا */
     position: fixed;
     top: 0;
     left: 0;
@@ -37,9 +38,10 @@
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
-    font-size: 24px !important; 
+    font-size: 32px !important; /* یہاں فانٹ سائز 24px سے بڑھا کر 32px کر دیا ہے */
     line-height: 1.8 !important;
 }
+       
 
 /* باڈی اور کنٹینر */
 body { margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; }
