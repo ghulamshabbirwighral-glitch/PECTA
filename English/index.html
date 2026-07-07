@@ -4,8 +4,7 @@
     <meta name="description" content="Basic English learning for kids,English Alphabets,English Alphabet Phonics">
 <meta name="keywords" content="English Alphabets and phonics">
     
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -16,22 +15,73 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>English Learning Dashboard</title>
+    
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f8f9fa; }
-        h1 { color: #343a40; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            padding: 40px 15px; 
+            background: #f8f9fa; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { 
+            color: #343a40; 
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #495057;
+        }
+        /* बटनों को एक کے نیچے ایک اور خوبصورت دکھانے کے لیے کنٹینر */
+        .btn-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        /* बटन का नया साइज और लुक जो मोबाइल पर बड़ा और साफ़ दिखेगा */
         .nav-btn { 
-            padding: 20px 40px; 
-            margin: 15px; 
+            width: 90%; 
+            max-width: 550px; /* डेस्कटॉप पर बटन को बहुत ज़्यादा फैलने से रोकेगा */
+            padding: 18px 24px; 
             cursor: pointer; 
-            font-size: 20px; 
+            font-size: 18px; 
+            font-weight: bold;
             border-radius: 10px; 
             border: none; 
             background: #007bff; /* انگلش کے لیے نیلا رنگ */
             color: white; 
-            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.2s ease-in-out;
+            line-height: 1.4;
         }
-        .nav-btn:hover { background: #0069d9; }
+        /* डेस्कटॉप पर माउस ले जाने का इफेक्ट */
+        @media (hover: hover) {
+            .nav-btn:hover { 
+                background: #0069d9; 
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            }
+        }
+        /* मोबाइल पर टच करने का इफेक्ट (Active State) */
+        .nav-btn:active {
+            transform: scale(0.98);
+            background: #0056b3;
+        }
     </style>
     <meta name="description" content="English Learning for kids. Practice alphabets, phonics, and basic English concepts on Wighral Education.">
     <meta name="keywords" content="English Learning, Kids English, Alphabets, Phonics, English Practice, Wighral Education">
@@ -41,8 +91,10 @@
     <h1>English Learning Dashboard</h1>
     <p>Select a module to open in a new full-screen window:</p>
     
-    <button class="nav-btn" onclick="openFullscreen('EngAl18.html')">English Alphabets Learning for Kids</button>
-    <button class="nav-btn" onclick="openFullscreen('Engalph.html')">English Phonics Learning for Kids</button>
+    <div class="btn-container">
+        <button class="nav-btn" onclick="openFullscreen('EngAl18.html')">English Alphabets Learning for Kids</button>
+        <button class="nav-btn" onclick="openFullscreen('Engalph.html')">English Phonics Learning for Kids</button>
+    </div>
     
     <script>
         function openFullscreen(fileName) {
@@ -51,4 +103,3 @@
     </script>
 </body>
 </html>
-
