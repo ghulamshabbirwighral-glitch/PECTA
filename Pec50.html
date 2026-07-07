@@ -20,23 +20,23 @@
     
      <style>
 /* ویور - اسکرین اور ٹیکسٹ کے لیے */
+/* ویور - اسکرین اور ٹیکسٹ کے لیے */
 .viewer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block !important; /* فلیکس ہٹا کر بلاک کر دیا تاکہ بٹنز ڈسٹرب نہ ہوں */
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: white;
-    padding: 30px; /* پیڈنگ تھوڑی بڑھا دی ہے */
+    padding: 30px;
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
-    font-size: 36px !important; /* مین ڈیفینیشن کا سائز بھی بڑا کر دیا */
+    font-size: 36px !important;
     line-height: 1.8 !important;
 }
+       
 
 /* مثالوں (Examples) کا سائز اور باٹم تک پھیلائو */
 .ex-item {
