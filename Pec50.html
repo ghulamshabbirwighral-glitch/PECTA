@@ -19,34 +19,32 @@
     <title>English Grammar Hub</title>
     
      <style>
-/* مینو اور ٹاپک بٹن */
-#menu { display: flex; flex-direction: column; gap: 15px; width: 95%; margin: 20px auto; }
-.topic-btn { display: block !important; width: 100% !important; padding: 30px !important; font-size: 26px !important; background: #ffffff !important; border: 3px solid #2c3e50 !important; border-radius: 15px !important; }
-
 /* ویور - اسکرین اور ٹیکسٹ کے لیے */
 .viewer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* یہ مواد کو اوپر اور واپس بٹن کو بالکل نیچے پش کر دے گا */
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: white;
-    padding: 25px;
+    padding: 30px; /* پیڈنگ تھوڑی بڑھا دی ہے */
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
-    font-size: 32px !important; /* یہاں فانٹ سائز 24px سے بڑھا کر 32px کر دیا ہے */
+    font-size: 36px !important; /* مین ڈیفینیشن کا سائز بھی بڑا کر دیا */
     line-height: 1.8 !important;
 }
- /* بغیر 'notranslate' ہٹائے مثالوں کا سائز بڑا کریں */
+
+/* مثالوں (Examples) کا سائز اور باٹم تک پھیلائو */
 .ex-item {
-    font-size: 34px !important; /* جتنا بڑا کرنا چاہیں یہاں نمبر بڑھا دیں (جیسے 36px یا 38px) */
-    margin-bottom: 18px !important; /* مثالوں کے درمیان فاصلہ */
-    line-height: 1.6 !important;
+    font-size: 42px !important; /* فانٹ کا سائز مزید بڑا کر دیا ہے */
+    margin-bottom: 28px !important; /* ہر مثال کے درمیان فاصلہ زیادہ کیا ہے تاکہ یہ نیچے تک آئے */
+    line-height: 1.8 !important; /* لائنوں کے درمیان اسپییس بڑھا دی ہے */
 }
+       
        
 
 /* باڈی اور کنٹینر */
