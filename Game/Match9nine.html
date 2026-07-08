@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4NHR43XLF6');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<!-- Mobile Viewport -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta charset="UTF-8">
-    <title>اردو گنتی میچنگ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>گنتی میچنگ گیم</title>
     <style>
         body { font-family: 'Arial', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 5px; touch-action: none; overflow: hidden; }
-        .counter-box { font-size: 16px; font-weight: bold; margin: 5px; padding: 5px; background: white; border-radius: 8px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* فریم کو چھوٹا کرنے کے لیے height کم کر دی گئی ہے */
-        .game-container { position: relative; display: flex; justify-content: space-around; padding: 10px; height: 400px; max-width: 600px; margin: auto; }
-        .col { display: flex; flex-direction: column; gap: 8px; z-index: 5; }
+        .game-instruction {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 5px auto 2px auto;
+            max-width: 600px;
+            padding: 0 10px;
+            line-height: 1.3;
+        }
+
+        /* زبان تبدیل کرنے والے ڈراپ ڈاؤن کی اسٹائلنگ */
+        .lang-selector {
+            margin: 5px auto;
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 2px solid #007bff;
+            background: white;
+            cursor: pointer;
+        }
+
+        .counter-box { font-size: 15px; font-weight: bold; margin: 2px; padding: 4px 12px; background: white; border-radius: 8px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* بٹن کا سائز بھی تھوڑا کم کر دیا ہے */
-        .item { width: 120px; height: 40px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 14px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+        .game-container { position: relative; display: flex; justify-content: space-around; padding: 5px 10px; height: auto; max-width: 600px; margin: auto; }
+        .col { display: flex; flex-direction: column; gap: 6px; z-index: 5; }
+        
+        .item { width: 135px; height: 35px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; pointer-events: none; }
+        
         canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 10; }
         
         #feedback { font-size: 60px; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; pointer-events: none; }
         
         #win-message { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; color: white; flex-direction: column; align-items: center; justify-content: center; }
-        button { padding: 10px 20px; font-size: 18px; cursor: pointer; border-radius: 10px; border: none; background: #28a745; color: white; margin-top: 15px; }
+        .win-btn { padding: 10px 20px; font-size: 18px; cursor: pointer; border-radius: 10px; border: none; background: #28a745; color: white; margin-top: 15px; }
+
+        @media (min-height: 700px) {
+            .game-instruction { font-size: 20px; margin: 15px auto 5px auto; }
+            .lang-selector { font-size: 16px; padding: 8px 20px; }
+            .counter-box { font-size: 18px; padding: 8px 15px; margin: 10px; }
+            .col { gap: 12px; }
+            .item { width: 150px; height: 42px; font-size: 16px; }
+        }
     </style>
 </head>
 <body>
+
+    <p class="game-instruction">Match the items in the first column with the correct options in the second column.</p>
+
+    <select class="lang-selector" id="langSelect" onchange="changeLanguage()">
+        <option value="ur">اردو گنتی (Urdu)</option>
+        <option value="hi">ہندی گنتی (Hindi)</option>
+        <option value="es">اسپینش گنتی (Spanish)</option>
+    </select>
 
     <div class="counter-box">
         درست: <span id="correct">0</span> | غلط: <span id="wrong">0</span>
@@ -47,7 +82,7 @@
 
     <div id="win-message">
         <h1>🎉 بہت خوب! 🎉</h1>
-        <button onclick="location.reload()">دوبارہ کھیلیں</button>
+        <button class="win-btn" onclick="location.reload()">دوبارہ کھیلیں</button>
     </div>
 
     <div class="game-container" id="container">
@@ -57,14 +92,21 @@
     </div>
 
     <script>
+        // ہم نے ڈیٹا میں ہندی اور اسپینش کا اضافہ کر دیا ہے
         const data = [
-            {id: 1, ur: "ایک", en: "One"}, {id: 2, ur: "دو", en: "Two"}, 
-            {id: 3, ur: "تین", en: "Three"}, {id: 4, ur: "چار", en: "Four"}, 
-            {id: 5, ur: "پانچ", en: "Five"}, {id: 6, ur: "چھ", en: "Six"}, 
-            {id: 7, ur: "سات", en: "Seven"}, {id: 8, ur: "آٹھ", en: "Eight"}, 
-            {id: 9, ur: "نو", en: "Nine"}, {id: 10, ur: "دس", en: "Ten"}
+            {id: 1, en: "One", ur: "ایک", hi: "एक", es: "Uno"}, 
+            {id: 2, en: "Two", ur: "دو", hi: "दो", es: "Dos"}, 
+            {id: 3, en: "Three", ur: "تین", hi: "तीन", es: "Tres"}, 
+            {id: 4, en: "Four", ur: "چار", hi: "चार", es: "Cuatro"}, 
+            {id: 5, en: "Five", ur: "پانچ", hi: "पाँच", es: "Cinco"}, 
+            {id: 6, en: "Six", ur: "چھ", hi: "छह", es: "Seis"}, 
+            {id: 7, en: "Seven", ur: "سات", hi: "सात", es: "Siete"}, 
+            {id: 8, en: "Eight", ur: "آٹھ", hi: "आठ", es: "Ocho"}, 
+            {id: 9, en: "Nine", ur: "نو", hi: "नौ", es: "Nueve"}, 
+            {id: 10, en: "Ten", ur: "دس", hi: "दस", es: "Diez"}
         ];
 
+        let currentLang = 'ur'; // بائی ڈیفالٹ اردو رہے گی
         let correct = 0, wrong = 0;
         let isDrawing = false;
         let startItem = null;
@@ -77,6 +119,10 @@
         function initGame() {
             const leftCol = document.getElementById('left-col');
             const rightCol = document.getElementById('right-col');
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+            lines.length = 0; // پچھلی لائنیں صاف کرنے کے لیے
+
             const shuffledLeft = [...data].sort(() => Math.random() - 0.5);
             const shuffledRight = [...data].sort(() => Math.random() - 0.5);
 
@@ -88,9 +134,22 @@
 
             shuffledRight.forEach(item => {
                 let div = document.createElement('div');
-                div.className = 'item'; div.innerText = item.ur + " - " + item.en; div.dataset.id = item.id;
+                div.className = 'item'; 
+                
+                // یہاں منتخب کردہ زبان کے مطابق کالم اپڈیٹ ہوگا، انگلش ویسے ہی رہے گی
+                div.innerText = item[currentLang] + " - " + item.en; 
+                div.dataset.id = item.id;
                 rightCol.appendChild(div);
             });
+        }
+
+        // زبان تبدیل کرنے کا فنکشن
+        function changeLanguage() {
+            currentLang = document.getElementById('langSelect').value;
+            correct = 0; wrong = 0;
+            document.getElementById('correct').innerText = 0;
+            document.getElementById('wrong').innerText = 0;
+            initGame();
         }
 
         function render() {
@@ -100,7 +159,12 @@
                 const rect = startItem.getBoundingClientRect();
                 const containerRect = document.getElementById('container').getBoundingClientRect();
                 ctx.strokeStyle = '#007bff'; ctx.lineWidth = 4; ctx.beginPath();
-                ctx.moveTo(rect.right - containerRect.left, rect.top + rect.height/2 - containerRect.top);
+                
+                if(startItem.parentNode.id === 'left-col') {
+                    ctx.moveTo(rect.right - containerRect.left, rect.top + rect.height/2 - containerRect.top);
+                } else {
+                    ctx.moveTo(rect.left - containerRect.left, rect.top + rect.height/2 - containerRect.top);
+                }
                 ctx.lineTo(currentPos.x - containerRect.left, currentPos.y - containerRect.top);
                 ctx.stroke();
             }
@@ -117,20 +181,35 @@
             ctx.stroke();
         }
 
-        function start(e) { if(e.target.classList.contains('item')) { isDrawing = true; startItem = e.target; } }
+        function start(e) { 
+            const target = e.target || e.touches[0].target;
+            if(target.classList.contains('item') && !target.classList.contains('matched')) { 
+                isDrawing = true; 
+                startItem = target; 
+                const touch = e.touches ? e.touches[0] : e;
+                currentPos = {x: touch.clientX, y: touch.clientY};
+            } 
+        }
+        
         function move(e) { if (!isDrawing) return; const touch = e.touches ? e.touches[0] : e; currentPos = {x: touch.clientX, y: touch.clientY}; }
 
         function end(e) {
             if (!isDrawing) return;
             const touch = e.changedTouches ? e.changedTouches[0] : e;
             const endItem = document.elementFromPoint(touch.clientX, touch.clientY);
-            if (endItem && endItem.classList.contains('item') && endItem !== startItem && startItem.dataset.id === endItem.dataset.id) {
+            if (endItem && endItem.classList.contains('item') && endItem !== startItem && !endItem.classList.contains('matched') && startItem.dataset.id === endItem.dataset.id) {
                 lines.push({start: startItem, end: endItem});
+                startItem.classList.add('matched');
+                endItem.classList.add('matched');
                 correct++;
                 document.getElementById('correct').innerText = correct;
                 showFeedback("✅");
                 if (correct === 10) setTimeout(() => { document.getElementById('win-message').style.display = 'flex'; }, 1000);
-            } else { wrong++; document.getElementById('wrong').innerText = wrong; showFeedback("❌"); }
+            } else if (endItem && endItem.classList.contains('item') && endItem !== startItem) { 
+                wrong++; 
+                document.getElementById('wrong').innerText = wrong; 
+                showFeedback("❌"); 
+            }
             isDrawing = false; startItem = null;
         }
 
@@ -147,8 +226,13 @@
             setTimeout(() => f.style.display = 'none', 800);
         }
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
         initGame();
         render();
     </script>
