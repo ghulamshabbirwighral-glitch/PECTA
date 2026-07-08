@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Wighral Education</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; color: #333; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 15px; max-width: 600px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border: 1px solid #ccc; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #007bff; padding-bottom: 10px; font-size: 28px; text-align: center; }
+        p { font-size: 16px; color: #555; text-align: center; }
+        
+        .contact-info { background: #eef2f7; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border-left: 5px solid #007bff; }
+        .contact-info a { color: #007bff; font-weight: bold; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+        
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 15px; }
+        textarea { height: 120px; resize: vertical; }
+        
+        .submit-btn { display: block; width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .submit-btn:hover { background: #0056b3; }
+        
+        .back-btn { display: inline-block; margin-top: 20px; color: #555; text-decoration: none; font-weight: bold; font-size: 15px; }
+        .back-btn:hover { color: #000; }
+        .center-div { text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>If you have any questions, feedback, or suggestions regarding our educational content, feel free to reach out to us. We would love to hear from you!</p>
+    
+    <!-- ای میل کا آسان ذریعہ -->
+    <div class="contact-info">
+        <strong>Direct Email:</strong><br>
+        <a href="mailto:ghulanshabbirwighral@gmail.com">ghulanshabbirwighral@gmail.com</a>
+    </div>
+
+    <!-- کانٹیکٹ فارم جو ڈائریکٹ ای میل لنک پر لے جائے گا -->
+    <form action="mailto:ghulanshabbirwighral@gmail.com" method="post" enctype="text/plain">
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="Name" required placeholder="Enter your name">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="Email" required placeholder="Enter your email address">
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message / Suggestion:</label>
+            <textarea id="message" name="Message" required placeholder="Type your message here..."></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+
+    <div class="center-div">
+        <a href="index.html" class="back-btn">← Go Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
