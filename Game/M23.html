@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ur" dir="ltr">
 <head>
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -10,31 +9,56 @@
   gtag('config', 'G-4NHR43XLF6');
 </script>
 
-<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<!-- Mobile Viewport -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <meta charset="UTF-8">
     <title>میچنگ گیم - ٹچ سپورٹ کے ساتھ</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; padding: 10px; touch-action: none; }
-        .top-section { display: flex; justify-content: center; gap: 2px; margin-top: 15px; }
-        .column { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
-        .num-label { font-weight: bold; font-size: 12px; }
-        .target-box { width: 28px; height: 70px; border: 2px dashed #777; background: #fff; 
-                      display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 10px; }
+        body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; padding: 5px; touch-action: none; overflow: hidden; }
         
-        .fruits-wrapper { margin-top: 50px; }
-        .row-1, .row-2 { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
-        .fruit-item { font-size: 25px; cursor: grab; padding: 5px; touch-action: none; }
+        /* انسٹرکشن کا سائز اور مارجن فریم کے مطابق ایڈجسٹ کیا */
+        .game-instruction {
+            font-size: 13px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 2px auto;
+            max-width: 600px;
+            padding: 0 5px;
+            line-height: 1.2;
+        }
+
+        #feedback { font-size: 24px; height: 28px; font-weight: bold; margin: 2px 0; }
         
-        #feedback { font-size: 30px; height: 40px; font-weight: bold; }
+        .top-section { display: flex; justify-content: center; gap: 2px; margin-top: 5px; }
+        .column { display: flex; flex-direction: column; align-items: center; gap: 1px; flex: 1; }
+        .num-label { font-weight: bold; font-size: 11px; }
+        
+        /* ڈبوں کا سائز فریم میں فٹ کیا */
+        .target-box { width: 26px; height: 60px; border: 2px dashed #777; background: #fff; 
+                      display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 9px; word-break: break-all; }
+        
+        /* پھلوں کا مارجن کم کیا تاکہ اوپر ٹیکسٹ کے لیے جگہ بنے */
+        .fruits-wrapper { margin-top: 15px; }
+        .row-1, .row-2 { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
+        .fruit-item { font-size: 20px; cursor: grab; padding: 4px; touch-action: none; }
+
+        /* اگر گیم بڑی اسکرین پر کھلے تو سائز خود بخود نارمل ہو جائے گا */
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 17px; margin: 10px auto; }
+            .top-section { margin-top: 15px; }
+            .target-box { width: 32px; height: 75px; font-size: 11px; }
+            .fruits-wrapper { margin-top: 35px; }
+            .row-1, .row-2 { gap: 15px; margin-bottom: 25px; }
+            .fruit-item { font-size: 26px; }
+            #feedback { font-size: 32px; height: 35px; }
+        }
     </style>
 </head>
 <body>
+
+    <p class="game-instruction">Place the number of fruits in the relevant box with respect to the number.</p>
 
     <div id="feedback"></div>
     <div class="top-section" id="top-section"></div>
