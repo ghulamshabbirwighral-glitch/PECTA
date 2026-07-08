@@ -2,17 +2,17 @@
 <html lang="ur">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4NHR43XLF6');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>پارٹس آف دی باڈی لرننگ گیم</title>
     <style>
@@ -29,7 +29,12 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* ٹاپ انسٹرکشن ٹیکسٹ کی اسٹائلنگ */
+        /* گوگل ٹرانسلیٹ باکس کی اسٹائلنگ */
+        #google_translate_element {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .game-instruction {
             font-size: 18px;
             font-weight: bold;
@@ -45,25 +50,45 @@
         }
 
         .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
-        .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 140px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 145px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        
         .body-title { font-size: 24px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.2; margin-bottom: 5px; }
-        .img-box { width: 80px; height: 80px; object-fit: contain; margin: 8px 0; }
+        .img-box { width: 80px; height: 80px; object-fit: contain; margin: 6px 0; }
         
         /* اسپیلنگ ٹیکسٹ کی اسٹائلنگ */
-        .word-text { font-size: 16px; font-weight: bold; color: #007bff; display: block; margin: 4px 0; letter-spacing: 0.5px; }
+        .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
+        
+        /* اردو معنی کی اسٹائلنگ - اس پر ٹرانسلیٹ کام کرے گا */
+        .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: block; margin: 4px 0; }
         
         .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 20px; color: white; padding: 4px 15px; border-radius: 20px; margin-top: 5px; transition: 0.2s; }
         .voice-btn:active { background: #1e7e34; transform: scale(0.95); }
 
-        /* موبائل اسکرینز کے لیے سائز ایڈجسٹمنٹ */
+        /* ٹرانسلیٹ بینر کو چھپانے کے لیے (اختیاری) */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
         @media (min-height: 600px) {
             .game-instruction { font-size: 22px; margin-bottom: 25px; }
         }
     </style>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur', 
+                includedLanguages: 'en,ur,hi,ar,es,fr', // آپ یہاں مزید زبانیں شامل کر سکتے ہیں
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 
 <div class="page">
+    <div id="google_translate_element"></div>
+
     <p class="game-instruction">Press 🔊 to Learn Parts of the Body</p>
     
     <div id="mainPage"></div>
@@ -72,28 +97,33 @@
 <script>
     const container = document.getElementById('mainPage');
     
-    // جسم کے اعضاء کی لسٹ
-    const bodyParts = ["Head", "Hair", "Eye", "Ear", "Nose", "Mouth", "Teeth", "Tongue", "Neck", "Hand", "Finger", "Leg", "Foot"];
-    
-    // اعضاء کی تصاویر کے نام
-    const images = {
-        Head: "head.png", Hair: "hair.png", Eye: "eye.png", Ear: "ear.png", 
-        Nose: "nose.png", Mouth: "mouth.png", Teeth: "teeth.png", Tongue: "tongue.png", 
-        Neck: "neck.png", Hand: "hand.png", Finger: "finger.png", Leg: "leg.png", Foot: "foot.png"
-    };
+    // اعضاء کا ڈیٹا: نام، تصویر کا نام، اور اردو معنی کا ابجیکٹ
+    const bodyPartsData = [
+        { eng: "Head", img: "head.png", urdu: "سر" },
+        { eng: "Hair", img: "hair.png", urdu: "بال" },
+        { eng: "Eye", img: "eye.png", urdu: "آنکھ" },
+        { eng: "Ear", img: "ear.png", urdu: "کان" },
+        { eng: "Nose", img: "nose.png", urdu: "ناک" },
+        { eng: "Mouth", img: "mouth.png", urdu: "منہ" },
+        { eng: "Teeth", img: "teeth.png", urdu: "دانت" },
+        { eng: "Tongue", img: "tongue.png", urdu: "زبان" },
+        { eng: "Neck", img: "neck.png", urdu: "گردن" },
+        { eng: "Hand", img: "hand.png", urdu: "ہاتھ" },
+        { eng: "Finger", img: "finger.png", urdu: "انگلی" },
+        { eng: "Leg", img: "leg.png", urdu: "ٹانگ" },
+        { eng: "Foot", img: "foot.png", urdu: "پاؤں" }
+    ];
 
-    // آواز کے ساتھ پڑھانے کا فنکشن
-    function speakBodyPart(part) {
-        window.speechSynthesis.cancel(); // پرانی آواز کو روکنے کے لیے
+    // آواز کا فنکشن (صرف انگریزی نام اور اسپیلنگ بولے گا)
+    function speakBodyPart(partName) {
+        window.speechSynthesis.cancel(); 
         
-        // ہجّے (Spellings) کو الگ الگ کرنے کے لیے (جیسے H, E, A, D)
-        const spelling = part.split("").join(", "); 
-        
-        const textToSpeak = `${part}. . . ${spelling}`;
+        const spelling = partName.split("").join(", "); 
+        const textToSpeak = `${partName}. . . ${spelling}`;
         
         const msg = new SpeechSynthesisUtterance(textToSpeak);
         msg.lang = 'en-US';
-        msg.rate = 0.80; // بچوں کے لیے آواز کی رفتار تھوڑی آہستہ رکھی ہے
+        msg.rate = 0.80; 
         window.speechSynthesis.speak(msg);
     }
 
@@ -101,22 +131,22 @@
     currentLine.className = 'line-set';
     container.appendChild(currentLine);
 
-    bodyParts.forEach((part, index) => {
+    bodyPartsData.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'letter-box';
         
-        // چھوٹا نام (Lower Case) اسپیلنگ دکھانے کے لیے
-        const lowerSpelling = part.toLowerCase();
+        const lowerSpelling = item.eng.toLowerCase();
         
+        // یہاں اردو معنی کے لیے 'notranslate' کلاس نہیں لگائی، تاکہ گوگل اسے دوسری زبان میں بدل سکے
         div.innerHTML = `
-            <span class="body-title">${part}</span>
-            <img src="images/${images[part]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${part}'">
-            <span class="word-text">${lowerSpelling}</span>
-            <button class="voice-btn" onclick="speakBodyPart('${part}')">🔊</button>
+            <span class="body-title notranslate">${item.eng}</span>
+            <img src="images/${item.img}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${item.eng}'">
+            <span class="word-text notranslate">${lowerSpelling}</span>
+            <span class="urdu-meaning">${item.urdu}</span>
+            <button class="voice-btn" onclick="speakBodyPart('${item.eng}')">🔊</button>
         `;
         currentLine.appendChild(div);
 
-        // ہر 6 باکسز کے بعد نئی لائن شروع ہوگی
         if ((index + 1) % 6 === 0) {
             currentLine = document.createElement('div');
             currentLine.className = 'line-set';
