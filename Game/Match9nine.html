@@ -16,51 +16,55 @@
     
     <title>گنتی میچنگ گیم</title>
     <style>
-        body { font-family: 'Arial', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 5px; touch-action: none; overflow: hidden; }
+        body { font-family: 'Arial', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 2px; touch-action: none; overflow: hidden; }
         
+        /* انسٹرکشن ٹیکسٹ کا مارجن مزید کم کیا تاکہ اوپر جگہ بچے */
         .game-instruction {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             color: #2c3e50;
-            margin: 5px auto 2px auto;
+            margin: 2px auto;
             max-width: 600px;
-            padding: 0 10px;
-            line-height: 1.3;
+            padding: 0 5px;
+            line-height: 1.2;
         }
 
-        /* زبان تبدیل کرنے والے ڈراپ ڈاؤن کی اسٹائلنگ */
+        /* ڈراپ ڈاؤن مینو کا مارجن اور سائز فریم کے مطابق کیا */
         .lang-selector {
-            margin: 5px auto;
-            padding: 5px 15px;
-            font-size: 14px;
+            margin: 2px auto;
+            padding: 3px 10px;
+            font-size: 13px;
             font-weight: bold;
             border-radius: 5px;
             border: 2px solid #007bff;
             background: white;
             cursor: pointer;
+            display: inline-block;
         }
 
-        .counter-box { font-size: 15px; font-weight: bold; margin: 2px; padding: 4px 12px; background: white; border-radius: 8px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .counter-box { font-size: 13px; font-weight: bold; margin: 2px; padding: 2px 10px; background: white; border-radius: 6px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        .game-container { position: relative; display: flex; justify-content: space-around; padding: 5px 10px; height: auto; max-width: 600px; margin: auto; }
-        .col { display: flex; flex-direction: column; gap: 6px; z-index: 5; }
+        .game-container { position: relative; display: flex; justify-content: space-around; padding: 2px 5px; height: auto; max-width: 600px; margin: auto; }
+        .col { display: flex; flex-direction: column; gap: 4px; z-index: 5; }
         
-        .item { width: 135px; height: 35px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        /* چھوٹے فریم میں فٹ آنے کے لیے بٹنوں کی ہائٹ 32px کی */
+        .item { width: 125px; height: 32px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
         .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; pointer-events: none; }
         
         canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 10; }
         
-        #feedback { font-size: 60px; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; pointer-events: none; }
+        #feedback { font-size: 50px; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; pointer-events: none; }
         
         #win-message { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; color: white; flex-direction: column; align-items: center; justify-content: center; }
         .win-btn { padding: 10px 20px; font-size: 18px; cursor: pointer; border-radius: 10px; border: none; background: #28a745; color: white; margin-top: 15px; }
 
-        @media (min-height: 700px) {
-            .game-instruction { font-size: 20px; margin: 15px auto 5px auto; }
-            .lang-selector { font-size: 16px; padding: 8px 20px; }
-            .counter-box { font-size: 18px; padding: 8px 15px; margin: 10px; }
-            .col { gap: 12px; }
-            .item { width: 150px; height: 42px; font-size: 16px; }
+        /* اگر گیم بڑی اسکرین یا نئے پیج پر کھلے تو خود بخود سائز بڑا ہو جائے گا */
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 18px; margin: 10px auto 5px auto; }
+            .lang-selector { font-size: 15px; padding: 6px 15px; margin: 5px auto; }
+            .counter-box { font-size: 16px; padding: 6px 12px; margin: 5px; }
+            .col { gap: 8px; }
+            .item { width: 140px; height: 38px; font-size: 15px; }
         }
     </style>
 </head>
@@ -92,7 +96,6 @@
     </div>
 
     <script>
-        // ہم نے ڈیٹا میں ہندی اور اسپینش کا اضافہ کر دیا ہے
         const data = [
             {id: 1, en: "One", ur: "ایک", hi: "एक", es: "Uno"}, 
             {id: 2, en: "Two", ur: "دو", hi: "दो", es: "Dos"}, 
@@ -106,7 +109,7 @@
             {id: 10, en: "Ten", ur: "دس", hi: "दस", es: "Diez"}
         ];
 
-        let currentLang = 'ur'; // بائی ڈیفالٹ اردو رہے گی
+        let currentLang = 'ur';
         let correct = 0, wrong = 0;
         let isDrawing = false;
         let startItem = null;
@@ -121,7 +124,7 @@
             const rightCol = document.getElementById('right-col');
             leftCol.innerHTML = '';
             rightCol.innerHTML = '';
-            lines.length = 0; // پچھلی لائنیں صاف کرنے کے لیے
+            lines.length = 0;
 
             const shuffledLeft = [...data].sort(() => Math.random() - 0.5);
             const shuffledRight = [...data].sort(() => Math.random() - 0.5);
@@ -135,15 +138,12 @@
             shuffledRight.forEach(item => {
                 let div = document.createElement('div');
                 div.className = 'item'; 
-                
-                // یہاں منتخب کردہ زبان کے مطابق کالم اپڈیٹ ہوگا، انگلش ویسے ہی رہے گی
                 div.innerText = item[currentLang] + " - " + item.en; 
                 div.dataset.id = item.id;
                 rightCol.appendChild(div);
             });
         }
 
-        // زبان تبدیل کرنے کا فنکشن
         function changeLanguage() {
             currentLang = document.getElementById('langSelect').value;
             correct = 0; wrong = 0;
@@ -238,4 +238,3 @@
     </script>
 </body>
 </html>
-
