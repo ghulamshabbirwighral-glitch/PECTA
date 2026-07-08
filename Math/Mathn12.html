@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="description" content="Multiplication Addition and Subtraction up to three digits">
-<meta name="keywords" content="Mathematics Operations up to three digits">
+    <meta name="keywords" content="Mathematics Operations up to three digits">
     
     <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4NHR43XLF6');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<!-- Mobile Viewport -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mobile Viewport -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Practice Board</title>
     <style>
-            body { font-family: sans-serif; text-align: center; padding: 10px; background: #f4f4f4; margin: 0; }
-    .board { border: 2px solid #555; padding: 15px; display: block; margin: 20px auto; border-radius: 15px; background: white; width: 95%; max-width: 400px; box-sizing: border-box; }
-    .math-row { display: flex; flex-direction: row-reverse; justify-content: center; font-size: 24px; font-weight: bold; margin: 10px 0; }
-    .cell { width: 40px; height: 40px; text-align: center; font-size: 20px; margin: 2px; border: 1px solid #999; border-radius: 4px; }
-    .btn { padding: 12px; margin: 5px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; background: white; }
+        body { font-family: sans-serif; text-align: center; padding: 10px; background: #f4f4f4; margin: 0; }
+        .board { border: 2px solid #555; padding: 15px; display: block; margin: 20px auto; border-radius: 15px; background: white; width: 95%; max-width: 400px; box-sizing: border-box; }
         
+        /* نمبرز کو دائیں طرف الائن رکھنے کے لیے (Urdu/Math Style) */
+        .math-row { display: flex; flex-direction: row-reverse; justify-content: center; font-size: 28px; font-weight: bold; margin: 10px 0; letter-spacing: 5px; }
+        
+        /* ان پٹ باکس کی ترتیب ٹھیک کرنے کے لیے چائلڈ ڈائریکشن */
+        .ans-row { display: flex; flex-direction: row-reverse; justify-content: center; margin: 10px 0; }
+        
+        .cell { width: 45px; height: 45px; text-align: center; font-size: 24px; font-weight: bold; margin: 2px; border: 1px solid #999; border-radius: 4px; background: #fff; }
+        .btn { padding: 12px; margin: 5px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; background: white; font-weight: bold; }
+        .btn:active { transform: scale(0.95); }
+        
+        #numpad { max-width: 320px; margin: 15px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; justify-content: center; }
+        #numpad .btn { padding: 10px 5px; margin: 0; font-size: 18px; }
     </style>
 </head>
 <body>
@@ -42,13 +49,16 @@
     <div class="board" id="board" style="display:none; margin-top:20px;">
         <div id="topNums" class="math-row"></div>
         <div id="bottomNums" class="math-row"></div>
-        <div style="border-bottom: 3px solid #000; width: 150px; margin: 10px auto;"></div>
-        <div class="math-row" id="ansInputs"></div>
+        <div style="border-bottom: 3px solid #000; width: 180px; margin: 10px auto;"></div>
+        
+        <!-- ان پٹ خانوں کی رو (کلاس تبدیل کی ہے تاکہ ہندسے الٹے نہ ہوں) -->
+        <div class="ans-row" id="ansInputs"></div>
         <br>
+        
         <button class="btn" onclick="checkAnswer()">Check Answer</button>
         <button class="btn" onclick="reAttempt()">Re-attempt</button>
         <button class="btn" style="background:#ffcc00;" onclick="nextQuestion()">Next / Skip</button>
-        <p id="result"></p>
+        <p id="result" style="font-size: 20px; font-weight: bold;"></p>
         <div id="numpad"></div>
     </div>
 
@@ -86,6 +96,8 @@
         function loadQuestion() {
             document.getElementById('board').style.display = 'block';
             let q = questions[currentMode][currentIndex];
+            
+            // یہاں ہندسوں کے فارمیٹ کو دائیں طرف الائن رکھنے کے لیے چھیڑا نہیں گیا
             document.getElementById('topNums').innerText = q.n1;
             let sign = (currentMode === '*') ? '×' : currentMode;
             document.getElementById('bottomNums').innerText = sign + " " + q.n2;
@@ -98,7 +110,9 @@
             let ansString = q.ans.toString();
             for(let i=0; i<ansString.length; i++) {
                 let inp = document.createElement('input');
-                inp.className = "cell"; inp.maxLength = 1; inp.readOnly = true;
+                inp.className = "cell"; 
+                inp.maxLength = 1; 
+                inp.readOnly = true;
                 ansDiv.appendChild(inp); 
                 inputs.push(inp);
             }
@@ -109,9 +123,15 @@
         function renderNumpad() {
             let pad = document.getElementById('numpad'); 
             pad.innerHTML = "";
-            for(let i=0; i<=9; i++) pad.innerHTML += `<button class="btn" onclick="inputDigit('${i}')">${i}</button>`;
+            // 0 سے 9 تک بٹن
+            for(let i=0; i<=9; i++) {
+                pad.innerHTML += `<button class="btn" onclick="inputDigit('${i}')">${i}</button>`;
+            }
+            // ہندسہ مٹانے کے لیے بیک اسپیس بٹن
+            pad.innerHTML += `<button class="btn" style="background:#ff9999; grid-column: span 2;" onclick="clearLastDigit()">⌫</button>`;
         }
 
+        // دائیں سے بائیں (Right to Left) خانوں میں ہندسہ داخل کرنے کی لاجک
         function inputDigit(d) {
             if(focusIdx < inputs.length) { 
                 inputs[focusIdx].value = d; 
@@ -119,24 +139,35 @@
             }
         }
 
-        // صرف موجودہ سوال کے خانوں کو خالی کرتا ہے
+        // آخری ٹائپ کیا ہوا ہندسہ مٹانے کے لیے
+        function clearLastDigit() {
+            if(focusIdx > 0) {
+                focusIdx--;
+                inputs[focusIdx].value = "";
+                document.getElementById('result').innerText = "";
+            }
+        }
+
         function reAttempt() {
             inputs.forEach(inp => inp.value = "");
             focusIdx = 0;
             document.getElementById('result').innerText = "";
         }
 
+        // اب جاوا اسکرپٹ درست ترتیب میں ویلیو نکال کر میچ کرے گا
         function checkAnswer() {
             let userVal = "";
-            inputs.forEach(inp => userVal += inp.value);
+            // چونکہ خانوں کا لے آؤٹ الٹا (row-reverse) ہے، اس لیے ارے کو ریورس کر کے ویلیو بنائی جائے گی
+            let reversedInputs = [...inputs].reverse();
+            reversedInputs.forEach(inp => userVal += inp.value);
             
             let resultBox = document.getElementById('result');
             let correctAnswer = questions[currentMode][currentIndex].ans;
 
-            if(userVal !== "" && parseInt(userVal) === correctAnswer) {
-                resultBox.innerHTML = "<b style='color:green;'>Correct! 🎉</b>";
+            if(userVal.trim() !== "" && parseInt(userVal) === correctAnswer) {
+                resultBox.innerHTML = "<span style='color:green;'>Correct! 🎉</span>";
             } else {
-                resultBox.innerHTML = `<b style='color:red;'>Wrong! Correct: ${correctAnswer}</b>`;
+                resultBox.innerHTML = "<span style='color:red;'>Wrong! Correct: " + correctAnswer + "</span>";
             }
         }
 
