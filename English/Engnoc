@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>نیمز آف دی کلرز لرننگ گیم</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; }
+        
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* گوگل ٹرانسلیٹ باکس کی اسٹائلنگ */
+        #google_translate_element {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+        .letter-box { border: 2px solid #28a745; padding: 12px 10px; border-radius: 12px; text-align: center; width: 145px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        
+        .color-title { font-size: 24px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.2; margin-bottom: 5px; }
+        
+        /* یہ باکس تصویر کا کام کرے گا اور اصل رنگ ظاہر کرے گا */
+        .color-display-box { 
+            width: 80px; 
+            height: 60px; 
+            margin: 8px auto; 
+            border-radius: 8px; 
+            border: 2px solid #ddd; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* اسپیلنگ ٹیکسٹ کی اسٹائلنگ */
+        .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
+        
+        /* اردو معنی کی اسٹائلنگ */
+        .urdu-meaning { font-size: 19px; font-weight: bold; color: #dc3545; display: block; margin: 4px 0; }
+        
+        .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 20px; color: white; padding: 4px 15px; border-radius: 20px; margin-top: 5px; transition: 0.2s; }
+        .voice-btn:active { background: #1e7e34; transform: scale(0.95); }
+
+        /* ٹرانسلیٹ بینر کو چھپانے کے لیے */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
+        }
+    </style>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur', 
+                includedLanguages: 'en,zh-CN,ru,fa,bn,ur,hi,ar,es,fr', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+<div class="page">
+    <div id="google_translate_element"></div>
+
+    <p class="game-instruction">Press 🔊 to Learn Names of the Colors</p>
+    
+    <div id="mainPage"></div>
+</div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    
+    // رنگوں کا ڈیٹا: نام، کوڈ کوڈ (CSS کے لیے)، اور اردو معنی
+    const colorsData = [
+        { eng: "Red", hex: "#ff0000", urdu: "لال" },
+        { eng: "Green", hex: "#008000", urdu: "ہرا" },
+        { eng: "Blue", hex: "#0000ff", urdu: "نیلا" },
+        { eng: "Yellow", hex: "#ffff00", urdu: "پیلا" },
+        { eng: "Orange", hex: "#ffa500", urdu: "مالٹا" },
+        { eng: "Pink", hex: "#ffc0cb", urdu: "گلابی" },
+        { eng: "Purple", hex: "#800080", urdu: "جامنی" },
+        { eng: "Black", hex: "#000000", urdu: "کالا" },
+        { eng: "White", hex: "#ffffff", urdu: "سفید" },
+        { eng: "Brown", hex: "#a52a2a", urdu: "بھورا" },
+        { eng: "Grey", hex: "#808080", urdu: "سلیٹی" },
+        { eng: "Sky Blue", hex: "#87ceeb", urdu: "آسمانی" }
+    ];
+
+    // آواز کا فنکشن
+    function speakColor(colorName) {
+        window.speechSynthesis.cancel(); 
+        
+        const spelling = colorName.split("").join(", "); 
+        const textToSpeak = `${colorName}. . . ${spelling}`;
+        
+        const msg = new SpeechSynthesisUtterance(textToSpeak);
+        msg.lang = 'en-US';
+        msg.rate = 0.80; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    let currentLine = document.createElement('div');
+    currentLine.className = 'line-set';
+    container.appendChild(currentLine);
+
+    colorsData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'letter-box';
+        
+        const lowerSpelling = item.eng.toLowerCase();
+        
+        // یہاں background-color میں لائیو رنگ لوڈ ہوگا، تصویر ڈاؤن لوڈ کرنے کی جھنجھٹ ختم!
+        div.innerHTML = `
+            <span class="color-title notranslate">${item.eng}</span>
+            <div class="color-display-box notranslate" style="background-color: ${item.hex};"></div>
+            <span class="word-text notranslate">${lowerSpelling}</span>
+            <span class="urdu-meaning">${item.urdu}</span>
+            <button class="voice-btn" onclick="speakColor('${item.eng}')">🔊</button>
+        `;
+        currentLine.appendChild(div);
+
+        // ہر 6 باکسز کے بعد لائن تبدیل ہوگی
+        if ((index + 1) % 6 === 0) {
+            currentLine = document.createElement('div');
+            currentLine.className = 'line-set';
+            container.appendChild(currentLine);
+        }
+    });
+</script>
+</body>
+</html>
+
