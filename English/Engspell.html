@@ -17,7 +17,33 @@
     <title>میچنگ گیم - ٹچ سپورٹ کے ساتھ</title>
     <style>
         body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; }
-        .page { width: 95%; max-width: 1200px; margin: 0 auto; background-color: white; border: 1px solid #ccc; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* ٹاپ انسٹرکشن ٹیکسٹ کی اسٹائلنگ */
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
         .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
         .letter-box { border: 2px solid #007bff; padding: 10px; border-radius: 12px; text-align: center; width: 130px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
         .capital { font-size: 38px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.1; }
@@ -29,11 +55,20 @@
         
         .voice-btn { cursor: pointer; background: #007bff; border: none; font-size: 20px; color: white; padding: 4px 12px; border-radius: 20px; margin-top: 5px; transition: 0.2s; }
         .voice-btn:active { background: #0056b3; transform: scale(0.95); }
+
+        /* موبائل اسکرینز کے لیے سائز ایڈجسٹمنٹ */
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="page" id="mainPage"></div>
+<div class="page">
+    <p class="game-instruction">Press 🔊 to Learn</p>
+    
+    <div id="mainPage"></div>
+</div>
 
 <script>
     const container = document.getElementById('mainPage');
@@ -55,20 +90,17 @@
         U: "Umbrella", V: "Van", W: "Watch", X: "Xray", Y: "Yoyo", Z: "Zebra"
     };
 
-    // آواز والا فنکشن جو اب اسپیلنگ بھی بولے گا
     function speakLetter(char) {
         window.speechSynthesis.cancel(); // پرانی آواز کو روکنے کے لیے
         
         const word = words[char];
-        // ہجے کرنے کے لیے حروف کے درمیان فاصلہ اور کوما لگایا تاکہ وہ الگ الگ بولے (جیسے A, P, P, L, E)
         const spelling = word.split("").join(", "); 
         
-        // مکمل جملہ: "A for Apple... A, P, P, L, E"
         const textToSpeak = `${char} for ${word}. . ${spelling}`;
         
         const msg = new SpeechSynthesisUtterance(textToSpeak);
         msg.lang = 'en-US';
-        msg.rate = 0.85; // آواز کی رفتار تھوڑی آہستہ کی تاکہ بچے آسانی سے ہجے سمجھ سکیں
+        msg.rate = 0.85; 
         window.speechSynthesis.speak(msg);
     }
 
@@ -80,7 +112,6 @@
         const div = document.createElement('div');
         div.className = 'letter-box';
         
-        // یہاں امیج کے نیچے <span class="word-text"> کے ذریعے اسپیلنگ ایڈ کی گئی ہے
         div.innerHTML = `
             <span class="capital">${char}</span>
             <span class="small">${char.toLowerCase()}</span>
@@ -90,7 +121,6 @@
         `;
         currentLine.appendChild(div);
 
-        // ہر 6 باکسز کے بعد نئی لائن بنانا
         if ((index + 1) % 6 === 0) {
             currentLine = document.createElement('div');
             currentLine.className = 'line-set';
@@ -100,4 +130,3 @@
 </script>
 </body>
 </html>
-
