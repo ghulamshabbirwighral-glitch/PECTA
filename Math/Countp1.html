@@ -2,51 +2,162 @@
 <html lang="en">
 <head>
     <meta name="description" content="Math Counting Exercise.">
-<meta name="keywords" content=" Math counting Practice">
+    <meta name="keywords" content=" Math counting Practice">
     
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4NHR43XLF6');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<!-- Mobile Viewport -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Counting 1 to 500 (Interactive)</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .main-container { background: white; padding: 30px; border-radius: 20px; border: 2px solid #ccc; width: 90%; margin: 0 auto; }
-        .content { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; text-align: center; }
-        .box { height: 45px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; position: relative; }
-        .blank-input { width: 35px; height: 30px; text-align: center; border: 2px solid #333; border-radius: 4px; }
-        .status { font-size: 14px; position: absolute; top: 0; right: 2px; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 10px; background-color: #f4f4f4; margin: 0; }
+        
+        .main-container { 
+            background: white; 
+            padding: 15px 10px; 
+            border-radius: 20px; 
+            border: 2px solid #ccc; 
+            width: 98%; 
+            max-width: 1200px; 
+            margin: 10px auto; 
+            box-sizing: border-box;
+        }
+
+        h1 { font-size: 24px; text-align: center; margin-bottom: 10px; color: #2c3e50; }
+
+        /* ٹاپ انسٹرکشن اور وائس بٹن کی اسٹائلنگ */
+        .game-instruction {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .voice-btn {
+            cursor: pointer;
+            background: #007bff;
+            border: none;
+            font-size: 16px;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .voice-btn:active {
+            background: #0056b3;
+            transform: scale(0.95);
+        }
+
+        /* 10 کالمز کو موبائل اسکرین پر فٹ رکھنے کے لیے سمارٹ گرڈ */
+        .content { 
+            display: grid; 
+            grid-template-columns: repeat(10, 1fr); 
+            gap: 4px; 
+            text-align: center; 
+        }
+
+        /* باکس اور ان پٹ کا سائز موبائل کے لیے موزوں کیا ہے */
+        .box { 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid #ddd; 
+            position: relative; 
+            background: #fafafa;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+
+        .blank-input { 
+            width: 85%; 
+            height: 80%; 
+            text-align: center; 
+            border: 1.5px solid #333; 
+            border-radius: 4px; 
+            font-size: 13px;
+            font-weight: bold;
+            box-sizing: border-box;
+            -moz-appearance: textfield;
+        }
+        /* نمبر ان پٹ کے تیر (Arrows) چھپانے کے لیے */
+        .blank-input::-webkit-outer-spin-button,
+        .blank-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .status { 
+            font-size: 11px; 
+            position: absolute; 
+            top: -2px; 
+            right: 1px; 
+            font-weight: bold;
+        }
         .correct { color: green; }
         .wrong { color: red; }
+
+        /* بڑی اسکرینز (Tablets/PC) کے لیے سائز تھوڑا بڑا کیا ہے */
+        @media (min-width: 600px) {
+            body { padding: 20px; }
+            .main-container { padding: 30px; width: 90%; }
+            h1 { font-size: 32px; }
+            .game-instruction { font-size: 20px; margin-bottom: 25px; }
+            .box { height: 45px; font-size: 16px; }
+            .blank-input { font-size: 15px; }
+            .status { font-size: 13px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <h1 style="text-align: center;">Counting 1 to 500 (Interactive)</h1>
+        <h1>Counting 1 to 500 (Interactive)</h1>
+        
+        <p class="game-instruction">
+            <span>Fill in the missing numbers in the boxes</span>
+            <button class="voice-btn" onclick="speakInstruction()">🔊</button>
+        </p>
+
         <div class="content" id="numberGrid"></div>
     </div>
 
     <script>
         const grid = document.getElementById('numberGrid');
 
+        // ہدایت بولنے کا فنکشن
+        function speakInstruction() {
+            window.speechSynthesis.cancel(); // پرانی آواز روکنے کے لیے
+            const textToSpeak = "Fill in the boxes with missing counting numbers.";
+            const msg = new SpeechSynthesisUtterance(textToSpeak);
+            msg.lang = 'en-US';
+            msg.rate = 0.85; // تھوڑا سا آہستہ تاکہ بچے آسانی سے سمجھیں
+            window.speechSynthesis.speak(msg);
+        }
+
+        // 1 سے 500 تک گرڈ بنانے کا لوپ
         for (let i = 1; i <= 500; i++) {
             let box = document.createElement('div');
             box.className = 'box';
 
-            // ہر 10 کے گروپ میں 2 رینڈم پوزیشنز نکالنا
             let groupStart = Math.floor((i - 1) / 10) * 10 + 1;
             let rand1 = groupStart + Math.floor(Math.random() * 5);
             let rand2 = groupStart + 5 + Math.floor(Math.random() * 5);
@@ -60,19 +171,22 @@
             grid.appendChild(box);
         }
 
+        // جواب چیک کرنے کا فنکشن
         function checkAnswer(input, correctValue) {
             let statusSpan = input.nextElementSibling;
             if (input.value == correctValue) {
                 statusSpan.innerHTML = '✔';
                 statusSpan.className = 'status correct';
+                input.style.borderColor = "green";
             } else if (input.value !== "") {
                 statusSpan.innerHTML = '✘';
                 statusSpan.className = 'status wrong';
+                input.style.borderColor = "red";
             } else {
                 statusSpan.innerHTML = '';
+                input.style.borderColor = "#333";
             }
         }
     </script>
 </body>
 </html>
-
