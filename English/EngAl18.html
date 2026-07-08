@@ -15,20 +15,37 @@
 
 <!-- Mobile Viewport -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <meta charset="UTF-8">
+    <title>انگلش الفابیٹ لرننگ</title>
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; padding: 20px; }
-        .page { 
-    width: 95%; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    background-color: white; 
-    border: 1px solid #ccc; 
-    padding: 20px; 
-        }
+        body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; padding: 10px; margin: 0; }
         
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* ٹاپ انسٹرکشن ٹیکسٹ کی اسٹائلنگ */
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
         
         .line-set {
             height: 64px;
@@ -53,12 +70,26 @@
             background: none;
             border: none;
             font-size: 24px;
+            transition: transform 0.1s;
+        }
+        .voice-btn:active {
+            transform: scale(0.85);
+        }
+
+        /* موبائل اسکرینز کے لیے انسٹرکشن کا سائز */
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
         }
     </style>
 </head>
 <body>
 
-<div class="page" id="mainPage"></div>
+<div class="page">
+    <!-- آپ کی ہدایت کے مطابق اب عبارت میں ڈائریکٹ اسپیکر کا نشان ہے -->
+    <p class="game-instruction">Press 🔊 to Learn</p>
+    
+    <div id="mainPage"></div>
+</div>
 
 <script>
     const container = document.getElementById('mainPage');
@@ -81,7 +112,6 @@
             const div = document.createElement('div');
             div.className = 'letter-pair';
             
-            // یہاں بٹن کا کوڈ شامل کیا گیا ہے
             div.innerHTML = `
                 <span class="capital">${char}</span>
                 <span class="small">${char.toLowerCase()}</span>
