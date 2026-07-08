@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4NHR43XLF6');
+</script>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+<!-- Mobile Viewport -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>الفابیٹ مسنگ لیٹر کوئز</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; }
+        .page { width: 95%; max-width: 1200px; margin: 0 auto; background-color: white; border: 1px solid #ccc; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+        
+        /* لیٹر باکس کا سائز ایڈجسٹ کیا */
+        .letter-box { position: relative; border: 2px solid #007bff; padding: 10px; border-radius: 12px; text-align: center; width: 140px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .capital { font-size: 38px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.1; }
+        .small { font-size: 22px; color: #555; display: block; margin-bottom: 5px; }
+        .img-box { width: 75px; height: 75px; object-fit: contain; margin: 5px 0; }
+        
+        /* فیڈ بیک (ٹک یا کراس) کی پوزیشن اوپر سیٹ کی */
+        .status-indicator { position: absolute; top: 5px; right: 8px; font-size: 20px; font-weight: bold; height: 24px; }
+        
+        /* اسپیلنگ کنٹینر اور خالی انڈر لائن باکس */
+        .word-container { font-size: 18px; font-weight: bold; color: #333; display: flex; justify-content: center; align-items: center; margin: 8px 0; letter-spacing: 1px; }
+        .missing-input { width: 20px; font-size: 18px; font-weight: bold; text-align: center; border: none; border-bottom: 2px solid #2c3e50; color: #007bff; background: transparent; outline: none; text-transform: uppercase; padding: 0; }
+        .missing-input.success { border-bottom-color: #28a745; color: #28a745; }
+    </style>
+</head>
+<body>
+
+<div class="page" id="mainPage"></div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    
+    const images = {
+        A: "apple.png", B: "ball.png", C: "cat.png", D: "dog.png", E: "egg.png",
+        F: "fish.png", G: "goat.png", H: "hat.png", I: "ice.png", J: "jug.png",
+        K: "kite.png", L: "lion.png", M: "mango.png", N: "nest.png", O: "owl.png",
+        P: "pen.png", Q: "queen.png", R: "rat.png", S: "sun.png", T: "tap.png",
+        U: "umbrella.png", V: "van.png", W: "watch.png", X: "xray.png", Y: "yoyo.png", Z: "zebra.png"
+    };
+
+    const words = {
+        A: "Apple", B: "Ball", C: "Cat", D: "Dog", E: "Egg",
+        F: "Fish", G: "Goat", H: "Hat", I: "Ice", J: "Jug",
+        K: "Kite", L: "Lion", M: "Mango", N: "Nest", O: "Owl",
+        P: "Pen", Q: "Queen", R: "Rat", S: "Sun", T: "Tap",
+        U: "Umbrella", V: "Van", W: "Watch", X: "Xray", Y: "Yoyo", Z: "Zebra"
+    };
+
+    let currentLine = document.createElement('div');
+    currentLine.className = 'line-set';
+    container.appendChild(currentLine);
+
+    alphabet.forEach((char, index) => {
+        const div = document.createElement('div');
+        div.className = 'letter-box';
+        
+        const fullWord = words[char]; // جیسے "Apple"
+        
+        // لفظ میں سے کسی بھی ایک رینڈم انڈیکس (حرف) کو غائب کرنے کے لیے منتخب کرنا
+        const randomIndex = Math.floor(Math.random() * fullWord.length);
+        const correctLetter = fullWord[randomIndex].toUpperCase(); // صحیح جواب (Capital میں)
+        
+        // لفظ کو توڑ کر ان پٹ باکس بنانا جہاں ایک حرف غائب ہو
+        let wordHTML = '';
+        for (let i = 0; i < fullWord.length; i++) {
+            if (i === randomIndex) {
+                wordHTML += `<input type="text" maxlength="1" class="missing-input" data-answer="${correctLetter}" oninput="checkAnswer(this)">`;
+            } else {
+                wordHTML += `<span>${fullWord[i]}</span>`;
+            }
+        }
+
+        div.innerHTML = `
+            <div class="status-indicator" id="status-${char}"></div>
+            <span class="capital">${char}</span>
+            <span class="small">${char.toLowerCase()}</span>
+            <img src="images/${images[char]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=No+Img'">
+            <div class="word-container">${wordHTML}</div>
+        `;
+        currentLine.appendChild(div);
+
+        // ہر 6 باکسز کے بعد نئی لائن بنانا
+        if ((index + 1) % 6 === 0) {
+            currentLine = document.createElement('div');
+            currentLine.className = 'line-set';
+            container.appendChild(currentLine);
+        }
+    });
+
+    // جواب چیک کرنے کا لائیو فنکشن
+    function checkAnswer(inputElement) {
+        const typedLetter = inputElement.value.toUpperCase(); // بچے کا ٹائپ کردہ حرف
+        const correctAnswer = inputElement.getAttribute('data-answer'); // درست جواب
+        const box = inputElement.closest('.letter-box');
+        const charId = box.querySelector('.capital').innerText;
+        const statusDiv = document.getElementById(`status-${charId}`);
+
+        if (typedLetter === "") {
+            statusDiv.innerText = "";
+            inputElement.classList.remove('success');
+            return;
+        }
+
+        if (typedLetter === correctAnswer) {
+            statusDiv.innerText = "✅"; // صحیح ہونے پر ٹک
+            inputElement.classList.add('success');
+            inputElement.disabled = true; // درست جواب کے بعد باکس لاک ہو جائے گا
+        } else {
+            statusDiv.innerText = "❌"; // غلط ہونے پر کراس
+            inputElement.classList.remove('success');
+        }
+    }
+</script>
+</body>
+</html>
+
