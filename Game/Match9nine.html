@@ -18,7 +18,6 @@
     <style>
         body { font-family: 'Arial', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 2px; touch-action: none; overflow: hidden; }
         
-        /* انسٹرکشن ٹیکسٹ کا مارجن مزید کم کیا تاکہ اوپر جگہ بچے */
         .game-instruction {
             font-size: 14px;
             font-weight: bold;
@@ -29,7 +28,6 @@
             line-height: 1.2;
         }
 
-        /* ڈراپ ڈاؤن مینو کا مارجن اور سائز فریم کے مطابق کیا */
         .lang-selector {
             margin: 2px auto;
             padding: 3px 10px;
@@ -47,8 +45,7 @@
         .game-container { position: relative; display: flex; justify-content: space-around; padding: 2px 5px; height: auto; max-width: 600px; margin: auto; }
         .col { display: flex; flex-direction: column; gap: 4px; z-index: 5; }
         
-        /* چھوٹے فریم میں فٹ آنے کے لیے بٹنوں کی ہائٹ 32px کی */
-        .item { width: 125px; height: 32px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .item { width: 135px; height: 32px; border: 2px solid #007bff; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
         .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; pointer-events: none; }
         
         canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 10; }
@@ -58,7 +55,6 @@
         #win-message { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; color: white; flex-direction: column; align-items: center; justify-content: center; }
         .win-btn { padding: 10px 20px; font-size: 18px; cursor: pointer; border-radius: 10px; border: none; background: #28a745; color: white; margin-top: 15px; }
 
-        /* اگر گیم بڑی اسکرین یا نئے پیج پر کھلے تو خود بخود سائز بڑا ہو جائے گا */
         @media (min-height: 600px) {
             .game-instruction { font-size: 18px; margin: 10px auto 5px auto; }
             .lang-selector { font-size: 15px; padding: 6px 15px; margin: 5px auto; }
@@ -76,12 +72,12 @@
         <option value="ur">اردو گنتی (Urdu)</option>
         <option value="hi">ہندی گنتی (Hindi)</option>
         <option value="es">اسپینش گنتی (Spanish)</option>
-<option value="ru">روسی گنتی (Russian)</option>
-        <option value="bn">بنگالی گنتی (Bangali)</option>
-        <option value="fa">فارسی گنتی (persian)</option
-<option value="zh-CN">چاینہ گنتی (Chinese)</option>
+        <option value="ru">روسی گنتی (Russian)</option>
+        <option value="bn">بنگالی گنتی (Bengali)</option>
+        <option value="fa">فارسی گنتی (Persian)</option>
+        <option value="zh">چائنیز گنتی (Chinese)</option>
         <option value="ar">عربی گنتی (Arabic)</option>
-        <option value="fr">فرانسیسی گنتی (French)</option>
+        <option value="fr">فرینچ گنتی (French)</option>
     </select>
 
     <div class="counter-box">
@@ -102,18 +98,19 @@
     </div>
 
     <script>
+        // تمام نئی زبانوں کا ڈیٹا یہاں شامل کر دیا گیا ہے
         const data = [
-            {id: 1, en: "One", ur: "ایک", hi: "एक", es: "Uno"}, 
-            {id: 2, en: "Two", ur: "دو", hi: "दो", es: "Dos"}, 
-            {id: 3, en: "Three", ur: "تین", hi: "तीन", es: "Tres"}, 
-            {id: 4, en: "Four", ur: "چار", hi: "चार", es: "Cuatro"}, 
-            {id: 5, en: "Five", ur: "پانچ", hi: "पाँच", es: "Cinco"}, 
-            {id: 6, en: "Six", ur: "چھ", hi: "छह", es: "Seis"}, 
-            {id: 7, en: "Seven", ur: "سات", hi: "सात", es: "Siete"}, 
-            {id: 8, en: "Eight", ur: "آٹھ", hi: "आठ", es: "Ocho"}, 
-            {id: 9, en: "Nine", ur: "نو", hi: "नौ", es: "Nueve"}, 
-            {id: 10, en: "Ten", ur: "دس", hi: "दस", es: "Diez"}
-        ];
+            {id: 1, en: "One", ur: "ایک", hi: "एक", es: "Uno", ru: "Один", bn: "এক", fa: "یک", zh: "一", ar: "واحد", fr: "Un"},
+            {id: 2, en: "Two", ur: "دو", hi: "दो", es: "Dos", ru: "Два", bn: "দুই", fa: "دو", zh: "二", ar: "اثنان", fr: "Deux"},
+            {id: 3, en: "Three", ur: "تین", hi: "तीन", es: "Tres", ru: "Три", bn: "তিন", fa: "سه", zh: "三", ar: "ثلاثة", fr: "Trois"},
+            {id: 4, en: "Four", ur: "چار", hi: "चार", es: "Cuatro", ru: "Четыре", bn: "চার", fa: "چهار", zh: "四", ar: "أربعة", fr: "Quatre"},
+            {id: 5, en: "Five", ur: "پانچ", hi: "पाँच", es: "Cinco", ru: "Пять", bn: "পাঁচ", fa: "پنج", zh: "五", ar: "خمسة", fr: "Cinq"},
+            {id: 6, en: "Six", ur: "چھ", hi: "छह", es: "Seis", ru: "Шесть", bn: "ছয়", fa: "شش", zh: "六", ar: "ستة", fr: "Six"},
+            {id: 7, en: "Seven", ur: "سات", hi: "सात", es: "Siete", ru: "Семь", bn: "সাত", fa: "هفت", zh: "七", ar: "سبعة", fr: "Sept"},
+            {id: 8, en: "Eight", ur: "آٹھ", hi: "आठ", es: "Ocho", ru: "Восемь", bn: "আট", fa: "هشت", zh: "八", ar: "ثمانية", fr: "Huit"},
+            {id: 9, en: "Nine", ur: "نو", hi: "नौ", es: "Nueve", ru: "Девять", bn: "নয়", fa: "نه", zh: "九", ar: "تسعة", fr: "Neuf"},
+            {id: 10, en: "Ten", ur: "دس", hi: "दस", es: "Diez", ru: "Десять", bn: "দশ", fa: "ده", zh: "十", ar: "عشرة", fr: "Dix"}
+        ]; // یہاں اسکوائر بریکٹ ٹھیک کر دی گئی ہے
 
         let currentLang = 'ur';
         let correct = 0, wrong = 0;
