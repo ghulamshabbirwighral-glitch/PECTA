@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4NHR43XLF6');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
-<!-- Mobile Viewport -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matching Game - Level System</title>
+    
     <style>
         body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; touch-action: none; overflow: hidden; }
         
         #menu-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 500; }
         button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #2196f3; color: white; border: none; border-radius: 10px; }
         
+        /* گیم کی نئی انسٹرکشن کی اسٹائلنگ */
+        .game-instruction {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 15px auto 5px auto;
+            max-width: 600px;
+            padding: 0 15px;
+            line-height: 1.4;
+        }
+
         #score-board { margin-top: 10px; font-size: 20px; font-weight: bold; background: #fff; padding: 10px; border-radius: 10px; display: inline-block; }
         #lineCanvas { position: absolute; top: 0; left: 0; z-index: 100; pointer-events: none; }
-        .game-area { display: flex; justify-content: center; gap: 150px; margin-top: 30px; position: relative; height: 500px; z-index: 1; }
+        .game-area { display: flex; justify-content: center; gap: 150px; margin-top: 20px; position: relative; height: 500px; z-index: 1; }
         .column { display: flex; flex-direction: column; gap: 15px; }
         .item { width: 120px; height: 45px; display: flex; align-items: center; justify-content: center; background: #fff; border: 2px solid #333; border-radius: 8px; cursor: crosshair; font-size: 20px; z-index: 1; position: relative; }
         .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; }
@@ -40,6 +47,8 @@
         <h1 id="menu-title">Matching Game</h1>
         <button id="start-btn" onclick="startGame()">Start Game</button>
     </div>
+
+    <p class="game-instruction">Match the items in the first column with the correct options in the second column.</p>
 
     <div id="score-board">
         Correct: <span id="correct-count" style="color: green;">0</span> | 
@@ -166,3 +175,4 @@
     </script>
 </body>
 </html>
+
