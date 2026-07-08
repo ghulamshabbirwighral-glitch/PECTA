@@ -12,33 +12,89 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Matching Game - Level System</title>
     
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f0f4f8; margin: 0; touch-action: none; overflow: hidden; }
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            background: #f0f4f8; 
+            margin: 0; 
+            padding: 5px 0;
+            touch-action: none; 
+            overflow: hidden; 
+        }
         
         #menu-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 500; }
-        button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #2196f3; color: white; border: none; border-radius: 10px; }
+        button { padding: 15px 30px; font-size: 22px; cursor: pointer; background: #2196f3; color: white; border: none; border-radius: 10px; }
         
-        /* گیم کی نئی انسٹرکشن کی اسٹائلنگ */
+        /* انسٹرکشن ٹیکسٹ کو موبائل کے حساب سے سیٹ کیا */
         .game-instruction {
-            font-size: 22px;
+            font-size: 16px;
             font-weight: bold;
             color: #2c3e50;
-            margin: 15px auto 5px auto;
+            margin: 5px auto;
             max-width: 600px;
-            padding: 0 15px;
-            line-height: 1.4;
+            padding: 0 10px;
+            line-height: 1.3;
         }
 
-        #score-board { margin-top: 10px; font-size: 20px; font-weight: bold; background: #fff; padding: 10px; border-radius: 10px; display: inline-block; }
+        #score-board { 
+            margin-top: 2px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            background: #fff; 
+            padding: 6px 15px; 
+            border-radius: 8px; 
+            display: inline-block; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
         #lineCanvas { position: absolute; top: 0; left: 0; z-index: 100; pointer-events: none; }
-        .game-area { display: flex; justify-content: center; gap: 150px; margin-top: 20px; position: relative; height: 500px; z-index: 1; }
-        .column { display: flex; flex-direction: column; gap: 15px; }
-        .item { width: 120px; height: 45px; display: flex; align-items: center; justify-content: center; background: #fff; border: 2px solid #333; border-radius: 8px; cursor: crosshair; font-size: 20px; z-index: 1; position: relative; }
+        
+        /* گیم ایریا کی ہائٹ کو آٹو کیا تاکہ یہ اسکرین کے مطابق ایڈجسٹ ہو */
+        .game-area { 
+            display: flex; 
+            justify-content: center; 
+            gap: 60px; /* موبائل پر دونوں کالمز کا درمیانی فاصلہ سیٹ کیا */
+            margin-top: 10px; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .column { display: flex; flex-direction: column; gap: 8px; } /* موبائل پر گیپ 15px سے کم کر کے 8px کیا */
+        
+        /* موبائل کے لیے آئٹم کا سائز چھوٹا کیا تاکہ سب فٹ آئیں */
+        .item { 
+            width: 130px; 
+            height: 36px; /* ہائٹ 45px سے کم کر کے 36px کی */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fff; 
+            border: 2px solid #333; 
+            border-radius: 8px; 
+            cursor: crosshair; 
+            font-size: 16px; /* فونٹ سائز ایڈجسٹ کیا */
+            z-index: 1; 
+            position: relative; 
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
         .matched { background-color: #c8e6c9 !important; border-color: #2e7d32; opacity: 0.7; }
         #feedback { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px; display: none; z-index: 200; }
+
+        /* بڑی اسکرینز (ڈیسک ٹاپ) کے لیے پرانا سائز برقرار رہے گا */
+        @media (min-height: 700px) {
+            .game-instruction { font-size: 20px; margin: 15px auto 5px auto; }
+            #score-board { font-size: 20px; padding: 10px; margin-top: 10px; }
+            .game-area { gap: 150px; margin-top: 20px; }
+            .column { gap: 15px; }
+            .item { width: 140px; height: 45px; font-size: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -66,7 +122,14 @@
     <script>
         const canvas = document.getElementById('lineCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        
+        // کینوس سائز کو بالکل درست سیٹ کرنے کا فنکشن
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
         let currentLevel = 1;
         let correctCount = 0;
@@ -126,7 +189,7 @@
             ctx.beginPath();
             ctx.moveTo(startX, startY);
             ctx.lineTo(e.clientX, e.clientY);
-            ctx.strokeStyle = '#2196f3'; ctx.lineWidth = 6; ctx.stroke();
+            ctx.strokeStyle = '#2196f3'; ctx.lineWidth = 5; ctx.stroke();
         });
 
         window.addEventListener('pointerup', (e) => {
