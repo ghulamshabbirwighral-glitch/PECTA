@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4NHR43XLF6');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>ڈائی گرافس لرننگ گیم</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; direction: ltr; }
+        
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* ڈیفینیشن اور انسٹرکشن باکس */
+        .definition-box {
+            background-color: #eef2f7;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: right; /* اردو کے لیے رائٹ الائن */
+        }
+        .def-en { font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px; text-align: left; direction: ltr; }
+        .def-ur { font-size: 16px; color: #555; font-weight: bold; direction: rtl; }
+
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+        }
+
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+        .letter-box { border: 2px solid #007bff; padding: 10px; border-radius: 12px; text-align: center; width: 140px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .capital { font-size: 38px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.1; }
+        .small { font-size: 22px; color: #555; display: block; margin-bottom: 5px; text-transform: lowercase; }
+        .img-box { width: 75px; height: 75px; object-fit: contain; margin: 5px 0; }
+        
+        .word-text { font-size: 16px; font-weight: bold; color: #28a745; display: block; margin: 4px 0; letter-spacing: 0.5px; }
+        
+        .voice-btn { cursor: pointer; background: #007bff; border: none; font-size: 20px; color: white; padding: 4px 12px; border-radius: 20px; margin-top: 5px; transition: 0.2s; }
+        .voice-btn:active { background: #0056b3; transform: scale(0.95); }
+
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="definition-box">
+        <p class="def-en"><strong>What is a Digraph?</strong> A digraph is a combination of two letters that make one single sound (e.g., /sh/ in ship).</p>
+        <p class="def-ur"><strong>ڈائی گراف کیا ہے؟</strong> جب دو حروف (Letters) مل کر ایک ہی مخصوص آواز بنائیں تو اسے ڈائی گراف کہتے ہیں (جیسے ship میں /sh/)۔</p>
+    </div>
+
+    <p class="game-instruction">Press 🔊 to Learn</p>
+    
+    <div id="mainPage"></div>
+</div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    
+    // ڈائی گرافس کی لسٹ
+    const digraphs = ["CH", "SH", "TH", "WH", "PH", "CK", "KN", "WR"];
+    
+    // تصویروں کے نام (آپ اپنی images کے فولڈر میں یہ نام رکھ سکتے ہیں)
+    const images = {
+        CH: "chair.png", SH: "ship.png", TH: "thumb.png", WH: "whale.png",
+        PH: "phone.png", CK: "duck.png", KN: "knee.png", WR: "wrist.png"
+    };
+
+    // الفاظ کے نام
+    const words = {
+        CH: "Chair", SH: "Ship", TH: "Thumb", WH: "Whale",
+        PH: "Phone", CK: "Duck", KN: "Knee", WR: "Wrist"
+    };
+
+    // بولنے کا فنکشن (اسی طرح کام کرے گا)
+    function speakLetter(digraph) {
+        window.speechSynthesis.cancel(); 
+        
+        const word = words[digraph];
+        const spelling = word.split("").join(", "); 
+        
+        const textToSpeak = `${digraph} for ${word}. . ${spelling}`;
+        
+        const msg = new SpeechSynthesisUtterance(textToSpeak);
+        msg.lang = 'en-US';
+        msg.rate = 0.85; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    let currentLine = document.createElement('div');
+    currentLine.className = 'line-set';
+    container.appendChild(currentLine);
+
+    digraphs.forEach((dg, index) => {
+        const div = document.createElement('div');
+        div.className = 'letter-box';
+        
+        div.innerHTML = `
+            <span class="capital">${dg}</span>
+            <span class="small">${dg.toLowerCase()}</span>
+            <img src="images/${images[dg]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${dg}'">
+            <span class="word-text">${words[dg]}</span>
+            <button class="voice-btn" onclick="speakLetter('${dg}')">🔊</button>
+        `;
+        currentLine.appendChild(div);
+
+        // ہر 4 ڈائی گرافس کے بعد نئی لائن (تھوڑا بڑا سائز ہونے کی وجہ سے 4 بیسٹ لگے گا)
+        if ((index + 1) % 4 === 0) {
+            currentLine = document.createElement('div');
+            currentLine.className = 'line-set';
+            container.appendChild(currentLine);
+        }
+    });
+</script>
+</body>
+</html>
+
