@@ -29,7 +29,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* گوگل ٹرانسلیٹر باکس کی اسٹائلنگ */
+        /* گوگل ٹرانسلیٹر باکس */
         .translate-wrapper {
             text-align: center;
             margin-bottom: 15px;
@@ -89,25 +89,25 @@
 <body>
 
 <div class="page">
-    <div class="translate-wrapper">
+    <div class="translate-wrapper notranslate">
         <div id="google_translate_element"></div>
     </div>
 
-    <p class="game-instruction">Press 🔊 to Learn</p>
+    <p class="game-instruction notranslate">Press 🔊 to Learn</p>
 
-    <div class="section-title">DIGRAPHS (دو حروف کی آواز)</div>
+    <div class="section-title"><span class="notranslate">DIGRAPHS</span> (دو حروف کی آواز)</div>
     <div class="definition-box">
-        <p class="def-en" id="digraphEn">A digraph is a combination of two letters that make one single sound (e.g., /sh/ in ship).</p>
+        <p class="def-en notranslate" id="digraphEn">A digraph is a combination of two letters that make one single sound (e.g., /sh/ in ship).</p>
         <p class="def-ur" id="digraphUr">ترجمہ لوڈ ہو رہا ہے...</p>
     </div>
-    <div id="digraphContainer"></div>
+    <div id="digraphContainer" class="notranslate"></div>
 
-    <div class="section-title" style="background: #ffc107; color: #333;">TRIGRAPHS (تین حروف کی آواز)</div>
+    <div class="section-title" style="background: #ffc107; color: #333;"><span class="notranslate">TRIGRAPHS</span> (تین حروف کی آواز)</div>
     <div class="definition-box" style="border-left-color: #ffc107; background-color: #fffde7;">
-        <p class="def-en" id="trigraphEn">A trigraph is a combination of three letters that blend together to make one single sound (e.g., /igh/ in night).</p>
+        <p class="def-en notranslate" id="trigraphEn">A digraph is a combination of three letters that blend together to make one single sound (e.g., /igh/ in night).</p>
         <p class="def-ur" id="trigraphUr">ترجمہ لوڈ ہو رہا ہے...</p>
     </div>
-    <div id="trigraphContainer"></div>
+    <div id="trigraphContainer" class="notranslate"></div>
 </div>
 
 <script type="text/javascript">
@@ -118,7 +118,7 @@ function googleTranslateElementInit() {
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // بیک اینڈ آٹو ٹرانسلیٹ فنکشن جو پہلے سے چل رہا ہے
+    // بیک اینڈ آٹو ٹرانسلیٹ (صرف اردو باکسز کے لیے)
     function autoTranslate(sourceId, targetId) {
         const engText = document.getElementById(sourceId).innerText;
         const urduTarget = document.getElementById(targetId);
