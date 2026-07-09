@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>ڈائی گرافس لرننگ گیم</title>
+    <title>ڈائی گراف اور ٹرائی گراف لرننگ گیم</title>
     <style>
         body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; direction: ltr; }
         
@@ -29,17 +29,28 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* ڈیفینیشن اور انسٹرکشن باکس */
+        /* سیکشن ہیڈنگز */
+        .section-title {
+            font-size: 24px;
+            color: #fff;
+            background: #007bff;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
         .definition-box {
             background-color: #eef2f7;
             border-left: 5px solid #007bff;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: right; /* اردو کے لیے رائٹ الائن */
+            margin-bottom: 15px;
         }
         .def-en { font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px; text-align: left; direction: ltr; }
-        .def-ur { font-size: 16px; color: #555; font-weight: bold; direction: rtl; }
+        .def-ur { font-size: 16px; color: #0162cc; font-weight: bold; direction: rtl; text-align: right; margin-top: 8px; min-height: 20px; }
 
         .game-instruction {
             font-size: 18px;
@@ -52,9 +63,9 @@
         }
 
         .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
-        .letter-box { border: 2px solid #007bff; padding: 10px; border-radius: 12px; text-align: center; width: 140px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
-        .capital { font-size: 38px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.1; }
-        .small { font-size: 22px; color: #555; display: block; margin-bottom: 5px; text-transform: lowercase; }
+        .letter-box { border: 2px solid #007bff; padding: 10px; border-radius: 12px; text-align: center; width: 145px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .capital { font-size: 34px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.1; }
+        .small { font-size: 20px; color: #555; display: block; margin-bottom: 5px; text-transform: lowercase; }
         .img-box { width: 75px; height: 75px; object-fit: contain; margin: 5px 0; }
         
         .word-text { font-size: 16px; font-weight: bold; color: #28a745; display: block; margin: 4px 0; letter-spacing: 0.5px; }
@@ -70,74 +81,103 @@
 <body>
 
 <div class="page">
-    <div class="definition-box">
-        <p class="def-en"><strong>What is a Digraph?</strong> A digraph is a combination of two letters that make one single sound (e.g., /sh/ in ship).</p>
-        <p class="def-ur"><strong>ڈائی گراف کیا ہے؟</strong> جب دو حروف (Letters) مل کر ایک ہی مخصوص آواز بنائیں تو اسے ڈائی گراف کہتے ہیں (جیسے ship میں /sh/)۔</p>
-    </div>
-
     <p class="game-instruction">Press 🔊 to Learn</p>
-    
-    <div id="mainPage"></div>
+
+    <div class="section-title">DIGRAPHS (دو حروف کی آواز)</div>
+    <div class="definition-box">
+        <p class="def-en" id="digraphEn">A digraph is a combination of two letters that make one single sound (e.g., /sh/ in ship).</p>
+        <p class="def-ur" id="digraphUr">ترجمہ لوڈ ہو رہا ہے...</p>
+    </div>
+    <div id="digraphContainer"></div>
+
+    <div class="section-title" style="background: #ffc107; color: #333;">TRIGRAPHS (تین حروف کی آواز)</div>
+    <div class="definition-box" style="border-left-color: #ffc107; background-color: #fffde7;">
+        <p class="def-en" id="trigraphEn">A trigraph is a combination of three letters that blend together to make one single sound (e.g., /igh/ in night).</p>
+        <p class="def-ur" id="trigraphUr">ترجمہ لوڈ ہو رہا ہے...</p>
+    </div>
+    <div id="trigraphContainer"></div>
 </div>
 
 <script>
-    const container = document.getElementById('mainPage');
+    // --- گوگل ٹرانسلیٹر فنکشن (دونوں ڈیفینیشنز کے لیے) ---
+    function autoTranslate(sourceId, targetId) {
+        const engText = document.getElementById(sourceId).innerText;
+        const urduTarget = document.getElementById(targetId);
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(engText)}`;
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if(data && data[0] && data[0][0] && data[0][0][0]) {
+                    urduTarget.innerHTML = `<strong>اردو ترجمہ:</strong> ${data[0][0][0]}`;
+                }
+            })
+            .catch(error => {
+                console.error("Translation Error:", error);
+                urduTarget.innerText = "ترجمہ لوڈ کرنے میں دشواری ہوئی۔";
+            });
+    }
     
-    // ڈائی گرافس کی لسٹ
-    const digraphs = ["CH", "SH", "TH", "WH", "PH", "CK", "KN", "WR"];
-    
-    // تصویروں کے نام (آپ اپنی images کے فولڈر میں یہ نام رکھ سکتے ہیں)
-    const images = {
-        CH: "chair.png", SH: "ship.png", TH: "thumb.png", WH: "whale.png",
-        PH: "phone.png", CK: "duck.png", KN: "knee.png", WR: "wrist.png"
-    };
+    // پیج لوڈ ہوتے ہی دونوں کا ترجمہ کریں
+    window.addEventListener('DOMContentLoaded', () => {
+        autoTranslate('digraphEn', 'digraphUr');
+        autoTranslate('trigraphEn', 'trigraphUr');
+    });
 
-    // الفاظ کے نام
-    const words = {
-        CH: "Chair", SH: "Ship", TH: "Thumb", WH: "Whale",
-        PH: "Phone", CK: "Duck", KN: "Knee", WR: "Wrist"
-    };
-
-    // بولنے کا فنکشن (اسی طرح کام کرے گا)
-    function speakLetter(digraph) {
+    // --- آواز کا فنکشن ---
+    function speakLetter(item, word) {
         window.speechSynthesis.cancel(); 
-        
-        const word = words[digraph];
         const spelling = word.split("").join(", "); 
-        
-        const textToSpeak = `${digraph} for ${word}. . ${spelling}`;
-        
+        const textToSpeak = `${item} for ${word}. . ${spelling}`;
         const msg = new SpeechSynthesisUtterance(textToSpeak);
         msg.lang = 'en-US';
         msg.rate = 0.85; 
         window.speechSynthesis.speak(msg);
     }
 
-    let currentLine = document.createElement('div');
-    currentLine.className = 'line-set';
-    container.appendChild(currentLine);
+    // --- کارڈز بنانے کا مشترکہ فنکشن ---
+    function createCards(targetContainerId, itemsList, imagesData, wordsData) {
+        const targetContainer = document.getElementById(targetContainerId);
+        let currentLine = document.createElement('div');
+        currentLine.className = 'line-set';
+        targetContainer.appendChild(currentLine);
 
-    digraphs.forEach((dg, index) => {
-        const div = document.createElement('div');
-        div.className = 'letter-box';
-        
-        div.innerHTML = `
-            <span class="capital">${dg}</span>
-            <span class="small">${dg.toLowerCase()}</span>
-            <img src="images/${images[dg]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${dg}'">
-            <span class="word-text">${words[dg]}</span>
-            <button class="voice-btn" onclick="speakLetter('${dg}')">🔊</button>
-        `;
-        currentLine.appendChild(div);
+        itemsList.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'letter-box';
+            // ٹرائی گراف کے لیے بارڈر کلر ایڈجسٹمنٹ
+            if(targetContainerId === 'trigraphContainer') {
+                div.style.borderColor = '#ffc107';
+            }
+            
+            div.innerHTML = `
+                <span class="capital">${item}</span>
+                <span class="small">${item.toLowerCase()}</span>
+                <img src="images/${imagesData[item]}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${item}'">
+                <span class="word-text">${wordsData[item]}</span>
+                <button class="voice-btn" style="${targetContainerId === 'trigraphContainer' ? 'background:#ffc107; color:#333;' : ''}" onclick="speakLetter('${item}', '${wordsData[item]}')">🔊</button>
+            `;
+            currentLine.appendChild(div);
 
-        // ہر 4 ڈائی گرافس کے بعد نئی لائن (تھوڑا بڑا سائز ہونے کی وجہ سے 4 بیسٹ لگے گا)
-        if ((index + 1) % 4 === 0) {
-            currentLine = document.createElement('div');
-            currentLine.className = 'line-set';
-            container.appendChild(currentLine);
-        }
-    });
+            if ((index + 1) % 4 === 0) {
+                currentLine = document.createElement('div');
+                currentLine.className = 'line-set';
+                targetContainer.appendChild(currentLine);
+            }
+        });
+    }
+
+    // 1. ڈائی گراف ڈیٹا لوڈ کریں
+    const digraphs = ["CH", "SH", "TH", "WH", "PH", "CK", "KN", "WR"];
+    const digraphImages = { CH: "chair.png", SH: "ship.png", TH: "thumb.png", WH: "whale.png", PH: "phone.png", CK: "duck.png", KN: "knee.png", WR: "wrist.png" };
+    const digraphWords = { CH: "Chair", SH: "Ship", TH: "Thumb", WH: "Whale", PH: "Phone", CK: "Duck", KN: "Knee", WR: "Wrist" };
+    createCards('digraphContainer', digraphs, digraphImages, digraphWords);
+
+    // 2. ٹرائی گراف ڈیٹا لوڈ کریں
+    const trigraphs = ["IGH", "TCH", "DGE", "EAR", "AIR", "URE", "OAR", "AIL"];
+    const trigraphImages = { IGH: "night.png", TCH: "watch.png", DGE: "bridge.png", EAR: "ear.png", AIR: "chair.png", URE: "pure.png", OAR: "oar.png", AIL: "snail.png" };
+    const trigraphWords = { IGH: "Night", TCH: "Watch", DGE: "Bridge", EAR: "Ear", AIR: "Chair", URE: "Pure", OAR: "Oar", AIL: "Snail" };
+    createCards('trigraphContainer', trigraphs, trigraphImages, trigraphWords);
 </script>
 </body>
 </html>
-
