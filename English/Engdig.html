@@ -29,7 +29,15 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* سیکشن ہیڈنگز */
+        /* گوگل ٹرانسلیٹر باکس کی اسٹائلنگ */
+        .translate-wrapper {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 5px;
+            background: #fff;
+            border-radius: 8px;
+        }
+
         .section-title {
             font-size: 24px;
             color: #fff;
@@ -37,7 +45,7 @@
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
             margin-bottom: 15px;
             font-weight: bold;
         }
@@ -81,6 +89,10 @@
 <body>
 
 <div class="page">
+    <div class="translate-wrapper">
+        <div id="google_translate_element"></div>
+    </div>
+
     <p class="game-instruction">Press 🔊 to Learn</p>
 
     <div class="section-title">DIGRAPHS (دو حروف کی آواز)</div>
@@ -98,8 +110,15 @@
     <div id="trigraphContainer"></div>
 </div>
 
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <script>
-    // --- گوگل ٹرانسلیٹر فنکشن (دونوں ڈیفینیشنز کے لیے) ---
+    // بیک اینڈ آٹو ٹرانسلیٹ فنکشن جو پہلے سے چل رہا ہے
     function autoTranslate(sourceId, targetId) {
         const engText = document.getElementById(sourceId).innerText;
         const urduTarget = document.getElementById(targetId);
@@ -118,13 +137,11 @@
             });
     }
     
-    // پیج لوڈ ہوتے ہی دونوں کا ترجمہ کریں
     window.addEventListener('DOMContentLoaded', () => {
         autoTranslate('digraphEn', 'digraphUr');
         autoTranslate('trigraphEn', 'trigraphUr');
     });
 
-    // --- آواز کا فنکشن ---
     function speakLetter(item, word) {
         window.speechSynthesis.cancel(); 
         const spelling = word.split("").join(", "); 
@@ -135,7 +152,6 @@
         window.speechSynthesis.speak(msg);
     }
 
-    // --- کارڈز بنانے کا مشترکہ فنکشن ---
     function createCards(targetContainerId, itemsList, imagesData, wordsData) {
         const targetContainer = document.getElementById(targetContainerId);
         let currentLine = document.createElement('div');
@@ -145,7 +161,6 @@
         itemsList.forEach((item, index) => {
             const div = document.createElement('div');
             div.className = 'letter-box';
-            // ٹرائی گراف کے لیے بارڈر کلر ایڈجسٹمنٹ
             if(targetContainerId === 'trigraphContainer') {
                 div.style.borderColor = '#ffc107';
             }
@@ -167,13 +182,11 @@
         });
     }
 
-    // 1. ڈائی گراف ڈیٹا لوڈ کریں
     const digraphs = ["CH", "SH", "TH", "WH", "PH", "CK", "KN", "WR"];
     const digraphImages = { CH: "chair.png", SH: "ship.png", TH: "thumb.png", WH: "whale.png", PH: "phone.png", CK: "duck.png", KN: "knee.png", WR: "wrist.png" };
     const digraphWords = { CH: "Chair", SH: "Ship", TH: "Thumb", WH: "Whale", PH: "Phone", CK: "Duck", KN: "Knee", WR: "Wrist" };
     createCards('digraphContainer', digraphs, digraphImages, digraphWords);
 
-    // 2. ٹرائی گراف ڈیٹا لوڈ کریں
     const trigraphs = ["IGH", "TCH", "DGE", "EAR", "AIR", "URE", "OAR", "AIL"];
     const trigraphImages = { IGH: "night.png", TCH: "watch.png", DGE: "bridge.png", EAR: "ear.png", AIR: "chair.png", URE: "pure.png", OAR: "oar.png", AIL: "snail.png" };
     const trigraphWords = { IGH: "Night", TCH: "Watch", DGE: "Bridge", EAR: "Ear", AIR: "Chair", URE: "Pure", OAR: "Oar", AIL: "Snail" };
