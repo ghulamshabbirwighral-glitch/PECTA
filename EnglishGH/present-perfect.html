@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Present Perfect Tense - PECTA English Grammar Hub</title>
+    <meta name="description" content="Learn Present Perfect Tense with definitions in English & Urdu, formulas, and interactive examples.">
+    <meta name="keywords" content="Present Perfect Tense, English Grammar, PECTA Class 8, Wighral Education">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f8f9fa; }
+        .viewer { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: right; }
+        h2 { font-size: 42px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
+        p { font-size: 28px; line-height: 1.8; margin: 15px 0; }
+        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
+        .speaker-btn:hover { background: #2980b9; }
+        .ex-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
+        .ex-item { font-size: 32px; margin-bottom: 20px; padding: 10px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .opt-btn { display: block; width: 100%; padding: 20px; font-size: 28px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div id="google_translate_element" style="margin: 10px;"></div>
+
+<div class="viewer">
+    <h2 class="notranslate">Present Perfect Tense</h2>
+  
+    <p><strong>Def:</strong> <span id="def-en" class="notranslate">Used to express an action that has been completed recently in the present. Formula: Subject + has/have + V3 + Object.</span>
+        <button class="speaker-btn" onclick="speak('def-en', 'en')">🔊 Listen</button>
+    </p>
+    
+    <p><strong>تعريف:</strong> <span id="def-ur">یہ ایسے کام کو ظاہر کرتا ہے جو موجودہ زمانے میں مکمل ہو چکا ہو۔ اردو پہچان: جملے کے آخر میں 'چکا ہے'، 'چکی ہے'، 'چکے ہیں' یا 'یا ہے'، 'یی ہے' وغیرہ آتا ہے۔</span>
+        <button class="speaker-btn" onclick="speak('def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+    
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="ex-content"></div>
+    </div>
+    
+    <a href="index.html" class="opt-btn">واپس (Back)</a>
+</div>
+
+<script>
+    const examples = [
+        "I have finished my work.", 
+        "She has cooked the meal.", 
+        "They have won the match.", 
+        "He has gone to Lahore.", 
+        "We have learned our lesson.", 
+        "Have you seen the Taj Mahal?", 
+        "He has not written the letter yet.", 
+        "The train has arrived at the station.", 
+        "Has she completed her degree?", 
+        "Ali has bought a new phone."
+    ];
+    
+    const exContent = document.getElementById('ex-content');
+    examples.forEach((ex, index) => {
+        exContent.innerHTML += `
+            <div class="ex-item">
+                <span id="ex-${index}" class="notranslate">${ex}</span>
+                <button class="speaker-btn" onclick="speak('ex-${index}', 'en')">🔊</button>
+            </div>`;
+    });
+
+    function speak(elementId, lang) {
+        let text = document.getElementById(elementId).innerText;
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang === 'ur' ? 'ur-PK' : 'en-US';
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ur,ar,fr,es,ru,zh-CN,bn,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
+
