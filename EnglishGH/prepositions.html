@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepositions - PECTA English Grammar Hub</title>
+    <meta name="description" content="Learn about Prepositions (in, on, at) with English & Urdu definitions, usage, and read-aloud facility.">
+    <meta name="keywords" content="Prepositions, In On At, English Grammar, PECTA Class 8, Wighral Education">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f8f9fa; }
+        .viewer { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: right; }
+        h2 { font-size: 42px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
+        p { font-size: 28px; line-height: 1.8; margin: 15px 0; }
+        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
+        .speaker-btn:hover { background: #2980b9; }
+        .ex-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
+        .ex-item { font-size: 32px; margin-bottom: 20px; padding: 10px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .opt-btn { display: block; width: 100%; padding: 20px; font-size: 28px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div id="google_translate_element" style="margin: 10px;"></div>
+
+<div class="viewer">
+    <h2 class="notranslate">Prepositions (حروف جار)</h2>
+  
+    <p><strong>Def:</strong> <span id="def-en" class="notranslate">Words placed before a noun or pronoun to show its relation to another word in the sentence.</span>
+        <button class="speaker-btn" onclick="speak('def-en', 'en')">🔊 Listen</button>
+    </p>
+    
+    <p><strong>تعريف:</strong> <span id="def-ur">وہ الفاظ جو کسی اسم یا اسم ضمیر سے پہلے آکر اس کا تعلق جملے کے دوسرے الفاظ سے ظاہر کریں۔</span>
+        <button class="speaker-btn" onclick="speak('def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+    
+    <div class="ex-section">
+        <p><strong>Examples (Prepositions are: in, on, at, under, behind...):</strong></p>
+        <div id="ex-content"></div>
+    </div>
+    
+    <a href="index.html" class="opt-btn">واپس (Back)</a>
+</div>
+
+<script>
+    const examples = [
+        "The book is on the table.", 
+        "The fish is in the water.", 
+        "He is standing at the door.", 
+        "The cat is under the chair.", 
+        "The sun is above us.", 
+        "He jumped into the river.", 
+        "She is sitting beside me.", 
+        "Divide this between Ali and Aslam.", 
+        "He goes to school.", 
+        "The car parked behind the wall."
+    ];
+    
+    const exContent = document.getElementById('ex-content');
+    examples.forEach((ex, index) => {
+        exContent.innerHTML += `
+            <div class="ex-item">
+                <span id="ex-${index}" class="notranslate">${ex}</span>
+                <button class="speaker-btn" onclick="speak('ex-${index}', 'en')">🔊</button>
+            </div>`;
+    });
+
+    function speak(elementId, lang) {
+        let text = document.getElementById(elementId).innerText;
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang === 'ur' ? 'ur-PK' : 'en-US';
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ur,ar,fr,es,ru,zh-CN,bn,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
+
