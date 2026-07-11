@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proverbs - PECTA English Grammar Hub</title>
+    <meta name="description" content="Learn about Proverbs with definitions in English & Urdu, examples, and audio playback.">
+    <meta name="keywords" content="Proverbs, English Grammar, PECTA Class 8, Wighral Education">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4NHR43XLF6');
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f8f9fa; }
+        .viewer { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { font-size: 42px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
+        p { font-size: 28px; line-height: 1.8; margin: 15px 0; text-align: left; }
+        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 20px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
+        .speaker-btn:hover { background: #2980b9; }
+        .ex-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
+        .ex-item { font-size: 32px; margin-bottom: 20px; padding: 10px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .opt-btn { display: block; width: 100%; padding: 20px; font-size: 28px; background-color: #c0392b; color: white; text-align: center; text-decoration: none; border-radius: 10px; margin-top: 30px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div id="google_translate_element" style="margin: 10px;"></div>
+
+<div class="viewer">
+    <h2 class="notranslate">Proverbs</h2>
+    
+    <p><strong>Def:</strong> <span id="def-en" class="notranslate">A short, well-known pithy saying, stating a general truth or piece of advice.</span>
+        <button class="speaker-btn" onclick="speak('def-en', 'en')">🔊 Listen</button>
+    </p>
+    
+    <p><strong>تعریف:</strong> <span id="def-ur">ایک مشہور اور پرانی کہاوت یا ضرب المثل جو کوئی سچائی یا نصیحت بیان کرے۔</span>
+        <button class="speaker-btn" onclick="speak('def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+    
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="ex-content"></div>
+    </div>
+    
+    <a href="index.html" class="opt-btn">واپس (Back)</a>
+</div>
+
+<script>
+    const examples = ["Honesty is the best policy", "Actions speak louder than words", "All that glitters is not gold", "A friend in need is a friend indeed"];
+    
+    const exContent = document.getElementById('ex-content');
+    examples.forEach((ex, index) => {
+        const div = document.createElement('div');
+        div.className = 'ex-item';
+        div.innerHTML = `
+            <span id="ex-${index}" class="notranslate">${ex}</span>
+            <button class="speaker-btn" onclick="speak('ex-${index}', 'en')">🔊</button>
+        `;
+        exContent.appendChild(div);
+    });
+
+    function speak(elementId, lang) {
+        let text = document.getElementById(elementId).innerText;
+        let utterance = new SpeechSynthesisUtterance(text);
+        if (lang === 'ur') {
+            utterance.lang = 'ur-PK';
+        } else {
+            utterance.lang = 'en-US';
+        }
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,ur,ar,fr,es,ru,zh-CN,bn,hi',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
