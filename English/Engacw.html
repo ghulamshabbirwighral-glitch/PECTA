@@ -136,7 +136,7 @@
         { eng: "Watch", img: "watch1.png", urdu: "دیکھنا" }
     ];
 
-    // انگریزی آواز کا فنکشن (نام اور اسپیلنگ)
+    // انگریزی آواز کا فنکشن (ہمیشہ انگریزی ہی بولے گا)
     function speakEnglish(partName) {
         window.speechSynthesis.cancel(); 
         
@@ -149,12 +149,35 @@
         window.speechSynthesis.speak(msg);
     }
 
-    // اردو آواز کا فنکشن
-    function speakUrdu(urduText) {
+    // لائیو متبادل زبان بولنے کا نیا اور طاقتور فنکشن
+    function speakTranslatedText(elementId) {
         window.speechSynthesis.cancel(); 
         
-        const msg = new SpeechSynthesisUtterance(urduText);
-        msg.lang = 'ur-PK'; 
+        // 1. اسکرین پر موجود کرنٹ ٹیکسٹ حاصل کریں (جو گوگل نے ٹرانسلیٹ کر دیا ہے)
+        const textToSpeak = document.getElementById(elementId).innerText;
+        const msg = new SpeechSynthesisUtterance(textToSpeak);
+        
+        // 2. گوگل ٹرانسلیٹ کی لائیو زبان معلوم کریں (HTML lang یا گوگل کوکی سے)
+        let currentLang = document.documentElement.lang || 'ur';
+        
+        // اگر گوگل کوکی موجود ہو تو وہاں سے سیکیور فالبیک لیں
+        const cookieMatch = document.cookie.match(/googtrans=\/[^/]+\/([^;]+)/);
+        if (cookieMatch && cookieMatch[1]) {
+            currentLang = cookieMatch[1];
+        }
+
+        // زبان کے کوڈز کو اسٹینڈرڈ فارمیٹ میں سیٹ کریں تاکہ سپیکر درست آواز نکالے
+        if (currentLang === 'ur') currentLang = 'ur-PK';
+        else if (currentLang === 'hi') currentLang = 'hi-IN';
+        else if (currentLang === 'zh-CN' || currentLang === 'zh') currentLang = 'zh-CN';
+        else if (currentLang === 'ar') currentLang = 'ar-SA';
+        else if (currentLang === 'es') currentLang = 'es-ES';
+        else if (currentLang === 'fr') currentLang = 'fr-FR';
+        else if (currentLang === 'ru') currentLang = 'ru-RU';
+        else if (currentLang === 'fa') currentLang = 'fa-IR';
+        else if (currentLang === 'bn') currentLang = 'bn-BD';
+
+        msg.lang = currentLang;
         msg.rate = 0.85; 
         window.speechSynthesis.speak(msg);
     }
@@ -169,16 +192,17 @@
         
         const lowerSpelling = item.eng.toLowerCase();
         
+        // ہر لفظ کے معنی والے ہدف کو منفرد ID (meaning-${index}) دی گئی ہے تاکہ لائیو ٹیکسٹ ریڈ ہو سکے
         div.innerHTML = `
             <span class="body-title notranslate">${item.eng}</span>
             <img src="images/${item.img}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${item.eng}'">
             <span class="word-text notranslate">${lowerSpelling}</span>
             <div>
-                <span class="urdu-meaning">${item.urdu}</span>
+                <span id="meaning-${index}" class="urdu-meaning">${item.urdu}</span>
             </div>
             <div class="voice-btn-container">
                 <button class="voice-btn" onclick="speakEnglish('${item.eng}')" title="English">EN 🔊</button>
-                <button class="voice-btn ur-btn" onclick="speakUrdu('${item.urdu}')" title="Urdu">UR 🔊</button>
+                <button class="voice-btn ur-btn" onclick="speakTranslatedText('meaning-${index}')" title="Listen">🔊</button>
             </div>
         `;
         currentLine.appendChild(div);
