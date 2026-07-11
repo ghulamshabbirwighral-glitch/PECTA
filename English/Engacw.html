@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>ایکشن ورڈز لرننگ گیم - Action Words Learning Game</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; }
+        
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* گوگل ٹرانسلیٹ باکس کی اسٹائلنگ */
+        #google_translate_element {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+        .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 155px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
+        
+        .body-title { font-size: 24px; font-weight: bold; color: #2c3e50; display: block; line-height: 1.2; margin-bottom: 5px; }
+        .img-box { width: 80px; height: 80px; object-fit: contain; margin: 6px 0; }
+        
+        /* اسپیلنگ ٹیکسٹ کی اسٹائلنگ */
+        .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
+        
+        /* اردو معنی کی اسٹائلنگ */
+        .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: inline-block; vertical-align: middle; }
+        
+        /* بٹنز کی اسٹائلنگ */
+        .voice-btn-container { display: flex; justify-content: space-around; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
+        .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 16px; color: white; padding: 4px 10px; border-radius: 20px; transition: 0.2s; }
+        .voice-btn.ur-btn { background: #dc3545; }
+        .voice-btn:active { transform: scale(0.95); opacity: 0.9; }
+
+        /* ٹرانسلیٹ بینر کو چھپانے کے لیے */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
+        }
+    </style>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur', 
+                includedLanguages: 'en,zh-CN,ru,fa,bn,ur,hi,ar,es,fr', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+<div class="page">
+    <div id="google_translate_element"></div>
+
+    <p class="game-instruction">Press 🔊 to Learn Action Words (کام والے الفاظ)</p>
+    
+    <div id="mainPage"></div>
+</div>
+
+<script>
+    const container = document.getElementById('mainPage');
+    
+    // تمام ضروری ایکشن ورڈز کا ڈیٹا (کل 32 الفاظ)
+    const actionWordsData = [
+        { eng: "Read", img: "read.png", urdu: "پڑھنا" },
+        { eng: "Write", img: "write.png", urdu: "لکھنا" },
+        { eng: "Run", img: "run.png", urdu: "دوڑنا" },
+        { eng: "Eat", img: "eat.png", urdu: "کھانا" },
+        { eng: "Drink", img: "drink.png", urdu: "پینا" },
+        { eng: "Sleep", img: "sleep.png", urdu: "سونا" },
+        { eng: "Walk", img: "walk.png", urdu: "چلنا" },
+        { eng: "Jump", img: "jump.png", urdu: "کودنا" },
+        { eng: "Play", img: "play.png", urdu: "کھیلنا" },
+        { eng: "Laugh", img: "laugh.png", urdu: "ہنسنا" },
+        { eng: "Cry", img: "cry.png", urdu: "رونا" },
+        { eng: "Sit", img: "sit.png", urdu: "بیٹھنا" },
+        { eng: "Stand", img: "stand.png", urdu: "کھڑے ہونا" },
+        { eng: "Push", img: "push.png", urdu: "دھکیلنا" },
+        { eng: "Pull", img: "pull.png", urdu: "کھینچنا" },
+        { eng: "Sing", img: "sing.png", urdu: "گانا" },
+        { eng: "Dance", img: "dance.png", urdu: "ناچنا" },
+        { eng: "Smile", img: "smile.png", urdu: "مسکرانا" },
+        { eng: "Clap", img: "clap.png", urdu: "تالی بجانا" },
+        { eng: "Wash", img: "wash.png", urdu: "دھونا" },
+        { eng: "Clean", img: "clean.png", urdu: "صاف کرنا" },
+        { eng: "Open", img: "open.png", urdu: "کھولنا" },
+        { eng: "Close", img: "close.png", urdu: "بند کرنا" },
+        { eng: "Catch", img: "catch.png", urdu: "پکڑنا" },
+        { eng: "Throw", img: "throw.png", urdu: "پھینکنا" },
+        { eng: "Cook", img: "cook.png", urdu: "پکانا" },
+        { eng: "Fly", img: "fly.png", urdu: "اڑنا" },
+        { eng: "Swim", img: "swim.png", urdu: "تیرنا" },
+        { eng: "Think", img: "think.png", urdu: "سوچنا" },
+        { eng: "Talk", img: "talk.png", urdu: "بات کرنا" },
+        { eng: "Listen", img: "listen.png", urdu: "سننا" },
+        { eng: "Watch", img: "watch.png", urdu: "دیکھنا" }
+    ];
+
+    // انگریزی آواز کا فنکشن (نام اور اسپیلنگ)
+    function speakEnglish(partName) {
+        window.speechSynthesis.cancel(); 
+        
+        const spelling = partName.split("").join(", "); 
+        const textToSpeak = `${partName}. . . ${spelling}`;
+        
+        const msg = new SpeechSynthesisUtterance(textToSpeak);
+        msg.lang = 'en-US';
+        msg.rate = 0.80; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    // اردو آواز کا فنکشن
+    function speakUrdu(urduText) {
+        window.speechSynthesis.cancel(); 
+        
+        const msg = new SpeechSynthesisUtterance(urduText);
+        msg.lang = 'ur-PK'; 
+        msg.rate = 0.85; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    let currentLine = document.createElement('div');
+    currentLine.className = 'line-set';
+    container.appendChild(currentLine);
+
+    actionWordsData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'letter-box';
+        
+        const lowerSpelling = item.eng.toLowerCase();
+        
+        div.innerHTML = `
+            <span class="body-title notranslate">${item.eng}</span>
+            <img src="images/${item.img}" class="img-box" onerror="this.src='https://via.placeholder.com/80?text=${item.eng}'">
+            <span class="word-text notranslate">${lowerSpelling}</span>
+            <div>
+                <span class="urdu-meaning">${item.urdu}</span>
+            </div>
+            <div class="voice-btn-container">
+                <button class="voice-btn" onclick="speakEnglish('${item.eng}')" title="English">EN 🔊</button>
+                <button class="voice-btn ur-btn" onclick="speakUrdu('${item.urdu}')" title="Urdu">UR 🔊</button>
+            </div>
+        `;
+        currentLine.appendChild(div);
+
+        // ہر 6 باکسز کے بعد نئی لائن
+        if ((index + 1) % 6 === 0) {
+            currentLine = document.createElement('div');
+            currentLine.className = 'line-set';
+            container.appendChild(currentLine);
+        }
+    });
+</script>
+</body>
+</html>
+
