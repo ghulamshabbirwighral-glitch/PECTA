@@ -29,7 +29,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* گوگل ٹرانسلیٹ باکس کی اسٹائلنگ */
         #google_translate_element {
             text-align: center;
             margin-bottom: 15px;
@@ -52,21 +51,19 @@
         .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
         .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 165px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
         
-        .img-box { width: 90px; height: 90px; object-fit: contain; margin: 6px 0; border-radius: 8px; }
+        /* فکسڈ سائز کینوس برائے اشارات */
+        .gesture-canvas { width: 90px; height: 90px; background: #fdfefe; border-radius: 8px; margin: 6px 0; border: 1px solid #eee; }
         
-        /* اسپیلنگ ٹیکسٹ کی اسٹائلنگ */
+        /* نوٹ: .word-text پر class="notranslate" کا استعمال کیا گیا ہے تا کہ انگلش تبدیل نہ ہو */
         .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
         
-        /* اردو معنی کی اسٹائلنگ */
         .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: inline-block; vertical-align: middle; }
         
-        /* بٹنز کی اسٹائلنگ */
         .voice-btn-container { display: flex; justify-content: space-around; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
         .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 16px; color: white; padding: 4px 10px; border-radius: 20px; transition: 0.2s; }
         .voice-btn.ur-btn { background: #dc3545; }
         .voice-btn:active { transform: scale(0.95); opacity: 0.9; }
 
-        /* ٹرانسلیٹ بینر کو چھپانے کے لیے */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
 
@@ -99,47 +96,121 @@
 <script>
     const container = document.getElementById('mainPage');
     
-    // سکرین شاٹ کے مطابق تمام 16 الفاظ کا اردو اور انگلش ڈیٹا
+    // ڈیٹا لسٹ (انگریزی الفاظ پر class="notranslate" لاگو ہو گی)
     const actionWordsData = [
-        { eng: "Fight", img: "gesture1.png", urdu: "لڑائی" },
-        { eng: "Heated argument", img: "gesture2.png", urdu: "تکرار کرنا" },
-        { eng: "Altercation", img: "gesture3.png", urdu: "جھگڑا" },
-        { eng: "Tension", img: "gesture4.png", urdu: "دباؤ یا پریشانی" },
-        { eng: "Enmity", img: "gesture5.png", urdu: "دشمنی" },
-        { eng: "Provocation", img: "gesture6.png", urdu: "اشتعال دلانا" },
-        { eng: "Accusation", img: "gesture7.png", urdu: "الزام لگانا" },
-        { eng: "Denial", img: "gesture8.png", urdu: "انکار کرنا" },
-        { eng: "Defense", img: "gesture9.png", urdu: "دفاع کرنا" },
-        { eng: "Objection", img: "gesture10.png", urdu: "اعتراض کرنا" },
-        { eng: "Threat", img: "gesture11.png", urdu: "دھمکی دینا" },
-        { eng: "Reconciliation", img: "gesture12.png", urdu: "صلح کرنا" },
-        { eng: "Harmony", img: "gesture13.png", urdu: "اتفاق و اتحاد" },
-        { eng: "Negotiation", img: "gesture14.png", urdu: "مذاکرات" },
-        { eng: "Concord", img: "gesture15.png", urdu: "باہمی رضامندی" },
-        { eng: "Cooperation", img: "gesture16.png", urdu: "تعاون کرنا" }
+        { eng: "Fight", urdu: "لڑائی", type: "fight" },
+        { eng: "Heated argument", urdu: "تکرار کرنا", type: "argument" },
+        { eng: "Altercation", urdu: "جھگڑا", type: "altercation" },
+        { eng: "Tension", urdu: "دباؤ یا پریشانی", type: "tension" },
+        { eng: "Enmity", urdu: "دشمنی", type: "enmity" },
+        { eng: "Provocation", urdu: "اشتعال دلانا", type: "provocation" },
+        { eng: "Accusation", urdu: "الزام لگانا", type: "accusation" },
+        { eng: "Denial", urdu: "انکار کرنا", type: "denial" },
+        { eng: "Defense", urdu: "دفاع کرنا", type: "defense" },
+        { eng: "Objection", urdu: "اعتراض کرنا", type: "objection" },
+        { eng: "Threat", urdu: "دھمکی دینا", type: "threat" },
+        { eng: "Reconciliation", urdu: "صلح کرنا", type: "reconciliation" },
+        { eng: "Harmony", urdu: "اتفاق و اتحاد", type: "harmony" },
+        { eng: "Negotiation", urdu: "مذاکرات", type: "negotiation" },
+        { eng: "Concord", urdu: "باہمی رضامندی", type: "concord" },
+        { eng: "Cooperation", urdu: "تعاون کرنا", type: "cooperation" }
     ];
 
-    // ڈائنامک کارڈز بنانے کا فنکشن (بالکل آپ کی فائل کی طرح)
-    actionWordsData.forEach(item => {
+    // ڈائنامک کارڈز بنانے کا عمل
+    actionWordsData.forEach((item, index) => {
         const box = document.createElement('div');
         box.className = 'letter-box';
         
+        // کینوس آئی ڈی جنریٹ کرنا
+        const canvasId = `gestureCanvas_${index}`;
+        
+        // نوٹس کریں: یہاں 'word-text' اسپین میں کلاس 'notranslate' کا اضافہ کیا گیا ہے
         box.innerHTML = `
-            <img src="${item.img}" alt="${item.eng}" class="img-box">
-            <span class="word-text">${item.eng}</span>
+            <canvas id="${canvasId}" class="gesture-canvas" width="100" height="100"></canvas>
+            <span class="word-text notranslate">${item.eng}</span>
             <span class="urdu-meaning">${item.urdu}</span>
             <div class="voice-btn-container">
-                <button class="voice-btn" onclick="speakText('${item.eng}', 'en-US')">🔊</button>
+                <button class="voice-btn notranslate" onclick="speakText('${item.eng}', 'en-US')">🔊</button>
                 <button class="voice-btn ur-btn" onclick="speakText('${item.urdu}', 'ur-PK')">🔊</button>
             </div>
         `;
         
         container.appendChild(box);
+        
+        // کارڈ بننے کے بعد اسکرین شاٹ کے مطابق کینوس پر خاکہ بنانا
+        setTimeout(() => drawGesture(canvasId, item.type), 50);
     });
 
-    // آواز (Text to Speech) کا فنکشن
+    // کینوس پر اشاروں کے خاکے (Vector Drawings) بنانے کا فنکشن
+    function drawGesture(canvasId, type) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        
+        // چہروں یا ہاتھوں کے بنیادی رنگ
+        const skinColor = '#ffdbac';
+        const shirtColor1 = '#3498db';
+        const shirtColor2 = '#e74c3c';
+
+        if (type === "fight" || type === "argument" || type === "altercation") {
+            // دو چہرے آمنے سامنے غصے میں
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(30, 45, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.beginPath(); ctx.arc(70, 45, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            // غصے کی لکیریں
+            ctx.strokeStyle = 'red';
+            ctx.beginPath(); ctx.moveTo(48, 30); ctx.lineTo(52, 35); ctx.moveTo(52, 30); ctx.lineTo(48, 35); ctx.stroke();
+        } else if (type === "tension") {
+            // سر پر ہاتھ رکھے پریشان شخص
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(50, 45, 18, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = '#2c3e50';
+            // پریشانی کے بادل (سر کے اوپر)
+            ctx.beginPath(); ctx.arc(50, 20, 8, 0, Math.PI*2); ctx.stroke();
+        } else if (type === "enmity") {
+            // ایک دوسرے کی طرف پیٹھ کیے ہوئے چہرے
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(32, 50, 14, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.beginPath(); ctx.arc(68, 50, 14, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = 'black';
+            ctx.beginPath(); ctx.moveTo(50, 35); ctx.lineTo(50, 65); ctx.stroke(); // درمیان میں لکیر
+        } else if (type === "provocation" || type === "accusation" || type === "threat") {
+            // انگلی سے اشارہ کرتا ہوا ہاتھ/شخص
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(35, 45, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = 'black';
+            ctx.beginPath(); ctx.moveTo(50, 50); ctx.lineTo(75, 50); ctx.stroke(); // اشارہ کرتی انگلی
+        } else if (type === "denial") {
+            // روکنے کا اشارہ کرتا ہوا ہاتھ (Cross یا Stop)
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(50, 40, 16, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = 'red'; // کراس مارک
+            ctx.beginPath(); ctx.moveTo(70, 25); ctx.lineTo(82, 37); ctx.moveTo(82, 25); ctx.lineTo(70, 37); ctx.stroke();
+        } else if (type === "defense") {
+            // دفاعی ڈھال یا بچاؤ کا پوز
+            ctx.fillStyle = '#2ecc71';
+            ctx.beginPath(); ctx.arc(50, 50, 18, 0, Math.PI, true); ctx.closePath(); ctx.fill(); ctx.stroke();
+        } else if (type === "objection") {
+            // انگلی اٹھا کر اعتراض کرنا
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(50, 55, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = 'orange'; // الرٹ کا نشان
+            ctx.beginPath(); ctx.moveTo(50, 20); ctx.lineTo(50, 32); ctx.moveTo(50, 38); ctx.arc(50, 38, 2, 0, Math.PI*2); ctx.stroke();
+        } else if (type === "reconciliation" || type === "harmony" || type === "negotiation" || type === "concord" || type === "cooperation") {
+            // ہاتھ ملانے یا تعاون کا نشان (Handshake)
+            ctx.strokeStyle = '#27ae60';
+            ctx.beginPath(); ctx.moveTo(25, 50); ctx.lineTo(45, 50); ctx.moveTo(75, 50); ctx.lineTo(55, 50); ctx.stroke();
+            ctx.fillStyle = skinColor;
+            ctx.beginPath(); ctx.arc(50, 50, 10, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+        }
+    }
+
+    // وائس اوور فنکشن
     function speakText(text, lang) {
         if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // پہلے سے چلتی ہوئی آواز کو روکنے کے لیے
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
             window.speechSynthesis.speak(utterance);
