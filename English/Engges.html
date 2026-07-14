@@ -96,15 +96,24 @@
 <script>
     const container = document.getElementById('mainPage');
     
-    // تمام امیجز اب .jpg فارمیٹ پر سیٹ کر دی گئی ہیں
+    // تصویر میں موجود تمام 16 الفاظ کی فہرست ان کے اردو ترجمے اور .jpg فائل نیمز کے ساتھ
     const actionWordsData = [
-        { eng: "Fight", urdu: "لڑائی", img: "images/fight.jpg" },
-        { eng: "Heated argument", urdu: "تکرار کرنا", img: "images/heated-argument.jpg" },
-        { eng: "Altercation", urdu: "جھگڑا", img: "images/altercation.jpg" },
-        { eng: "Tension", urdu: "دباؤ یا پریشانی", img: "images/tension.jpg" },
-        { eng: "Enmity", urdu: "دشمنی", img: "images/enmity.jpg" },
-        { eng: "Provocation", urdu: "اشتعال دلانا", img: "images/provocation.jpg" },
-        { eng: "Accusation", urdu: "الزام لگانا", img: "images/accusation.jpg" }
+        { eng: "Fight", urdu: "لڑائی", img: "images/01_fight.jpg" },
+        { eng: "Heated argument", urdu: "تکرار کرنا", img: "images/02_heated_argument.jpg" },
+        { eng: "Altercation", urdu: "جھگڑا", img: "images/03_altercation.jpg" },
+        { eng: "Tension", urdu: "دباؤ یا پریشانی", img: "images/04_tension.jpg" },
+        { eng: "Enmity", urdu: "دشمنی", img: "images/05_enmity.jpg" },
+        { eng: "Provocation", urdu: "اشتعال دلانا", img: "images/06_provocation.jpg" },
+        { eng: "Accusation", urdu: "الزام لگانا", img: "images/07_accusation.jpg" },
+        { eng: "Denial", urdu: "انکار کرنا", img: "images/08_denial.jpg" },
+        { eng: "Defense", urdu: "دفاع کرنا", img: "images/09_defense.jpg" },
+        { eng: "Objection", urdu: "اعتراض کرنا", img: "images/10_objection.jpg" },
+        { eng: "Threat", urdu: "دھمکی دینا", img: "images/11_threat.jpg" },
+        { eng: "Reconciliation", urdu: "صلح کرنا", img: "images/12_reconciliation.jpg" },
+        { eng: "Harmony", urdu: "ہم آہنگی", img: "images/13_harmony.jpg" },
+        { eng: "Negotiation", urdu: "مذاکرات کرنا", img: "images/14_negotiation.jpg" },
+        { eng: "Concord", urdu: "باہمی رضامندی", img: "images/15_concord.jpg" },
+        { eng: "Cooperation", urdu: "تعاون کرنا", img: "images/16_cooperation.jpg" }
     ];
 
     // کارڈز کو اسکرین پر لوڈ کرنے کا جاوا اسکرپٹ لوپ
@@ -112,7 +121,6 @@
         const box = document.createElement('div');
         box.className = 'letter-box';
 
-        // onerror یہاں کام کرے گا اگر امیج فولڈر میں تصویر موجود نہ ہو یا نام غلط ہو
         box.innerHTML = `
             <span class="word-text notranslate">${item.eng}</span>
             <img class="img-box" src="${item.img}" alt="${item.eng}" onerror="this.onerror=null; this.src='https://placehold.co/90x90?text=No+Image'">
@@ -135,3 +143,4 @@
 
 </body>
 </html>
+
