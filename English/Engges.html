@@ -51,10 +51,10 @@
         .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
         .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 165px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; }
         
-        /* خوبصورت کلپ آرٹ امیجز کے لیے اسٹائل */
-        .img-box { width: 90px; height: 90px; object-fit: contain; margin: 6px 0; border-radius: 8px; }
+        /* امیجز کے لیے خوبصورت اسٹائل اور ہلکا گرے بیک گراؤنڈ */
+        .img-box { width: 90px; height: 90px; object-fit: contain; margin: 6px 0; border-radius: 8px; background-color: #f9f9f9; }
         
-        /* class="notranslate" سے انگلش تبدیل نہیں ہوگی */
+        /* کلاس notranslate کا استعمال تاکہ انگریزی نام تبدیل نہ ہوں */
         .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
         
         .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: inline-block; vertical-align: middle; }
@@ -96,57 +96,42 @@
 <script>
     const container = document.getElementById('mainPage');
     
-    // مفت ہائی کوالٹی اوپن سورس کلپ آرٹ لنکس کے ساتھ ڈیٹا لسٹ
+    // تمام الفاظ اور ان کے امیج پاتھ کی مکمل لسٹ
     const actionWordsData = [
-        { eng: "Fight", urdu: "لڑائی", img: "https://openclipart.org/image/2400px/svg_to_png/190772/angry-face.png" },
-        { eng: "Heated argument", urdu: "تکرار کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/221524/Shouting-Man-Silhouette.png" },
-        { eng: "Altercation", urdu: "جھگڑا", img: "https://openclipart.org/image/2400px/svg_to_png/183188/spat.png" },
-        { eng: "Tension", urdu: "دباؤ یا پریشانی", img: "https://openclipart.org/image/2400px/svg_to_png/275681/Stressed-Out-Man.png" },
-        { eng: "Enmity", urdu: "دشمنی", img: "https://openclipart.org/image/2400px/svg_to_png/216503/crossed-swords.png" },
-        { eng: "Provocation", urdu: "اشتعال دلانا", img: "https://openclipart.org/image/2400px/svg_to_png/282216/Pointing-Finger.png" },
-        { eng: "Accusation", urdu: "الزام لگانا", img: "https://openclipart.org/image/2400px/svg_to_png/294279/J'accuse.png" },
-        { eng: "Denial", urdu: "انکار کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/212232/Stop-Sign.png" },
-        { eng: "Defense", urdu: "دفاع کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/171261/shield-green.png" },
-        { eng: "Objection", urdu: "اعتراض کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/261947/Warning-Sign.png" },
-        { eng: "Threat", urdu: "دھمکی دینا", img: "https://openclipart.org/image/2400px/svg_to_png/168532/1330368149.png" },
-        { eng: "Reconciliation", urdu: "صلح کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/21359/jarno-handshake.png" },
-        { eng: "Harmony", urdu: "اتفاق و اتحاد", img: "https://openclipart.org/image/2400px/svg_to_png/191632/Peace-Sign-Doodle.png" },
-        { eng: "Negotiation", urdu: "مذاکرات", img: "https://openclipart.org/image/2400px/svg_to_png/255018/1468603613.png" },
-        { eng: "Concord", urdu: "باہمی رضامندی", img: "https://openclipart.org/image/2400px/svg_to_png/121857/perfect-match.png" },
-        { eng: "Cooperation", urdu: "تعاون کرنا", img: "https://openclipart.org/image/2400px/svg_to_png/248386/People-Holding-Hands-Silhouettes.png" }
+        { eng: "Fight", urdu: "لڑائی", img: "images/fight.png" },
+        { eng: "Heated argument", urdu: "تکرار کرنا", img: "images/heated-argument.png" },
+        { eng: "Altercation", urdu: "جھگڑا", img: "images/altercation.png" },
+        { eng: "Tension", urdu: "دباؤ یا پریشانی", img: "images/tension.png" },
+        { eng: "Enmity", urdu: "دشمنی", img: "images/enmity.png" },
+        { eng: "Provocation", urdu: "اشتعال دلانا", img: "images/provocation.png" },
+        { eng: "Accusation", urdu: "الزام لگانا", img: "images/accusation.png" }
     ];
 
-    // کارڈز بنانے کا عمل
+    // کارڈز کو اسکرین پر لوڈ کرنے کا جاوا اسکرپٹ لوپ
     actionWordsData.forEach(item => {
         const box = document.createElement('div');
         box.className = 'letter-box';
-        
+
+        // onerror یہاں کام کرے گا اگر امیج فولڈر میں تصویر موجود نہ ہو یا نام غلط ہو
         box.innerHTML = `
-            <img src="${item.img}" alt="${item.eng}" class="img-box">
             <span class="word-text notranslate">${item.eng}</span>
+            <img class="img-box" src="${item.img}" alt="${item.eng}" onerror="this.onerror=null; this.src='https://placehold.co/90x90?text=No+Image'">
             <span class="urdu-meaning">${item.urdu}</span>
             <div class="voice-btn-container">
-                <button class="voice-btn notranslate" onclick="speakText('${item.eng}', 'en-US')">🔊</button>
-                <button class="voice-btn ur-btn" onclick="speakText('${item.urdu}', 'ur-PK')">🔊</button>
+                <button class="voice-btn" onclick="speak('${item.eng}', 'en-US')">🔊 En</button>
+                <button class="voice-btn ur-btn" onclick="speak('${item.urdu}', 'ur-PK')">🔊 Ur</button>
             </div>
         `;
-        
         container.appendChild(box);
     });
 
-    // ٹو اسپیچ فنکشن
-    function speakText(text, lang) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = lang;
-            window.speechSynthesis.speak(utterance);
-        } else {
-            alert("آپ کا براؤزر آواز کو سپورٹ نہیں کرتا۔");
-        }
+    // آواز نکالنے کا فنکشن (Text to Speech)
+    function speak(text, lang) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        window.speechSynthesis.speak(utterance);
     }
 </script>
 
 </body>
 </html>
-
