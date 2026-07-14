@@ -70,12 +70,10 @@
         .img-box { width: 90px; height: 90px; object-fit: contain; margin: 6px 0; border-radius: 8px; background-color: #f9f9f9; }
         
         .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
-        .chinese-text { font-size: 14px; color: #7f8c8d; display: block; margin: 1px 0; }
         .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: inline-block; vertical-align: middle; min-height: 24px; }
         
-        .voice-btn-container { display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; gap: 4px; }
-        .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 12px; color: white; padding: 4px 8px; border-radius: 20px; transition: 0.2s; }
-        .voice-btn.zh-btn { background: #ff9800; }
+        .voice-btn-container { display: flex; justify-content: space-around; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
+        .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 14px; color: white; padding: 4px 10px; border-radius: 20px; transition: 0.2s; }
         .voice-btn.ur-btn { background: #dc3545; }
         .voice-btn:active { transform: scale(0.95); opacity: 0.9; }
 
@@ -103,7 +101,7 @@
 <div class="page">
     <div id="google_translate_element"></div>
 
-    <p class="game-instruction">Press 🔊 to Learn Cleaning Supplies (صفائی کا سامان اور چائنیز نام)</p>
+    <p class="game-instruction">Press 🔊 to Learn Cleaning Supplies (صفائی کا سامان)</p>
     
     <div id="mainPage" class="line-set"></div>
 </div>
@@ -111,23 +109,23 @@
 <script>
     const container = document.getElementById('mainPage');
     
-    // صفائی کی تمام 12 چیزوں کا ڈیٹا انگریزی اور اردو کی ترتیب کے مطابق
+    // शुद्ध उर्दू और इंग्लिश डेटा (चीनी भाषा यहाँ से हटा दी गई है)
     const cleaningData = [
-        { num: 1, eng: "Broom", zh: "扫把 (sàobǎ)", urdu: "جھاڑو", img: "images/01_broom.jpg" },
-        { num: 2, eng: "Mop", zh: "拖把 (tuóbǎ)", urdu: "پوچھا", img: "images/02_mop.jpg" },
-        { num: 3, eng: "Trash can", zh: "垃圾桶 (lājītǒng)", urdu: "کچرے کا ڈبہ", img: "images/03_trash_can.jpg" },
-        { num: 4, eng: "Trash bag", zh: "垃圾袋 (lājīdài)", urdu: "کچرے کا لفافہ", img: "images/04_trash_bag.jpg" },
-        { num: 5, eng: "Cleaning cloth", zh: "抹布 (mābù)", urdu: "صفائی کا کپڑا", img: "images/05_cleaning_cloth.jpg" },
-        { num: 6, eng: "Sponge", zh: "海绵 (hǎimián)", urdu: "اسفنج", img: "images/06_sponge.jpg" },
-        { num: 7, eng: "Brush", zh: "刷子 (shuāzi)", urdu: "برش", img: "images/07_brush.jpg" },
-        { num: 8, eng: "Dish soap", zh: "洗洁精 (xǐjiéjīng)", urdu: "برتن دھونے کا صابن", img: "images/08_dish_soap.jpg" },
-        { num: 9, eng: "Cleaner", zh: "清洁剂 (qīngjiéjì)", urdu: "صاف کرنے والا مائع", img: "images/09_cleaner.jpg" },
-        { num: 10, eng: "Gloves", zh: "手套 (shǒutào)", urdu: "دستانے", img: "images/10_gloves.jpg" },
-        { num: 11, eng: "Dustpan", zh: "簸箕 (bòji)", urdu: "خاک انداز", img: "images/11_dustpan.jpg" },
-        { num: 12, eng: "Spray bottle", zh: "喷壶 (pēnhú)", urdu: "سپرے بوتل", img: "images/12_spray_bottle.jpg" }
+        { num: 1, eng: "Broom", urdu: "جھاڑو", img: "images/01_broom.jpg" },
+        { num: 2, eng: "Mop", urdu: "پوچھا", img: "images/02_mop.jpg" },
+        { num: 3, eng: "Trash can", urdu: "کچرے کا ڈبہ", img: "images/03_trash_can.jpg" },
+        { num: 4, eng: "Trash bag", urdu: "کچرے کا لفافہ", img: "images/04_trash_bag.jpg" },
+        { num: 5, eng: "Cleaning cloth", urdu: "صفائی کا کپڑا", img: "images/05_cleaning_cloth.jpg" },
+        { num: 6, eng: "Sponge", urdu: "اسفنج", img: "images/06_sponge.jpg" },
+        { num: 7, eng: "Brush", urdu: "برش", img: "images/07_brush.jpg" },
+        { num: 8, eng: "Dish soap", urdu: "برتن دھونے کا صابن", img: "images/08_dish_soap.jpg" },
+        { num: 9, eng: "Cleaner", urdu: "صاف کرنے والا مائع", img: "images/09_cleaner.jpg" },
+        { num: 10, eng: "Gloves", urdu: "دستانے", img: "images/10_gloves.jpg" },
+        { num: 11, eng: "Dustpan", urdu: "خاک انداز", img: "images/11_dustpan.jpg" },
+        { num: 12, eng: "Spray bottle", urdu: "سپرے بوتل", img: "images/12_spray_bottle.jpg" }
     ];
 
-    // کارڈز بنانے کا لوپ
+    // कार्ड बनाने का लूप
     cleaningData.forEach((item, index) => {
         const box = document.createElement('div');
         box.className = 'letter-box';
@@ -135,19 +133,17 @@
         box.innerHTML = `
             <div class="card-number notranslate">${item.num}</div>
             <span class="word-text notranslate">${item.eng}</span>
-            <span class="chinese-text notranslate">${item.zh}</span>
             <img class="img-box" src="${item.img}" alt="${item.eng}" onerror="this.onerror=null; this.src='https://placehold.co/90x90?text=No+Image'">
             <span class="urdu-meaning" id="text-meaning-${index}">${item.urdu}</span>
             <div class="voice-btn-container">
                 <button class="voice-btn" onclick="speak('${item.eng}', 'en-US')">🔊 En</button>
-                <button class="voice-btn zh-btn" onclick="speak('${item.zh.split(' ')[0]}', 'zh-CN')">🔊 Zh</button>
-                <button class="voice-btn ur-btn" onclick="speakDynamic(${index})">🔊 Ur</button>
+                <button class="voice-btn ur-btn" onclick="speakDynamic(${index})">🔊 Voice</button>
             </div>
         `;
         container.appendChild(box);
     });
 
-    // اسمارٹ اسپیکر کا فنکشن جو اسکرین پر لکھی ہوئی موجودہ زبان کو خودکار طریقے سے بولے گا
+    // स्मार्ट वॉइस सिस्टम (ट्रांसलेटर बदलने पर आवाज़ भी बदलेगी)
     function speakDynamic(index) {
         const textElement = document.getElementById(`text-meaning-${index}`);
         const currentText = textElement.innerText || textElement.textContent;
@@ -192,7 +188,7 @@
         speak(currentText, detectedLang);
     }
 
-    // آواز نکالنے کا فنکشن (Text to Speech)
+    // बोलने का फंक्शन
     function speak(text, lang) {
         window.speechSynthesis.cancel(); 
         const utterance = new SpeechSynthesisUtterance(text);
