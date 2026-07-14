@@ -116,25 +116,74 @@
         { eng: "Cooperation", urdu: "تعاون کرنا", img: "images/16_cooperation.jpg" }
     ];
 
-    // کارڈز کو اسکرین پر لوڈ کرنے کا جاوا اسکرپٹ لوپ
-    actionWordsData.forEach(item => {
+    // کارڈز کو اسکرین پر لوڈ کرنے کا لوپ
+    actionWordsData.forEach((item, index) => {
         const box = document.createElement('div');
         box.className = 'letter-box';
 
+        // یہاں ہم نے ہر لفظ کو منفرد آئی ڈی (id="text-meaning-${index}") دی ہے تاکہ جاوا اسکرپٹ اسکرین پر تبدیل شدہ لفظ کو پڑھ سکے
         box.innerHTML = `
             <span class="word-text notranslate">${item.eng}</span>
             <img class="img-box" src="${item.img}" alt="${item.eng}" onerror="this.onerror=null; this.src='https://placehold.co/90x90?text=No+Image'">
-            <span class="urdu-meaning">${item.urdu}</span>
+            <span class="urdu-meaning" id="text-meaning-${index}">${item.urdu}</span>
             <div class="voice-btn-container">
                 <button class="voice-btn" onclick="speak('${item.eng}', 'en-US')">🔊 En</button>
-                <button class="voice-btn ur-btn" onclick="speak('${item.urdu}', 'ur-PK')">🔊 Ur</button>
+                <button class="voice-btn ur-btn" onclick="speakDynamic(${index})">🔊 Ur</button>
             </div>
         `;
         container.appendChild(box);
     });
 
-    // آواز نکالنے کا فنکشن (Text to Speech)
+    // اسمارٹ اسپیکر کا فنکشن جو اسکرین پر لکھی ہوئی موجودہ زبان کو خودکار طریقے سے بولے گا
+    function speakDynamic(index) {
+        // اسکرین پر اس وقت جو لفظ نظر آ رہا ہے اسے حاصل کریں
+        const textElement = document.getElementById(`text-meaning-${index}`);
+        const currentText = textElement.innerText || textElement.textContent;
+
+        // ڈیفالٹ زبان اردو رکھیں
+        let detectedLang = 'ur-PK'; 
+        let googleTranslateFrame = document.querySelector('.goog-te-menu-value');
+
+        // اگر گوگل ٹرانسلیٹ کا ٹول ایکٹو ہے تو اس کی موجودہ زبان کا پتہ لگانے کی کوشش کریں
+        if (googleTranslateFrame) {
+            const translatedLangText = googleTranslateFrame.textContent || '';
+            if (translatedLangText.includes('Arabic') || translatedLangText.includes('عربية')) {
+                detectedLang = 'ar-SA';
+            } else if (translatedLangText.includes('Hindi') || translatedLangText.includes('हिन्दी')) {
+                detectedLang = 'hi-IN';
+            } else if (translatedLangText.includes('Persian') || translatedLangText.includes('فارسی')) {
+                detectedLang = 'fa-IR';
+            } else if (translatedLangText.includes('Russian') || translatedLangText.includes('русский')) {
+                detectedLang = 'ru-RU';
+            } else if (translatedLangText.includes('Bengali') || translatedLangText.includes('بنگالی')) {
+                detectedLang = 'bn-IN';
+            } else if (translatedLangText.includes('Chinese') || translatedLangText.includes('中文')) {
+                detectedLang = 'zh-CN';
+            } else if (translatedLangText.includes('Spanish') || translatedLangText.includes('Español')) {
+                detectedLang = 'es-ES';
+            } else if (translatedLangText.includes('French') || translatedLangText.includes('Français')) {
+                detectedLang = 'fr-FR';
+            }
+        } else {
+            // اگر فریم نہیں ملتا تو سورس لینگویج کو چیک کریں
+            const htmlLang = document.documentElement.lang;
+            if (htmlLang.startsWith('ar')) detectedLang = 'ar-SA';
+            else if (htmlLang.startsWith('zh')) detectedLang = 'zh-CN';
+            else if (htmlLang.startsWith('ru')) detectedLang = 'ru-RU';
+            else if (htmlLang.startsWith('fa')) detectedLang = 'fa-IR';
+            else if (htmlLang.startsWith('bn')) detectedLang = 'bn-IN';
+            else if (htmlLang.startsWith('hi')) detectedLang = 'hi-IN';
+            else if (htmlLang.startsWith('es')) detectedLang = 'es-ES';
+            else if (htmlLang.startsWith('fr')) detectedLang = 'fr-FR';
+        }
+
+        // اب نئی زبان کے مطابق لکھی ہوئی چیز کو اسمارٹ طریقے سے بولیں
+        speak(currentText, detectedLang);
+    }
+
+    // آواز نکالنے کا مین فنکشن (Text to Speech)
     function speak(text, lang) {
+        window.speechSynthesis.cancel(); // پرانی آواز کو پہلے ہی روک دیں
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
         window.speechSynthesis.speak(utterance);
