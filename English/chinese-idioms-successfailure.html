@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 7</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fbe9e7; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #d84315; border-bottom: 2px solid #d84315; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #3e2723; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #d84315; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #bf360c; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #ffccbc; border-radius: 8px; background-color: #fff; text-align: center; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #d84315; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #d84315; }
+        .pinyin { color: #555; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #37474f; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第7页：成败得失类 (Success & Failure)</p>
+    <h1>反义成语大全 (Success & Failure)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('旗开得胜')">🔊</button>
+                <div class="char">旗开得胜</div>
+            </div>
+            <div class="pinyin">qí kāi dé shèng</div>
+            <span class="english-explanation">Win victory from the very start</span>
+            <span class="urdu-explanation hidden">آغاز سے ہی شاندار کامیابی حاصل کرنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('一败涂地')">🔊</button>
+                <div class="char">一败涂地</div>
+            </div>
+            <div class="pinyin">yī bài tú dì</div>
+            <span class="english-explanation">Suffer a crushing defeat / Complete ruin</span>
+            <span class="urdu-explanation hidden">کامل مٹی پلید ہونا (عبرتناک شکست کھا جانا)</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('转败为胜')">🔊</button>
+                <div class="char">转败为胜</div>
+            </div>
+            <div class="pinyin">zhuǎn bài wéi shèng</div>
+            <span class="english-explanation">Turn defeat into victory</span>
+            <span class="urdu-explanation hidden">ہاری ہوئی بازی کو جیت میں بدلنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('功亏一篑')">🔊</button>
+                <div class="char">功亏一篑</div>
+            </div>
+            <div class="pinyin">gōng kuī yī kuì</div>
+            <span class="english-explanation">Fail on the verge of success for lack of final effort</span>
+            <span class="urdu-explanation hidden">بالکل آخری مرحلے پر کام بگڑ جانا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
+
