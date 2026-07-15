@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Actions in Chinese</title>
+    <meta name="description" content="Learn daily actions in Chinese with audio pronunciation, English meaning, and Urdu translation option.">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #d32f2f;
+        }
+        .intro {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .toggle-btn {
+            display: block;
+            margin: 0 auto 30px auto;
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: #b71c1c;
+        }
+        .action-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 6px solid #d32f2f;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .bg-pink { background-color: #ffebee; }
+        .bg-yellow { background-color: #fffde7; }
+        .bg-purple { background-color: #f3e5f5; }
+        .bg-green { background-color: #e8f5e9; }
+        .bg-blue { background-color: #e3f2fd; }
+        
+        .char-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        .chinese-char {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #222;
+        }
+        .audio-btn {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #d32f2f;
+            transition: transform 0.1s;
+        }
+        .audio-btn:active {
+            transform: scale(0.9);
+        }
+        .pinyin {
+            font-size: 1.2rem;
+            color: #d32f2f;
+            flex: 1;
+            text-align: center;
+        }
+        .meanings {
+            flex: 1.5;
+            text-align: right;
+        }
+        .english-meaning {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .urdu-meaning {
+            font-size: 1rem;
+            color: #e65100;
+            display: block;
+            margin-top: 4px;
+            direction: rtl;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .action-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .char-section {
+                justify-content: center;
+            }
+            .pinyin, .meanings {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Daily Actions in Chinese (日常活动)</h1>
+    <p class="intro">Learn standard daily actions in Chinese with pronunciation audio and optional Urdu translations.</p>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="action-card bg-pink">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('吃饭')">🔊</button>
+            <div class="chinese-char">吃饭</div>
+        </div>
+        <div class="pinyin">chīfàn</div>
+        <div class="meanings">
+            <span class="english-meaning">Eat / Have a meal</span>
+            <span class="urdu-meaning hidden">کھانا کھانا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-yellow">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('喝水')">🔊</button>
+            <div class="chinese-char">喝水</div>
+        </div>
+        <div class="pinyin">hē shuǐ</div>
+        <div class="meanings">
+            <span class="english-meaning">Drink water</span>
+            <span class="urdu-meaning hidden">پانی پینا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-purple">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('睡觉')">🔊</button>
+            <div class="chinese-char">睡觉</div>
+        </div>
+        <div class="pinyin">shuìjiào</div>
+        <div class="meanings">
+            <span class="english-meaning">Sleep</span>
+            <span class="urdu-meaning hidden">سونا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-green">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('跑步')">🔊</button>
+            <div class="chinese-char">跑步</div>
+        </div>
+        <div class="pinyin">pǎobù</div>
+        <div class="meanings">
+            <span class="english-meaning">Run / Go for a run</span>
+            <span class="urdu-meaning hidden">دوڑنا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-blue">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('游泳')">🔊</button>
+            <div class="chinese-char">游泳</div>
+        </div>
+        <div class="pinyin">yóuyǒng</div>
+        <div class="meanings">
+            <span class="english-meaning">Swim</span>
+            <span class="urdu-meaning hidden">تیراکی کرنا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-pink">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('看书')">🔊</button>
+            <div class="chinese-char">看书</div>
+        </div>
+        <div class="pinyin">kànshū</div>
+        <div class="meanings">
+            <span class="english-meaning">Read a book</span>
+            <span class="urdu-meaning hidden">کتاب پڑھنا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-green">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('做饭')">🔊</button>
+            <div class="chinese-char">做饭</div>
+        </div>
+        <div class="pinyin">zuòfàn</div>
+        <div class="meanings">
+            <span class="english-meaning">Cook / Make food</span>
+            <span class="urdu-meaning hidden">کھانا پکانا</span>
+        </div>
+    </div>
+
+    <div class="action-card bg-yellow">
+        <div class="char-section">
+            <button class="audio-btn" onclick="speak('开车')">🔊</button>
+            <div class="chinese-char">开车</div>
+        </div>
+        <div class="pinyin">kāichē</div>
+        <div class="meanings">
+            <span class="english-meaning">Drive a car</span>
+            <span class="urdu-meaning hidden">گاڑی چلانا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-meaning');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any ongoing speech first
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN'; // Set language to Chinese (Mandarin)
+            utterance.rate = 0.85;     // Slightly slower for learners
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Your browser does not support text-to-speech audio!");
+        }
+    }
+</script>
+
+</body>
+</html>
