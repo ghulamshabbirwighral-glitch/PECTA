@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 5</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f4c3; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #558b2f; border-bottom: 2px solid #558b2f; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #ff8f00; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #558b2f; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #33691e; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f9fbe7; text-align: center; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #558b2f; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #558b2f; }
+        .pinyin { color: #555; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #d84315; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第5页：品德性格类 (Character & Morals)</p>
+    <h1>反义成语大全 (Character & Morals)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('大公无私')">🔊</button>
+                <div class="char">大公无私</div>
+            </div>
+            <div class="pinyin">dà gōng wú sī</div>
+            <span class="english-explanation">Unselfish / Perfectly impartial</span>
+            <span class="urdu-explanation hidden">بیک وقت نہایت منصف اور بے لوث ہونا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('自私自利')">🔊</button>
+                <div class="char">自私自利</div>
+            </div>
+            <div class="pinyin">zì sī zì lì</div>
+            <span class="english-explanation">Selfish / Purely self-seeking</span>
+            <span class="urdu-explanation hidden">صرف اپنے ذاتی فائدے کا سوچنا (خود غرض)</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('助人为乐')">🔊</button>
+                <div class="char">助人为乐</div>
+            </div>
+            <div class="pinyin">zhù rén wéi lè</div>
+            <span class="english-explanation">Taking pleasure in helping others</span>
+            <span class="urdu-explanation hidden">دوسروں کی مدد کرنے میں خوشی محسوس کرنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('损人利己')">🔊</button>
+                <div class="char">损人利己</div>
+            </div>
+            <div class="pinyin">sǔn rén lì jǐ</div>
+            <span class="english-explanation">Harm others to benefit oneself</span>
+            <span class="urdu-explanation hidden">دوسرے کا نقصان کر کے اپنا فائدہ چاہنا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
+
