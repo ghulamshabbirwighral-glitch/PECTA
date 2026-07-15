@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 1</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fefefe; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #8e24aa; border-bottom: 2px solid #8e24aa; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #ff9800; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #8e24aa; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #7b1fa2; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; text-align: center; position: relative; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #333; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #8e24aa; }
+        .pinyin { color: #888; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #e53935; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第1页：态度与状态类 (Attitudes & States)</p>
+    <h1>反义成语大全 (Antonymous Idioms)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('一心一意')">🔊</button>
+                <div class="char">一心一意</div>
+            </div>
+            <div class="pinyin">yī xīn yī yì</div>
+            <span class="english-explanation">Single-minded devotion / Wholeheartedly</span>
+            <span class="urdu-explanation hidden">پورے دل اور یکسوئی سے کام کرنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('三心二意')">🔊</button>
+                <div class="char">三心二意</div>
+            </div>
+            <div class="pinyin">sān xīn èr yì</div>
+            <span class="english-explanation">Half-hearted / Double-minded</span>
+            <span class="urdu-explanation hidden">آدھے ادھورے دل سے کام کرنا (تذبذب میں ہونا)</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('一丝不苟')">🔊</button>
+                <div class="char">一丝不苟</div>
+            </div>
+            <div class="pinyin">yī sī bù gǒu</div>
+            <span class="english-explanation">Meticulous / Extremely precise</span>
+            <span class="urdu-explanation hidden">انتہائی باریک بینی اور احتیاط سے کام کرنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('马马虎虎')">🔊</button>
+                <div class="char">马马虎虎</div>
+            </div>
+            <div class="pinyin">mǎ mǎ hū hū</div>
+            <span class="english-explanation">Careless / Casual / So-so</span>
+            <span class="urdu-explanation hidden">لاپرواہی یا بس گزارا کرنا</span>
+        </div>
+
+        <!-- Pair 3 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('勤勤恳恳')">🔊</button>
+                <div class="char">勤勤恳恳</div>
+            </div>
+            <div class="pinyin">qín qín kěn kěn</div>
+            <span class="english-explanation">Diligent and conscientious</span>
+            <span class="urdu-explanation hidden">سخت محنت اور لگن سے کام کرنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('懒懒散散')">🔊</button>
+                <div class="char">懒懒散散</div>
+            </div>
+            <div class="pinyin">lǎn lǎn sǎn sǎn</div>
+            <span class="english-explanation">Lazy / Indolent / Listless</span>
+            <span class="urdu-explanation hidden">سستی اور کاہلی دکھانا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
+
