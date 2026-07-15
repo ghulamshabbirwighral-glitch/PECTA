@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 9</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f3e5f5; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #7b1fa2; border-bottom: 2px solid #7b1fa2; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #e65100; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #7b1fa2; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #4a148c; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #e1bee7; border-radius: 8px; background-color: #fdf7ff; text-align: center; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #7b1fa2; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #7b1fa2; }
+        .pinyin { color: #555; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #e53935; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第9页：进阶拓展类 (Advanced Metaphorical)</p>
+    <h1>反义成语大全 (Advanced Metaphorical)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('画龙点睛')">🔊</button>
+                <div class="char">画龙点睛</div>
+            </div>
+            <div class="pinyin">huà lóng diǎn jīng</div>
+            <span class="english-explanation">Adding the finishing touch that brings something to life</span>
+            <span class="urdu-explanation hidden">کسی تحریر یا گفتگو میں آخری نکھار لانا (چار چاند لگانا)</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('画蛇添足')">🔊</button>
+                <div class="char">画蛇添足</div>
+            </div>
+            <div class="pinyin">huà shé tiān zú</div>
+            <span class="english-explanation">To ruin something by adding unnecessary details</span>
+            <span class="urdu-explanation hidden">بلا ضرورت اضافہ کر کے بنا بنایا کام بگاڑنا</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('对牛弹琴')">🔊</button>
+                <div class="char">对牛弹琴</div>
+            </div>
+            <div class="pinyin">duì niú tán qín</div>
+            <span class="english-explanation">To preach to deaf ears / Cast pearls before swine</span>
+            <span class="urdu-explanation hidden">بھینس کے آگے بین بجانا (نا سمجھ کے آگے عقل کی بات کرنا)</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('心有灵犀')">🔊</button>
+                <div class="char">心有灵犀</div>
+            </div>
+            <div class="pinyin">xīn yǒu líng xī</div>
+            <span class="english-explanation">Mutual telepathy / Two hearts beating as one</span>
+            <span class="urdu-explanation hidden">دو لوگوں میں دلی ہم آہنگی ہونا (بغیر کہے ایک دوسرے کو سمجھ جانا)</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
