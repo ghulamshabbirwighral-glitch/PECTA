@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 8</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #eceff1; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #37474f; border-bottom: 2px solid #37474f; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #d84315; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #37474f; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #263238; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #cfd8dc; border-radius: 8px; background-color: #f4f6f7; text-align: center; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #37474f; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #37474f; }
+        .pinyin { color: #555; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #d84315; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第8页：是非善恶类 (Good & Evil)</p>
+    <h1>反义成语大全 (Good & Evil)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('惩恶扬善')">🔊</button>
+                <div class="char">惩恶扬善</div>
+            </div>
+            <div class="pinyin">chéng è yáng shàn</div>
+            <span class="english-explanation">Punish evil and promote good</span>
+            <span class="urdu-explanation hidden">برائی کی حوصلہ شکنی اور اچھائی کو فروغ دینا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('助纣为虐')">🔊</button>
+                <div class="char">助纣为虐</div>
+            </div>
+            <div class="pinyin">zhù zhòu wéi nüè</div>
+            <span class="english-explanation">Help an evil-doer to do evil</span>
+            <span class="urdu-explanation hidden">برے کام میں ظالم کا ساتھ دینا</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('弃暗投明')">🔊</button>
+                <div class="char">弃暗投明</div>
+            </div>
+            <div class="pinyin">qì àn tóu míng</div>
+            <span class="english-explanation">Forsake darkness and join the side of light</span>
+            <span class="urdu-explanation hidden">تاریکی (برائی) کو چھوڑ کر روشنی (سچائی) کی طرف آنا</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('同流合污')">🔊</button>
+                <div class="char">同流合污</div>
+            </div>
+            <div class="pinyin">tóng liú hé wū</div>
+            <span class="english-explanation">Associate with evil-doers / Follow the bad trend</span>
+            <span class="urdu-explanation hidden">دوسرے برے لوگوں کے ساتھ مل کر جرم یا گناہ کرنا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
+
