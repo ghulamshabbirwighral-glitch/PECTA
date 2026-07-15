@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Actions - Drink Water</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f0f4f8; padding: 20px; }
+        .card { background: white; max-width: 400px; margin: 30px auto; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .en { color: #1a73e8; font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+        .zh { color: #d93025; font-size: 1.8rem; font-weight: bold; margin: 10px 0; }
+        .py { color: #e67e22; font-size: 1.1rem; font-style: italic; margin-bottom: 15px; }
+        .ur { color: #2ecc71; font-size: 1.4rem; font-weight: bold; margin: 15px 0; }
+        button { background: #1a73e8; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 1rem; margin-top: 10px; transition: 0.3s; }
+        button:hover { background: #1557b0; }
+        #google_translate_element { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- गूगल ट्रांसलेटर -->
+    <div id="google_translate_element"></div>
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+
+    <div class="card">
+        <!-- इंग्लिश और चाइनीज फिक्स रहेंगे -->
+        <div class="notranslate">
+            <div class="zh">喝水</div>
+            <div class="py">hē shuǐ</div>
+            <div class="en">Drink water</div>
+            <button onclick="speak('喝水', 'zh-CN')">🔊 Pronounce Chinese</button>
+        </div>
+        <hr>
+        <!-- उर्दू ट्रांसलेट हो सकेगी -->
+        <div class="ur">پانی پینا</div>
+    </div>
+
+    <!-- स्पीच स्क्रिप्ट -->
+    <script>
+        function speak(text, lang) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+    
+    <!-- गूगल ट्रांसलेट स्क्रिप्ट -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
