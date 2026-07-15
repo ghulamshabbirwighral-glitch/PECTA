@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4161884478253651" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>گھر کی اشیاء کے نام - Household Items Learning Game</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; padding: 10px; margin: 0; }
+        
+        .page { 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        #google_translate_element {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 3px solid #007bff;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .game-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin: 5px auto 15px auto;
+            max-width: 600px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .line-set { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
+        .letter-box { border: 2px solid #28a745; padding: 10px; border-radius: 12px; text-align: center; width: 175px; margin: 8px; background: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); box-sizing: border-box; position: relative; }
+        
+        .card-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-box { width: 90px; height: 90px; object-fit: contain; margin: 6px 0; border-radius: 8px; background-color: #f9f9f9; }
+        
+        .word-text { font-size: 15px; font-weight: bold; color: #007bff; display: block; margin: 2px 0; letter-spacing: 0.5px; }
+        .urdu-meaning { font-size: 18px; font-weight: bold; color: #dc3545; display: inline-block; vertical-align: middle; min-height: 24px; }
+        
+        .voice-btn-container { display: flex; justify-content: space-around; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
+        .voice-btn { cursor: pointer; background: #28a745; border: none; font-size: 14px; color: white; padding: 4px 10px; border-radius: 20px; transition: 0.2s; }
+        .voice-btn.ur-btn { background: #dc3545; }
+        .voice-btn:active { transform: scale(0.95); opacity: 0.9; }
+
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        @media (min-height: 600px) {
+            .game-instruction { font-size: 22px; margin-bottom: 25px; }
+        }
+    </style>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ur', 
+                includedLanguages: 'en,zh-CN,ru,fa,bn,ur,hi,ar,es,fr', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+<div class="page">
+    <div id="google_translate_element"></div>
+
+    <p class="game-instruction">Press 🔊 to Learn Household Items (گھر کی اشیاء)</p>
+    
+    <!-- 1. Household Appliances Section -->
+    <div class="category-title">بجلی کا سامان (Household Appliances)</div>
+    <div id="appliancesSection" class="line-set"></div>
+
+    <!-- 2. Furniture Section -->
+    <div class="category-title">فرنیچر (Furniture)</div>
+    <div id="furnitureSection" class="line-set"></div>
+
+    <!-- 3. Laundry Supplies Section -->
+    <div class="category-title">دھلائی کا سامان (Laundry Supplies)</div>
+    <div id="laundrySection" class="line-set"></div>
+
+    <!-- 4. Storage Items Section -->
+    <div class="category-title">سامان رکھنے کی چیزیں (Storage Items)</div>
+    <div id="storageSection" class="line-set"></div>
+</div>
+
+<script>
+    // 1. بجلی کا سامان (Household Appliances)
+    const appliancesData = [
+        { num: 1, eng: "Refrigerator", urdu: "ریفریجریٹر / فریج", img: "images/appliances_refrigerator.jpg" },
+        { num: 2, eng: "Washing machine", urdu: "واشنگ مشین", img: "images/appliances_washing_machine.jpg" },
+        { num: 3, eng: "Air conditioner", urdu: "ایئر کنڈیشنر", img: "images/appliances_ac.jpg" },
+        { num: 4, eng: "Television", urdu: "ٹیلی ویژن", img: "images/appliances_tv.jpg" },
+        { num: 5, eng: "Fan", urdu: "پنکھا", img: "images/appliances_fan.jpg" },
+        { num: 6, eng: "Rice cooker", urdu: "رائس کوکر", img: "images/appliances_rice_cooker.jpg" },
+        { num: 7, eng: "Microwave", urdu: "مائیکرو ویو", img: "images/appliances_microwave.jpg" },
+        { num: 8, eng: "Vacuum cleaner", urdu: "ویکیوم کلینر", img: "images/appliances_vacuum.jpg" },
+        { num: 9, eng: "Water heater", urdu: "واٹر ہیٹر / گیزر", img: "images/appliances_water_heater.jpg" },
+        { num: 10, eng: "Hair dryer", urdu: "ہیئر ڈرائر", img: "images/appliances_hair_dryer.jpg" },
+        { num: 11, eng: "Oven", urdu: "اوون", img: "images/appliances_oven.jpg" },
+        { num: 12, eng: "Humidifier", urdu: "ہوا نم کرنے والا آلہ", img: "images/appliances_humidifier.jpg" }
+    ];
+
+    // 2. فرنیچر (Furniture)
+    const furnitureData = [
+        { num: 1, eng: "Table", urdu: "میز", img: "images/furniture_table.jpg" },
+        { num: 2, eng: "Chair", urdu: "کرسی", img: "images/furniture_chair.jpg" },
+        { num: 3, eng: "Sofa", urdu: "صوفہ", img: "images/furniture_sofa.jpg" },
+        { num: 4, eng: "Bed", urdu: "بستر / بیڈ", img: "images/furniture_bed.jpg" },
+        { num: 5, eng: "Desk", urdu: "لکھنے کی میز", img: "images/furniture_desk.jpg" },
+        { num: 6, eng: "Bookshelf", urdu: "کتابوں کی الماری", img: "images/furniture_bookshelf.jpg" },
+        { num: 7, eng: "Wardrobe", urdu: "کپڑوں کی الماری", img: "images/furniture_wardrobe.jpg" },
+        { num: 8, eng: "Cabinet", urdu: "کابینہ / شوکیس", img: "images/furniture_cabinet.jpg" },
+        { num: 9, eng: "Stool", urdu: "اسٹول", img: "images/furniture_stool.jpg" },
+        { num: 10, eng: "Dining table", urdu: "کھانے کی میز", img: "images/furniture_dining_table.jpg" },
+        { num: 11, eng: "Nightstand", urdu: "بیڈ کی سائیڈ ٹیبل", img: "images/furniture_nightstand.jpg" },
+        { num: 12, eng: "Coffee table", urdu: "چائے کی میز", img: "images/furniture_coffee_table.jpg" }
+    ];
+
+    // 3. دھلائی کا سامان (Laundry Supplies)
+    const laundryData = [
+        { num: 1, eng: "Washing machine", urdu: "واشنگ مشین", img: "images/laundry_washing_machine.jpg" },
+        { num: 2, eng: "Laundry detergent", urdu: "کپڑے دھونے کا صابن/سرف", img: "images/laundry_detergent.jpg" },
+        { num: 3, eng: "Hanger", urdu: "ہینگر", img: "images/laundry_hanger.jpg" },
+        { num: 4, eng: "Laundry basket", urdu: "کپڑوں کی ٹوکری", img: "images/laundry_basket.jpg" },
+        { num: 5, eng: "Clothespin", urdu: "کپڑے کی چٹکی", img: "images/laundry_clothespin.jpg" },
+        { num: 6, eng: "Drying rack", urdu: "کپڑے سکھانے کا اسٹینڈ", img: "images/laundry_drying_rack.jpg" },
+        { num: 7, eng: "Dirty clothes", urdu: "میلے کپڑے", img: "images/laundry_dirty_clothes.jpg" },
+        { num: 8, eng: "Sweater", urdu: "سویٹر", img: "images/laundry_sweater.jpg" },
+        { num: 9, eng: "T-shirt", urdu: "ٹی شرٹ", img: "images/laundry_tshirt.jpg" },
+        { num: 10, eng: "Pants", urdu: "پتلون / پینٹ", img: "images/laundry_pants.jpg" },
+        { num: 11, eng: "Socks", urdu: "موزے / جرابیں", img: "images/laundry_socks.jpg" },
+        { num: 12, eng: "Iron", urdu: "استری", img: "images/laundry_iron.jpg" }
+    ];
+
+    // 4. سامان رکھنے کی چیزیں (Storage Items)
+    const storageData = [
+        { num: 1, eng: "Storage box", urdu: "سامان رکھنے کا ڈبہ", img: "images/storage_box.jpg" },
+        { num: 2, eng: "Box", urdu: "ڈبہ / کارٹن", img: "images/storage_carton.jpg" },
+        { num: 3, eng: "Bag", urdu: "تھیلا / بیگ", img: "images/storage_bag.jpg" },
+        { num: 4, eng: "Drawer", urdu: "دراز", img: "images/storage_drawer.jpg" },
+        { num: 5, eng: "Shelf", urdu: "خانہ / شیلف", img: "images/storage_shelf.jpg" },
+        { num: 6, eng: "Coat rack", urdu: "کوٹ لٹکانے کا اسٹینڈ", img: "images/storage_coat_rack.jpg" },
+        { num: 7, eng: "Storage cabinet", urdu: "سامان رکھنے کی الماری", img: "images/storage_cabinet.jpg" },
+        { num: 8, eng: "Folder", urdu: "فائل فولڈر", img: "images/storage_folder.jpg" },
+        { num: 9, eng: "Basket", urdu: "ٹوکری", img: "images/storage_basket.jpg" },
+        { num: 10, eng: "Hook", urdu: "ہک / لٹکانے والا", img: "images/storage_hook.jpg" },
+        { num: 11, eng: "Storage rack", urdu: "اسٹوریج رِیک", img: "images/storage_rack.jpg" },
+        { num: 12, eng: "Storage bag", urdu: "سامان رکھنے کا بیگ", img: "images/storage_laundry_bag.jpg" }
+    ];
+
+    // کارڈز بنانے کے لیے فنکشن
+    function createCards(dataList, sectionId, sectionPrefix) {
+        const targetContainer = document.getElementById(sectionId);
+        dataList.forEach((item, index) => {
+            const box = document.createElement('div');
+            box.className = 'letter-box';
+            const globalIndex = `${sectionPrefix}-${index}`;
+
+            box.innerHTML = `
+                <div class="card-number notranslate">${item.num}</div>
+                <span class="word-text notranslate">${item.eng}</span>
+                <img class="img-box" src="${item.img}" alt="${item.eng}" onerror="this.onerror=null; this.src='https://placehold.co/90x90?text=No+Image'">
+                <span class="urdu-meaning" id="text-meaning-${globalIndex}">${item.urdu}</span>
+                <div class="voice-btn-container">
+                    <button class="voice-btn" onclick="speak('${item.eng}', 'en-US')">🔊 En</button>
+                    <button class="voice-btn ur-btn" onclick="speakDynamic('${globalIndex}')">🔊 Voice</button>
+                </div>
+            `;
+            targetContainer.appendChild(box);
+        });
+    }
+
+    // تمام سیکشنز کو رینڈر کریں
+    createCards(appliancesData, 'appliancesSection', 'appl');
+    createCards(furnitureData, 'furnitureSection', 'furn');
+    createCards(laundryData, 'laundrySection', 'laund');
+    createCards(storageData, 'storageSection', 'stor');
+
+    // اسمارٹ وائس سسٹم
+    function speakDynamic(globalIndex) {
+        const textElement = document.getElementById(`text-meaning-${globalIndex}`);
+        const currentText = textElement.innerText || textElement.textContent;
+
+        let detectedLang = 'ur-PK'; 
+        let googleTranslateFrame = document.querySelector('.goog-te-menu-value');
+
+        if (googleTranslateFrame) {
+            const translatedLangText = googleTranslateFrame.textContent || '';
+            if (translatedLangText.includes('Arabic') || translatedLangText.includes('عربية')) {
+                detectedLang = 'ar-SA';
+            } else if (translatedLangText.includes('Hindi') || translatedLangText.includes('हिन्दी')) {
+                detectedLang = 'hi-IN';
+            } else if (translatedLangText.includes('Persian') || translatedLangText.includes('فارسی')) {
+                detectedLang = 'fa-IR';
+            } else if (translatedLangText.includes('Russian') || translatedLangText.includes('русский')) {
+                detectedLang = 'ru-RU';
+            } else if (translatedLangText.includes('Bengali') || translatedLangText.includes('بنگالی')) {
+                detectedLang = 'bn-IN';
+            } else if (translatedLangText.includes('Chinese') || translatedLangText.includes('中文')) {
+                detectedLang = 'zh-CN';
+            } else if (translatedLangText.includes('Spanish') || translatedLangText.includes('Español')) {
+                detectedLang = 'es-ES';
+            } else if (translatedLangText.includes('French') || translatedLangText.includes('Français')) {
+                detectedLang = 'fr-FR';
+            } else if (translatedLangText.includes('English') || translatedLangText.includes('English')) {
+                detectedLang = 'en-US';
+            }
+        } else {
+            const htmlLang = document.documentElement.lang;
+            if (htmlLang.startsWith('ar')) detectedLang = 'ar-SA';
+            else if (htmlLang.startsWith('zh')) detectedLang = 'zh-CN';
+            else if (htmlLang.startsWith('ru')) detectedLang = 'ru-RU';
+            else if (htmlLang.startsWith('fa')) detectedLang = 'fa-IR';
+            else if (htmlLang.startsWith('bn')) detectedLang = 'bn-IN';
+            else if (htmlLang.startsWith('hi')) detectedLang = 'hi-IN';
+            else if (htmlLang.startsWith('es')) detectedLang = 'es-ES';
+            else if (htmlLang.startsWith('fr')) detectedLang = 'fr-FR';
+            else if (htmlLang.startsWith('en')) detectedLang = 'en-US';
+        }
+
+        speak(currentText, detectedLang);
+    }
+
+    // بولنے کا مین فنکشن
+    function speak(text, lang) {
+        window.speechSynthesis.cancel(); 
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+
+</body>
+</html>
+
