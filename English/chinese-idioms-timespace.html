@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Antonymous Idioms - Page 6</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #e0f2f1; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #00796b; border-bottom: 2px solid #00796b; padding-bottom: 10px; }
+        .page-tag { text-align: center; font-weight: bold; color: #e65100; font-size: 1.2rem; }
+        .toggle-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #00796b; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; }
+        .toggle-btn:hover { background-color: #004d40; }
+        .grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 15px; margin-top: 30px; align-items: center; }
+        .card { padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #e0f2f1; text-align: center; }
+        .char-box { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .char { font-size: 1.8rem; font-weight: bold; color: #00796b; }
+        .audio-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #00796b; }
+        .pinyin { color: #333; font-style: italic; margin-bottom: 5px; }
+        .english-explanation { font-size: 1rem; color: #1a237e; font-weight: bold; display: block; margin-top: 5px; }
+        .urdu-explanation { font-size: 0.95rem; color: #e65100; display: block; margin-top: 5px; direction: rtl; }
+        .vs { text-align: center; font-weight: bold; color: #d32f2f; font-size: 1.5rem; }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .vs { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="page-tag">第6页：时间空间类 (Time & Space)</p>
+    <h1>反义成语大全 (Time & Space)</h1>
+    
+    <button class="toggle-btn" onclick="toggleUrdu()">Show / Hide Urdu (اردو ترجمہ)</button>
+
+    <div class="grid">
+        <!-- Pair 1 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('古往今来')">🔊</button>
+                <div class="char">古往今来</div>
+            </div>
+            <div class="pinyin">gǔ wǎng jīn lái</div>
+            <span class="english-explanation">Since ancient times to the present</span>
+            <span class="urdu-explanation hidden">قدیم زمانے سے لے کر اب تک</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('弹指之间')">🔊</button>
+                <div class="char">弹指之间</div>
+            </div>
+            <div class="pinyin">tán zhǐ zhī jiān</div>
+            <span class="english-explanation">In the blink of an eye / In a flash</span>
+            <span class="urdu-explanation hidden">چٹکی بجانے کی دیر میں (بہت قلیل وقت میں)</span>
+        </div>
+
+        <!-- Pair 2 -->
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('天长地久')">🔊</button>
+                <div class="char">天长地久</div>
+            </div>
+            <div class="pinyin">tiān cháng dì jiǔ</div>
+            <span class="english-explanation">As eternal as heaven and earth / Forever</span>
+            <span class="urdu-explanation hidden">تاقیامت / ہمیشہ ہمیشہ کے لیے</span>
+        </div>
+        <div class="vs">↔</div>
+        <div class="card">
+            <div class="char-box">
+                <button class="audio-btn" onclick="speak('转瞬即逝')">🔊</button>
+                <div class="char">转瞬即逝</div>
+            </div>
+            <div class="pinyin">zhuǎn shùn jí shì</div>
+            <span class="english-explanation">Fleeting / Vanishing in an instant</span>
+            <span class="urdu-explanation hidden">لمحہ بھر میں غائب ہو جانے والا</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleUrdu() {
+        const urduElements = document.querySelectorAll('.urdu-explanation');
+        urduElements.forEach(el => el.classList.toggle('hidden'));
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+</script>
+
+</body>
+</html>
+
