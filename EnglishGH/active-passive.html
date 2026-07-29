@@ -51,21 +51,29 @@
             margin-top: 5px;
             font-size: 1.05em;
         }
+        .btn-group {
+            margin-top: 8px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
         .speak-btn {
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
-            margin-top: 8px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
+        .speak-btn.urdu {
+            background-color: #e67e22;
+        }
         .speak-btn:hover {
-            background-color: var(--primary-color);
+            opacity: 0.9;
         }
         table {
             width: 100%;
@@ -105,8 +113,11 @@
     <h1>Active and Passive Voice</h1>
     
     <p id="intro-text">In English grammar, verbs have two voices: <strong>Active Voice</strong> and <strong>Passive Voice</strong>. Voice shows whether the subject of a sentence is performing the action or receiving the action.</p>
-    <div class="urdu-text">انگریزی گرامر میں، فعل کی دو حالتیں ہوتی ہیں: ایکٹیو وائس (فعل معروف) اور پیسیو وائس (فعل مجہول)۔ یہ ظاہر کرتا ہے کہ جملے کا فاعل خود کام کر رہا ہے یا اس پر کام واقع ہو رہا ہے۔</div>
-    <button class="speak-btn" onclick="speakText('intro-text')">🔊 سنیں (Listen)</button>
+    <div id="intro-urdu" class="urdu-text">انگریزی گرامر میں، فعل کی دو حالتیں ہوتی ہیں: ایکٹیو وائس (فعل معروف) اور پیسیو وائس (فعل مجہول)۔ یہ ظاہر کرتا ہے کہ جملے کا فاعل خود کام کر رہا ہے یا اس پر کام واقع ہو رہا ہے۔</div>
+    <div class="btn-group">
+        <button class="speak-btn" onclick="speakText('intro-text', 'en-US')">🔊 انگلش سنیں</button>
+        <button class="speak-btn urdu" onclick="speakText('intro-urdu', 'ur-PK')">🔊 اردو سنیں</button>
+    </div>
 
     <div class="rule-box">
         <h3>💡 Basic Concept / بنیادی تصور:</h3>
@@ -119,7 +130,10 @@
                 <span class="urdu-text">اردو: اس میں فاعل پر کام واقع ہوتا ہے۔ (مثلاً: خط علی کے ذریعے لکھا گیا۔)</span>
             </li>
         </ul>
-        <button class="speak-btn" onclick="speakText('Active Voice: The subject does the action. Ali wrote a letter. Passive Voice: The subject receives the action. A letter was written by Ali.')">🔊 سنیں (Listen)</button>
+        <div class="btn-group">
+            <button class="speak-btn" onclick="speakText('Active Voice: The subject does the action. Ali wrote a letter. Passive Voice: The subject receives the action. A letter was written by Ali.', 'en-US')">🔊 انگلش سنیں</button>
+            <button class="speak-btn urdu" onclick="speakText('اس میں فاعل خود کام کرتا ہے مثلاً علی نے خط لکھا۔ اور پیسیو وائس میں فاعل پر کام واقع ہوتا ہے مثلاً خط علی کے ذریعے لکھا گیا۔', 'ur-PK')">🔊 اردو سنیں</button>
+        </div>
     </div>
 
     <h2>Formula / Structure / ساخت</h2>
@@ -139,13 +153,16 @@
     </table>
 
     <h2>Rules for Changing Voice / تبدیل کرنے کے اصول</h2>
-    <ol id="rules-list">
+    <ol>
         <li>The object of the active sentence becomes the subject of the passive sentence. <br><span class="urdu-text">ایسٹو فقرے کا مفعول پیسیو کا فاعل بن جاتا ہے۔</span></li>
         <li>Always use the <strong>3rd form of the verb (Past Participle)</strong> in passive voice. <br><span class="urdu-text">پیسیو وائس میں ہمیشہ فعل کی تیسری فارم استعمال ہوتی ہے۔</span></li>
         <li>Use the word "by" before the subject in the passive voice. <br><span class="urdu-text">پیسیو فقرے میں فاعل سے پہلے "by" لگایا جاتا ہے۔</span></li>
         <li>Pronouns change their forms (He → Him, She → Her, I → Me, They → Them, We → Us). <br><span class="urdu-text">ضمیروں کی حالتیں تبدیل ہو جاتی ہیں۔</span></li>
     </ol>
-    <button class="speak-btn" onclick="speakText('The object of the active sentence becomes the subject of the passive sentence. Always use the third form of the verb in passive voice. Use the word by before the subject in the passive voice.')">🔊 سنیں (Listen)</button>
+    <div class="btn-group">
+        <button class="speak-btn" onclick="speakText('The object of the active sentence becomes the subject of the passive sentence. Always use the third form of the verb in passive voice. Use the word by before the subject in the passive voice.', 'en-US')">🔊 انگلش سنیں</button>
+        <button class="speak-btn urdu" onclick="speakText('ایسٹو فقرے کا مفعول پیسیو کا فاعل بن جاتا ہے۔ پیسیو وائس میں ہمیشہ فعل کی تیسری فارم استعمال ہوتی ہے۔ فاعل سے پہلے بائی لگایا جاتا ہے۔', 'ur-PK')">🔊 اردو سنیں</button>
+    </div>
 
     <h2>Examples Across Tenses / زمانے کے لحاظ سے مثالیں</h2>
     <table>
@@ -180,26 +197,28 @@
 </div>
 
 <script>
-    function speakText(elementIdOrText) {
+    function speakText(elementIdOrText, langCode) {
         let textToSpeech = "";
-        if (document.getElementById(elementIdOrText)) {
-            textToSpeech = document.getElementById(elementIdOrText).innerText;
+        let element = document.getElementById(elementIdOrText);
+        
+        if (element) {
+            textToSpeech = element.innerText;
         } else {
             textToSpeech = elementIdOrText;
         }
         
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); // Stop any ongoing speech
+            window.speechSynthesis.cancel(); // پچھلی آواز بند کریں
             let utterance = new SpeechSynthesisUtterance(textToSpeech);
-            utterance.lang = 'en-US'; // English voice
-            utterance.rate = 0.9; // Normal speaking speed
+            utterance.lang = langCode; // زبان سیٹ کریں (en-US یا ur-PK)
+            utterance.rate = 0.9; // بولنے کی رفتار
             window.speechSynthesis.speak(utterance);
         } else {
-            alert("Sorry, your browser does not support text to speech!");
+            alert("معذرت، آپ کا براؤزر اس فیچر کو سپورٹ نہیں کرتا!");
         }
     }
 </script>
 
 </body>
-                             </html>
+                                                </html>
 
