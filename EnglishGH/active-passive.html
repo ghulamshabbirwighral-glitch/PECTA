@@ -44,6 +44,29 @@
             margin: 20px 0;
             border-radius: 4px;
         }
+        .urdu-text {
+            direction: rtl;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            color: #d35400;
+            margin-top: 5px;
+            font-size: 1.05em;
+        }
+        .speak-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .speak-btn:hover {
+            background-color: var(--primary-color);
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -81,72 +104,102 @@
 <div class="container">
     <h1>Active and Passive Voice</h1>
     
-    <p>In English grammar, verbs have two voices: <strong>Active Voice</strong> and <strong>Passive Voice</strong>. Voice shows whether the subject of a sentence is performing the action or receiving the action.</p>
+    <p id="intro-text">In English grammar, verbs have two voices: <strong>Active Voice</strong> and <strong>Passive Voice</strong>. Voice shows whether the subject of a sentence is performing the action or receiving the action.</p>
+    <div class="urdu-text">انگریزی گرامر میں، فعل کی دو حالتیں ہوتی ہیں: ایکٹیو وائس (فعل معروف) اور پیسیو وائس (فعل مجہول)۔ یہ ظاہر کرتا ہے کہ جملے کا فاعل خود کام کر رہا ہے یا اس پر کام واقع ہو رہا ہے۔</div>
+    <button class="speak-btn" onclick="speakText('intro-text')">🔊 سنیں (Listen)</button>
 
     <div class="rule-box">
-        <h3>💡 Basic Concept:</h3>
+        <h3>💡 Basic Concept / بنیادی تصور:</h3>
         <ul>
-            <li><strong>Active Voice:</strong> The subject <u>does</u> the action. (e.g., Ali wrote a letter.)</li>
-            <li><strong>Passive Voice:</strong> The subject <u>receives</u> the action. (e.g., A letter was written by Ali.)</li>
+            <li><strong>Active Voice:</strong> The subject <u>does</u> the action. (e.g., Ali wrote a letter.)<br>
+                <span class="urdu-text">اردو: اس میں فاعل خود کام کرتا ہے۔ (مثلاً: علی نے خط لکھا۔)</span>
+            </li>
+            <br>
+            <li><strong>Passive Voice:</strong> The subject <u>receives</u> the action. (e.g., A letter was written by Ali.)<br>
+                <span class="urdu-text">اردو: اس میں فاعل پر کام واقع ہوتا ہے۔ (مثلاً: خط علی کے ذریعے لکھا گیا۔)</span>
+            </li>
         </ul>
+        <button class="speak-btn" onclick="speakText('Active Voice: The subject does the action. Ali wrote a letter. Passive Voice: The subject receives the action. A letter was written by Ali.')">🔊 سنیں (Listen)</button>
     </div>
 
-    <h2>Formula / Structure</h2>
+    <h2>Formula / Structure / ساخت</h2>
     <table>
         <tr>
             <th>Voice</th>
-            <th>Structure</th>
+            <th>Structure / ترکیب</th>
         </tr>
         <tr>
             <td><strong>Active</strong></td>
-            <td>Subject + Verb + Object</td>
+            <td>Subject + Verb + Object <br><span class="urdu-text">(فاعل + فعل + مفعول)</span></td>
         </tr>
         <tr>
             <td><strong>Passive</strong></td>
-            <td>Object + Be Verb (is/am/are/was/were etc.) + V3 (3rd Form) + by + Subject</td>
+            <td>Object + Be Verb (is/am/are/was/were etc.) + V3 (3rd Form) + by + Subject <br><span class="urdu-text">(مفعول + بی ورب + تیسری فارم + بائی + فاعل)</span></td>
         </tr>
     </table>
 
-    <h2>Rules for Changing Voice</h2>
-    <ol>
-        <li>The object of the active sentence becomes the subject of the passive sentence.</li>
-        <li>Always use the <strong>3rd form of the verb (Past Participle)</strong> in passive voice.</li>
-        <li>Use the word <strong>"by"</strong> before the subject in the passive voice.</li>
-        <li>Pronouns change their forms (He ➔ Him, She ➔ Her, I ➔ Me, They ➔ Them, We ➔ Us).</li>
+    <h2>Rules for Changing Voice / تبدیل کرنے کے اصول</h2>
+    <ol id="rules-list">
+        <li>The object of the active sentence becomes the subject of the passive sentence. <br><span class="urdu-text">ایسٹو فقرے کا مفعول پیسیو کا فاعل بن جاتا ہے۔</span></li>
+        <li>Always use the <strong>3rd form of the verb (Past Participle)</strong> in passive voice. <br><span class="urdu-text">پیسیو وائس میں ہمیشہ فعل کی تیسری فارم استعمال ہوتی ہے۔</span></li>
+        <li>Use the word "by" before the subject in the passive voice. <br><span class="urdu-text">پیسیو فقرے میں فاعل سے پہلے "by" لگایا جاتا ہے۔</span></li>
+        <li>Pronouns change their forms (He → Him, She → Her, I → Me, They → Them, We → Us). <br><span class="urdu-text">ضمیروں کی حالتیں تبدیل ہو جاتی ہیں۔</span></li>
     </ol>
+    <button class="speak-btn" onclick="speakText('The object of the active sentence becomes the subject of the passive sentence. Always use the third form of the verb in passive voice. Use the word by before the subject in the passive voice.')">🔊 سنیں (Listen)</button>
 
-    <h2>Examples Across Tenses</h2>
+    <h2>Examples Across Tenses / زمانے کے لحاظ سے مثالیں</h2>
     <table>
         <tr>
-            <th>Tense</th>
+            <th>Tense / زمانہ</th>
             <th>Active Voice</th>
             <th>Passive Voice</th>
         </tr>
         <tr>
-            <td>Present Simple</td>
-            <td>She cleans the room.</td>
-            <td>The room <strong>is cleaned</strong> by her.</td>
+            <td>Present Simple <br><span class="urdu-text">فعل حال مطلق</span></td>
+            <td>She cleans the room.<br><span class="urdu-text">وہ کمرہ صاف کرتی ہے۔</span></td>
+            <td>The room <strong>is cleaned</strong> by her.<br><span class="urdu-text">کمرہ اس کے ذریعے صاف کیا جاتا ہے۔</span></td>
         </tr>
         <tr>
-            <td>Past Simple</td>
-            <td>She cleaned the room.</td>
-            <td>The room <strong>was cleaned</strong> by her.</td>
+            <td>Past Simple <br><span class="urdu-text">فعل ماضی مطلق</span></td>
+            <td>She cleaned the room.<br><span class="urdu-text">اس نے کمرہ صاف کیا۔</span></td>
+            <td>The room <strong>was cleaned</strong> by her.<br><span class="urdu-text">کمرہ اس کے ذریعے صاف کیا گیا تھا۔</span></td>
         </tr>
         <tr>
-            <td>Future Simple</td>
-            <td>She will clean the room.</td>
-            <td>The room <strong>will be cleaned</strong> by her.</td>
+            <td>Future Simple <br><span class="urdu-text">فعل مستقبل</span></td>
+            <td>She will clean the room.<br><span class="urdu-text">وہ کمرہ صاف کرے گی۔</span></td>
+            <td>The room <strong>will be cleaned</strong> by her.<br><span class="urdu-text">کمرہ اس کے ذریعے صاف کیا جائے گا۔</span></td>
         </tr>
         <tr>
-            <td>Present Continuous</td>
-            <td>She is cleaning the room.</td>
-            <td>The room <strong>is being cleaned</strong> by her.</td>
+            <td>Present Continuous <br><span class="urdu-text">فعل حال جاری</span></td>
+            <td>She is cleaning the room.<br><span class="urdu-text">وہ کمرہ صاف کر رہی ہے۔</span></td>
+            <td>The room <strong>is being cleaned</strong> by her.<br><span class="urdu-text">کمرہ اس کے ذریعے صاف کیا جا رہا ہے۔</span></td>
         </tr>
     </table>
 
-    <a href="index.html" class="btn-back">⬅ Back to Topics</a>
+    <a href="#" class="btn-back">← Back to Topics</a>
 </div>
 
+<script>
+    function speakText(elementIdOrText) {
+        let textToSpeech = "";
+        if (document.getElementById(elementIdOrText)) {
+            textToSpeech = document.getElementById(elementIdOrText).innerText;
+        } else {
+            textToSpeech = elementIdOrText;
+        }
+        
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
+            let utterance = new SpeechSynthesisUtterance(textToSpeech);
+            utterance.lang = 'en-US'; // English voice
+            utterance.rate = 0.9; // Normal speaking speed
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Sorry, your browser does not support text to speech!");
+        }
+    }
+</script>
+
 </body>
-  </html>
+                             </html>
 
