@@ -20,7 +20,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             padding: 30px;
@@ -93,11 +93,11 @@
     </h1>
     
     <p>
-        <span id="intro-text">Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.</span>
+        <span>Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.</span>
         <button class="audio-btn" onclick="speakText('Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.')">🔊 English</button>
     </p>
     <p class="urdu-text">
-        <span id="intro-urdu">ڈائریکٹ اور ان ڈائریکٹ سپیچ (جسے نریشن بھی کہا جاتا ہے) کسی دوسرے کی کہی ہوئی بات کو بیان کرنے کے لیے استعمال ہوتی ہے۔</span>
+        <span>ڈائریکٹ اور ان ڈائریکٹ سپیچ (جسے نریشن بھی کہا جاتا ہے) کسی دوسرے کی کہی ہوئی بات کو بیان کرنے کے لیے استعمال ہوتی ہے۔</span>
         <button class="audio-btn" onclick="speakText('ڈائریکٹ اور ان ڈائریکٹ سپیچ (جسے نریشن بھی کہا جاتا ہے) کسی دوسرے کی کہی ہوئی بات کو بیان کرنے کے لیے استعمال ہوتی ہے۔', 'ur-PK')">🔊 اردو</button>
     </p>
 
@@ -136,16 +136,16 @@
     </div>
 
     <h2>
-        How Tenses Change
-        <button class="audio-btn" onclick="speakText('How Tenses Change')">🔊 سنیں</button>
+        Complete Tense Change Rules
+        <button class="audio-btn" onclick="speakText('Complete Tense Change Rules')">🔊 سنیں</button>
     </h2>
     <p>
-        If the reporting verb is in the past tense (e.g., <em>He said</em>), the tense inside the inverted commas changes as follows:
-        <button class="audio-btn" onclick="speakText('If the reporting verb is in the past tense, the tense inside the inverted commas changes as follows:')">🔊 English</button>
+        If the reporting verb is in the past tense (e.g., <em>He said</em>), all tenses change into their corresponding past forms as shown below:
+        <button class="audio-btn" onclick="speakText('If the reporting verb is in the past tense, all tenses change into their corresponding past forms as shown below:')">🔊 English</button>
     </p>
     <p class="urdu-text">
-        اگر رپورٹنگ ورب ماضی کے زمانے میں ہو (مثلاً He said)، تو انورٹڈ کاماز کے اندر موجود ٹینس درج ذیل طریقے سے تبدیل ہوتا ہے:
-        <button class="audio-btn" onclick="speakText('اگر رپورٹنگ ورب ماضی کے زمانے میں ہو، تو انورٹڈ کاماز کے اندر موجود ٹینس درج ذیل طریقے سے تبدیل ہوتا ہے:', 'ur-PK')">🔊 اردو</button>
+        اگر رپورٹنگ ورب ماضی کے زمانے میں ہو (مثلاً He said)، تو تمام ٹینسز اپنی متعلقہ ماضی کی شکل میں تبدیل ہو جاتے ہیں جیسا کہ نیچے دکھایا گیا ہے:
+        <button class="audio-btn" onclick="speakText('اگر رپورٹنگ ورب ماضی کے زمانے میں ہو، تو تمام ٹینسز اپنی متعلقہ ماضی کی شکل میں تبدیل ہو جاتے ہیں جیسا کہ نیچے دکھایا گیا ہے:', 'ur-PK')">🔊 اردو</button>
     </p>
 
     <table>
@@ -153,39 +153,136 @@
             <th>Direct Speech <button class="audio-btn" onclick="speakText('Direct Speech')">🔊</button></th>
             <th>Indirect Speech <button class="audio-btn" onclick="speakText('Indirect Speech')">🔊</button></th>
         </tr>
+        <!-- Present Simple -> Past Simple -->
         <tr>
             <td>
-                Present Simple (write) 
-                <button class="audio-btn" onclick="speakText('Present Simple: write')">🔊 English</button>
+                Present Simple <br><em>(e.g., He writes)</em>
+                <button class="audio-btn" onclick="speakText('Present Simple: He writes')">🔊 English</button>
                 <div class="urdu-text">
-                    پریزنٹ سمپل (write)
-                    <button class="audio-btn" onclick="speakText('پریزنٹ سمپل رائٹ', 'ur-PK')">🔊 اردو</button>
+                    پریزنٹ سمپل (فعل حال مطلق)
+                    <button class="audio-btn" onclick="speakText('پریزنٹ سمپل', 'ur-PK')">🔊 اردو</button>
                 </div>
             </td>
             <td>
-                Past Simple (wrote) 
-                <button class="audio-btn" onclick="speakText('Past Simple: wrote')">🔊 English</button>
+                Past Simple <br><em>(e.g., He wrote)</em>
+                <button class="audio-btn" onclick="speakText('Past Simple: He wrote')">🔊 English</button>
                 <div class="urdu-text">
-                    پاسٹ سمپل (wrote)
-                    <button class="audio-btn" onclick="speakText('پاسٹ سمپل روٹ', 'ur-PK')">🔊 اردو</button>
+                    پاسٹ سمپل (فعل ماضی مطلق)
+                    <button class="audio-btn" onclick="speakText('پاسٹ سمپل', 'ur-PK')">🔊 اردو</button>
                 </div>
             </td>
         </tr>
+        <!-- Present Continuous -> Past Continuous -->
         <tr>
             <td>
-                Present Continuous (is writing) 
-                <button class="audio-btn" onclick="speakText('Present Continuous: is writing')">🔊 English</button>
+                Present Continuous <br><em>(e.g., He is writing)</em>
+                <button class="audio-btn" onclick="speakText('Present Continuous: He is writing')">🔊 English</button>
                 <div class="urdu-text">
-                    پریزنٹ کنٹینیوس (is writing)
-                    <button class="audio-btn" onclick="speakText('پریزنٹ کنٹینیوس از رائٹنگ', 'ur-PK')">🔊 اردو</button>
+                    پریزنٹ کنٹینیوس (فعل حال جاری)
+                    <button class="audio-btn" onclick="speakText('پریزنٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
                 </div>
             </td>
             <td>
-                Past Continuous (was writing) 
-                <button class="audio-btn" onclick="speakText('Past Continuous: was writing')">🔊 English</button>
+                Past Continuous <br><em>(e.g., He was writing)</em>
+                <button class="audio-btn" onclick="speakText('Past Continuous: He was writing')">🔊 English</button>
                 <div class="urdu-text">
-                    پاسٹ کنٹینیوس (was writing)
-                    <button class="audio-btn" onclick="speakText('پاسٹ کنٹینیوس واز رائٹنگ', 'ur-PK')">🔊 اردو</button>
+                    پاسٹ کنٹینیوس (فعل ماضی جاری)
+                    <button class="audio-btn" onclick="speakText('پاسٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Present Perfect -> Past Perfect -->
+        <tr>
+            <td>
+                Present Perfect <br><em>(e.g., He has written)</em>
+                <button class="audio-btn" onclick="speakText('Present Perfect: He has written')">🔊 English</button>
+                <div class="urdu-text">
+                    پریزنٹ پرفیکٹ (فعل حال مکمل)
+                    <button class="audio-btn" onclick="speakText('پریزنٹ پرفیکٹ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Perfect <br><em>(e.g., He had written)</em>
+                <button class="audio-btn" onclick="speakText('Past Perfect: He had written')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ پرفیکٹ (فعل ماضی مکمل)
+                    <button class="audio-btn" onclick="speakText('پاسٹ پرفیکٹ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Present Perfect Continuous -> Past Perfect Continuous -->
+        <tr>
+            <td>
+                Present Perfect Continuous <br><em>(e.g., He has been writing)</em>
+                <button class="audio-btn" onclick="speakText('Present Perfect Continuous: He has been writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پریزنٹ پرفیکٹ کنٹینیوس
+                    <button class="audio-btn" onclick="speakText('پریزنٹ پرفیکٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Perfect Continuous <br><em>(e.g., He had been writing)</em>
+                <button class="audio-btn" onclick="speakText('Past Perfect Continuous: He had been writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ پرفیکٹ کنٹینیوس
+                    <button class="audio-btn" onclick="speakText('پاسٹ پرفیکٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Past Simple -> Past Perfect -->
+        <tr>
+            <td>
+                Past Simple <br><em>(e.g., He wrote)</em>
+                <button class="audio-btn" onclick="speakText('Past Simple: He wrote')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ سمپل (فعل ماضی مطلق)
+                    <button class="audio-btn" onclick="speakText('پاسٹ سمپل', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Perfect <br><em>(e.g., He had written)</em>
+                <button class="audio-btn" onclick="speakText('Past Perfect: He had written')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ پرفیکٹ (فعل ماضی مکمل)
+                    <button class="audio-btn" onclick="speakText('پاسٹ پرفیکٹ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Past Continuous -> Past Perfect Continuous -->
+        <tr>
+            <td>
+                Past Continuous <br><em>(e.g., He was writing)</em>
+                <button class="audio-btn" onclick="speakText('Past Continuous: He was writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ کنٹینیوس (فعل ماضی جاری)
+                    <button class="audio-btn" onclick="speakText('پاسٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Perfect Continuous <br><em>(e.g., He had been writing)</em>
+                <button class="audio-btn" onclick="speakText('Past Perfect Continuous: He had been writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ پرفیکٹ کنٹینیوس
+                    <button class="audio-btn" onclick="speakText('پاسٹ پرفیکٹ کنٹینیوس', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Future Simple (will -> would) -->
+        <tr>
+            <td>
+                Future Simple / Will <br><em>(e.g., He will write -> would)</em>
+                <button class="audio-btn" onclick="speakText('Future Simple: He will write changes to would')">🔊 English</button>
+                <div class="urdu-text">
+                    فیوچر سمپل (Will تبدیل ہوجاتا ہے Would میں)
+                    <button class="audio-btn" onclick="speakText('فیوچر سمپل ول سے وڈ بن جاتا ہے', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Would + Verb <br><em>(e.g., He would write)</em>
+                <button class="audio-btn" onclick="speakText('Would plus verb')">🔊 English</button>
+                <div class="urdu-text">
+                    وڈ + فعل کی پہلی حالت
+                    <button class="audio-btn" onclick="speakText('وڈ کے ساتھ ورب', 'ur-PK')">🔊 اردو</button>
                 </div>
             </td>
         </tr>
@@ -206,5 +303,5 @@
 </script>
 
 </body>
-</html>
+    </html>
 
