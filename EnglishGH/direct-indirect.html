@@ -20,7 +20,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             background: white;
             padding: 30px;
@@ -61,108 +61,149 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        .btn-back {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-        .btn-back:hover {
+        .audio-btn {
             background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+        }
+        .audio-btn:hover {
+            opacity: 0.85;
+        }
+        .urdu-text {
+            color: #555;
+            font-weight: 500;
+            direction: rtl;
+            text-align: right;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Direct and Indirect Speech</h1>
+    <h1>
+        Direct and Indirect Speech 
+        <button class="audio-btn" onclick="speakText('Direct and Indirect Speech')">🔊 سنیں</button>
+    </h1>
     
-    <p>Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.</p>
+    <p>
+        <span id="intro-text">Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.</span>
+        <button class="audio-btn" onclick="speakText('Direct and Indirect Speech (also known as Narration) is used to tell what someone else has said.')">🔊 English</button>
+    </p>
+    <p class="urdu-text">
+        <span id="intro-urdu">ڈائریکٹ اور ان ڈائریکٹ سپیچ (جسے نریشن بھی کہا جاتا ہے) کسی دوسرے کی کہی ہوئی بات کو بیان کرنے کے لیے استعمال ہوتی ہے۔</span>
+        <button class="audio-btn" onclick="speakText('ڈائریکٹ اور ان ڈائریکٹ سپیچ (جسے نریشن بھی کہا جاتا ہے) کسی دوسرے کی کہی ہوئی بات کو بیان کرنے کے لیے استعمال ہوتی ہے۔', 'ur-PK')">🔊 اردو</button>
+    </p>
 
     <div class="note-box">
-        <h3>💡 Definitions:</h3>
+        <h3>
+            💡 Definitions:
+            <button class="audio-btn" onclick="speakText('Definitions')">🔊 سنیں</button>
+        </h3>
         <ul>
-            <li><strong>Direct Speech:</strong> Repeating the exact words spoken by a person, using quotation marks (" "). <br><em>Example: He said, "I am happy."</em></li>
-            <li><strong>Indirect Speech:</strong> Reporting what someone said in our own words, without quotation marks. <br><em>Example: He said that he was happy.</em></li>
+            <li>
+                <strong>Direct Speech:</strong> Repeating the exact words spoken by a person, using quotation marks (" "). 
+                <button class="audio-btn" onclick="speakText('Direct Speech: Repeating the exact words spoken by a person, using quotation marks.')">🔊 English</button>
+                <br>
+                <span class="urdu-text"><strong>ڈائریکٹ سپیچ:</strong> کسی شخص کے کہے ہوئے ہو بہو الفاظ کو واوین (quotation marks) میں دہرانا۔</span>
+                <button class="audio-btn" onclick="speakText('ڈائریکٹ سپیچ: کسی شخص کے کہے ہوئے ہو بہو الفاظ کو واوین میں دہرانا۔', 'ur-PK')">🔊 اردو</button>
+                <br><em>Example: He said, "I am happy."</em>
+                <button class="audio-btn" onclick="speakText('Example: He said, I am happy.')">🔊 English</button>
+                <br>
+                <span class="urdu-text"><em>مثال: اس نے کہا، "میں خوش ہوں۔"</em></span>
+                <button class="audio-btn" onclick="speakText('مثال: اس نے کہا، میں خوش ہوں۔', 'ur-PK')">🔊 اردو</button>
+            </li>
+            <br>
+            <li>
+                <strong>Indirect Speech:</strong> Reporting what someone said in our own words, without quotation marks. 
+                <button class="audio-btn" onclick="speakText('Indirect Speech: Reporting what someone said in our own words, without quotation marks.')">🔊 English</button>
+                <br>
+                <span class="urdu-text"><strong>ان ڈائریکٹ سپیچ:</strong> کسی کی بات کو اپنے الفاظ میں بیان کرنا، بغیر واوین کے۔</span>
+                <button class="audio-btn" onclick="speakText('ان ڈائریکٹ سپیچ: کسی کی بات کو اپنے الفاظ میں بیان کرنا، بغیر واوین کے۔', 'ur-PK')">🔊 اردو</button>
+                <br><em>Example: He said that he was happy.</em>
+                <button class="audio-btn" onclick="speakText('Example: He said that he was happy.')">🔊 English</button>
+                <br>
+                <span class="urdu-text"><em>مثال: اس نے کہا کہ وہ خوش تھا۔</em></span>
+                <button class="audio-btn" onclick="speakText('مثال: اس نے کہا کہ وہ خوش تھا۔', 'ur-PK')">🔊 اردو</button>
+            </li>
         </ul>
     </div>
 
-    <h2>How Tenses Change</h2>
-    <p>If the reporting verb is in the past tense (e.g., <em>He said</em>), the tense inside the inverted commas changes as follows:</p>
+    <h2>
+        How Tenses Change
+        <button class="audio-btn" onclick="speakText('How Tenses Change')">🔊 سنیں</button>
+    </h2>
+    <p>
+        If the reporting verb is in the past tense (e.g., <em>He said</em>), the tense inside the inverted commas changes as follows:
+        <button class="audio-btn" onclick="speakText('If the reporting verb is in the past tense, the tense inside the inverted commas changes as follows:')">🔊 English</button>
+    </p>
+    <p class="urdu-text">
+        اگر رپورٹنگ ورب ماضی کے زمانے میں ہو (مثلاً He said)، تو انورٹڈ کاماز کے اندر موجود ٹینس درج ذیل طریقے سے تبدیل ہوتا ہے:
+        <button class="audio-btn" onclick="speakText('اگر رپورٹنگ ورب ماضی کے زمانے میں ہو، تو انورٹڈ کاماز کے اندر موجود ٹینس درج ذیل طریقے سے تبدیل ہوتا ہے:', 'ur-PK')">🔊 اردو</button>
+    </p>
+
     <table>
         <tr>
-            <th>Direct Speech</th>
-            <th>Indirect Speech</th>
+            <th>Direct Speech <button class="audio-btn" onclick="speakText('Direct Speech')">🔊</button></th>
+            <th>Indirect Speech <button class="audio-btn" onclick="speakText('Indirect Speech')">🔊</button></th>
         </tr>
         <tr>
-            <td>Present Simple (write)</td>
-            <td>Past Simple (wrote)</td>
+            <td>
+                Present Simple (write) 
+                <button class="audio-btn" onclick="speakText('Present Simple: write')">🔊 English</button>
+                <div class="urdu-text">
+                    پریزنٹ سمپل (write)
+                    <button class="audio-btn" onclick="speakText('پریزنٹ سمپل رائٹ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Simple (wrote) 
+                <button class="audio-btn" onclick="speakText('Past Simple: wrote')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ سمپل (wrote)
+                    <button class="audio-btn" onclick="speakText('پاسٹ سمپل روٹ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td>Present Continuous (is writing)</td>
-            <td>Past Continuous (was writing)</td>
-        </tr>
-        <tr>
-            <td>Present Perfect (has written)</td>
-            <td>Past Perfect (had written)</td>
-        </tr>
-        <tr>
-            <td>Past Simple (wrote)</td>
-            <td>Past Perfect (had written)</td>
-        </tr>
-        <tr>
-            <td>Will / Shall</td>
-            <td>Would / Should</td>
-        </tr>
-        <tr>
-            <td>Can / May</td>
-            <td>Could / Might</td>
+            <td>
+                Present Continuous (is writing) 
+                <button class="audio-btn" onclick="speakText('Present Continuous: is writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پریزنٹ کنٹینیوس (is writing)
+                    <button class="audio-btn" onclick="speakText('پریزنٹ کنٹینیوس از رائٹنگ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
+            <td>
+                Past Continuous (was writing) 
+                <button class="audio-btn" onclick="speakText('Past Continuous: was writing')">🔊 English</button>
+                <div class="urdu-text">
+                    پاسٹ کنٹینیوس (was writing)
+                    <button class="audio-btn" onclick="speakText('پاسٹ کنٹینیوس واز رائٹنگ', 'ur-PK')">🔊 اردو</button>
+                </div>
+            </td>
         </tr>
     </table>
-
-    <h2>Changes in Time and Place Words</h2>
-    <table>
-        <tr>
-            <th>Direct Speech</th>
-            <th>Indirect Speech</th>
-        </tr>
-        <tr>
-            <td>This</td>
-            <td>That</td>
-        </tr>
-        <tr>
-            <td>Here</td>
-            <td>There</td>
-        </tr>
-        <tr>
-            <td>Today</td>
-            <td>That day</td>
-        </tr>
-        <tr>
-            <td>Tomorrow</td>
-            <td>The next day / The following day</td>
-        </tr>
-        <tr>
-            <td>Yesterday</td>
-            <td>The day before / The previous day</td>
-        </tr>
-    </table>
-
-    <h2>Example Sentences</h2>
-    <ul>
-        <li><strong>Direct:</strong> She said, "I am cooking dinner."</li>
-        <li><strong>Indirect:</strong> She said that she was cooking dinner.</li>
-        <br>
-        <li><strong>Direct:</strong> They said, "We have won the match."</li>
-        <li><strong>Indirect:</strong> They said that they had won the match.</li>
-    </ul>
-
-    <a href="index.html" class="btn-back">⬅ Back to Topics</a>
 </div>
+
+<script>
+    function speakText(text, lang = 'en-US') {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Sorry, your browser does not support text to speech!");
+        }
+    }
+</script>
 
 </body>
 </html>
