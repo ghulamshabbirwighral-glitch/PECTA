@@ -40,11 +40,22 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        h1 {
-            color: var(--primary-color);
+        .title-box {
             text-align: center;
             border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+        .urdu-title {
+            font-size: 22px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            margin-bottom: 10px;
         }
         h2 {
             color: var(--secondary-color);
@@ -141,10 +152,14 @@
         <div id="google_translate_element"></div>
     </div>
 
-    <h1>The Fox and the Grapes</h1>
+    <!-- Title Section with Voice Button and Urdu Translation -->
+    <div class="title-box">
+        <h1>The Fox and the Grapes <button class="speak-btn" onclick="speakWordMeaning('The Fox and the Grapes', 'لومڑ اور انگور')">🔊</button></h1>
+        <div class="urdu-title">لومڑ اور انگور</div>
+    </div>
     
     <!-- Main Story Voice Button -->
-    <button class="voice-btn" onclick="playBilingualStory()">🔊 Listen to Bilingual Story (English & Urdu)</button>
+    <button class="voice-btn" onclick="playBilingualStory()">🔊 Listen to Full Story (English & Urdu)</button>
 
     <!-- Story Content (Bilingual Blocks) -->
     <div id="storyContainer">
@@ -178,8 +193,8 @@
             <div class="urdu-sentence">جب وہ واپس جانے لگا، تو اس نے ناک چڑھائی اور بڑبڑایا، "مجھے یقین ہے کہ وہ ویسے بھی کھٹے ہوں گے۔ میں وہ انگور نہیں چاہتا۔"</div>
         </div>
 
-        <div class="story-block" data-eng="Moral: It is easy to despise what you cannot get." data-urdu="نتیجہ: جس چیز کو آپ حاصل نہ कर سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔">
-            <div class="eng-sentence"><strong>Moral:</strong> It is easy to despise what you cannot get.</div>
+        <div class="story-block" data-eng="Moral: It is easy to despise what you cannot get." data-urdu="نتیجہ: جس چیز کو آپ حاصل نہ کر سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔">
+            <div class="eng-sentence"><strong>Moral:</strong> It is easy to despise what you cannot get. <button class="speak-btn" onclick="speakWordMeaning('Moral: It is easy to despise what you cannot get.', 'نتیجہ: جس چیز کو آپ حاصل نہ کر سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔')">🔊</button></div>
             <div class="urdu-sentence"><strong>نتیجہ:</strong> جس چیز کو آپ حاصل نہ کر سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔</div>
         </div>
     </div>
@@ -309,5 +324,5 @@
 </script>
 
 </body>
-    </html>
-
+                                  </html>
+                                  
