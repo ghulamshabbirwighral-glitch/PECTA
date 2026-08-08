@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Fox and the Grapes - Wighral Education</title>
     
-    <!-- Meta Tags for SEO -->
-    <meta name="description" content="Read The Fox and the Grapes short story with Urdu meanings, voice pronunciation, and Google Translate on Wighral Education.">
+    <meta name="description" content="Read The Fox and the Grapes short story with English & Urdu translation, voice pronunciation, and multi-language support on Wighral Education.">
     <meta name="keywords" content="The Fox and the Grapes, English Short Stories, Moral Stories, Kids Stories, English Learning, Wighral Education">
 
-    <!-- Google Analytics (जैसा कि आपके स्क्रीनशॉट में है) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-4NHR43XLF6');
     </script>
     
@@ -52,9 +50,28 @@
             color: var(--secondary-color);
             margin-top: 25px;
         }
-        .story {
-            margin-bottom: 30px;
+        .story-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            background: #fdfdfd;
+            border-radius: 4px;
+        }
+        .eng-sentence {
             font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .urdu-sentence {
+            font-size: 17px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background: #fef9e7;
+            padding: 8px 12px;
+            border-radius: 4px;
         }
         .voice-btn {
             display: block;
@@ -90,7 +107,13 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        /* Speak button inside table */
+        .urdu-td {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Jameel Noori Nastaleeq', sans-serif;
+            color: #c0392b;
+            font-weight: bold;
+        }
         .speak-btn {
             background-color: var(--secondary-color);
             color: white;
@@ -104,7 +127,6 @@
         .speak-btn:hover {
             opacity: 0.9;
         }
-        /* Google Translate Widget Styling */
         .translate-container {
             text-align: right;
             margin-bottom: 15px;
@@ -114,7 +136,7 @@
 <body>
 
 <div class="container">
-    <!-- Google Translate Element -->
+    <!-- Google Translate Element with Multiple Languages -->
     <div class="translate-container">
         <div id="google_translate_element"></div>
     </div>
@@ -122,19 +144,49 @@
     <h1>The Fox and the Grapes</h1>
     
     <!-- Main Story Voice Button -->
-    <button class="voice-btn" onclick="playStory()">🔊 Listen to Full Story</button>
+    <button class="voice-btn" onclick="playBilingualStory()">🔊 Listen to Bilingual Story (English & Urdu)</button>
 
-    <!-- Story Content -->
-    <div class="story" id="storyText">
-        <p>One hot summer day, a hungry fox was walking through an orchard. He spotted a bunch of juicy, purple grapes hanging high from a vine.</p>
-        <p>The fox jumped high to reach the grapes, but he missed them. He tried again and again, running and leaping, but the grapes were simply too high.</p>
-        <p>Exhausted and frustrated, the fox finally gave up. As he walked away, he turned up his nose and muttered, "I am sure they are sour anyway. I do not want those grapes."</p>
-        <p><strong>Moral:</strong> It is easy to despise what you cannot get.</p>
+    <!-- Story Content (Bilingual Blocks) -->
+    <div id="storyContainer">
+        <div class="story-block" data-eng="One hot summer day, a hungry fox was walking through an orchard." data-urdu="گرمی کے ایک دن، ایک بھوکا لومڑ ایک باغ سے گزر رہا تھا۔">
+            <div class="eng-sentence">One hot summer day, a hungry fox was walking through an orchard.</div>
+            <div class="urdu-sentence">گرمی کے ایک دن، ایک بھوکا لومڑ ایک باغ سے گزر رہا تھا۔</div>
+        </div>
+
+        <div class="story-block" data-eng="He spotted a bunch of juicy, purple grapes hanging high from a vine." data-urdu="اس نے ایک بیل پر اونچے لٹکے ہوئے رسیلے، جامنی رنگ کے انگوروں کا ایک گچھا دیکھا۔">
+            <div class="eng-sentence">He spotted a bunch of juicy, purple grapes hanging high from a vine.</div>
+            <div class="urdu-sentence">اس نے ایک بیل پر اونچے لٹکے ہوئے رسیلے، جامنی رنگ کے انگوروں کا ایک گچھا دیکھا۔</div>
+        </div>
+
+        <div class="story-block" data-eng="The fox jumped high to reach the grapes, but he missed them." data-urdu="لومڑ نے انگوروں تک پہنچنے کے لیے اونچی چھلانگ لگائی، لیکن وہ ان تک نہ پہنچ سکا۔">
+            <div class="eng-sentence">The fox jumped high to reach the grapes, but he missed them.</div>
+            <div class="urdu-sentence">لومڑ نے انگوروں تک پہنچنے کے لیے اونچی چھلانگ لگائی، لیکن وہ ان تک نہ پہنچ سکا۔</div>
+        </div>
+
+        <div class="story-block" data-eng="He tried again and again, running and leaping, but the grapes were simply too high." data-urdu="اس نے بار بار کوشش کی، دوڑا اور چھلانگیں لگائیں، لیکن انگور بہت زیادہ اونچے تھے۔">
+            <div class="eng-sentence">He tried again and again, running and leaping, but the grapes were simply too high.</div>
+            <div class="urdu-sentence">اس نے بار بار کوشش کی، دوڑا اور چھلانگیں لگائیں، لیکن انگور بہت زیادہ اونچے تھے۔</div>
+        </div>
+
+        <div class="story-block" data-eng="Exhausted and frustrated, the fox finally gave up." data-urdu="تھکا ہار کر اور مایوس ہو کر، لومڑ نے آخرکار ہار مان لی۔">
+            <div class="eng-sentence">Exhausted and frustrated, the fox finally gave up.</div>
+            <div class="urdu-sentence">تھکا ہار کر اور مایوس ہو کر، لومڑ نے آخرکار ہار مان لی۔</div>
+        </div>
+
+        <div class="story-block" data-eng="As he walked away, he turned up his nose and muttered, I am sure they are sour anyway. I do not want those grapes." data-urdu="جب وہ واپس جانے لگا، تو اس نے ناک چڑھائی اور بڑبڑایا، مجھے یقین ہے کہ وہ ویسے بھی کھٹے ہوں گے۔ میں وہ انگور نہیں چاہتا۔">
+            <div class="eng-sentence">As he walked away, he turned up his nose and muttered, "I am sure they are sour anyway. I do not want those grapes."</div>
+            <div class="urdu-sentence">جب وہ واپس جانے لگا، تو اس نے ناک چڑھائی اور بڑبڑایا، "مجھے یقین ہے کہ وہ ویسے بھی کھٹے ہوں گے۔ میں وہ انگور نہیں چاہتا۔"</div>
+        </div>
+
+        <div class="story-block" data-eng="Moral: It is easy to despise what you cannot get." data-urdu="نتیجہ: جس چیز کو آپ حاصل نہ कर سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔">
+            <div class="eng-sentence"><strong>Moral:</strong> It is easy to despise what you cannot get.</div>
+            <div class="urdu-sentence"><strong>نتیجہ:</strong> جس چیز کو آپ حاصل نہ کر سکیں، اس سے حقارت کرنا آسان ہوتا ہے۔</div>
+        </div>
     </div>
 
     <hr>
 
-    <!-- Vocabulary Table with Voice Buttons -->
+    <!-- Vocabulary Table with Bilingual Voice Buttons -->
     <h2>Difficult Words and Meanings</h2>
     <table>
         <thead>
@@ -145,79 +197,117 @@
         </thead>
         <tbody>
             <tr>
-                <td>Orchard <button class="speak-dfn speak-btn" onclick="speakWord('Orchard')">🔊</button></td>
-                <td>باغ (پھلوں کا باغ)</td>
+                <td>Orchard <button class="speak-btn" onclick="speakWordMeaning('Orchard', 'باغ (پھلوں کا باغ)')">🔊</button></td>
+                <td class="urdu-td">باغ (پھلوں کا باغ)</td>
             </tr>
             <tr>
-                <td>Spotted <button class="speak-dfn speak-btn" onclick="speakWord('Spotted')">🔊</button></td>
-                <td>دیکھا / نظر ڈالی</td>
+                <td>Spotted <button class="speak-btn" onclick="speakWordMeaning('Spotted', 'دیکھا / نظر ڈالی')">🔊</button></td>
+                <td class="urdu-td">دیکھا / نظر ڈالی</td>
             </tr>
             <tr>
-                <td>Juicy <button class="speak-dfn speak-btn" onclick="speakWord('Juicy')">🔊</button></td>
-                <td>رسیلے</td>
+                <td>Juicy <button class="speak-btn" onclick="speakWordMeaning('Juicy', 'رسیلے')">🔊</button></td>
+                <td class="urdu-td">رسیلے</td>
             </tr>
             <tr>
-                <td>Leaping <button class="speak-dfn speak-btn" onclick="speakWord('Leaping')">🔊</button></td>
-                <td>چھلانگ لگانا</td>
+                <td>Leaping <button class="speak-btn" onclick="speakWordMeaning('Leaping', 'چھلانگ لگانا')">🔊</button></td>
+                <td class="urdu-td">چھلانگ لگانا</td>
             </tr>
             <tr>
-                <td>Exhausted <button class="speak-dfn speak-btn" onclick="speakWord('Exhausted')">🔊</button></td>
-                <td>تھکا ہوا / نڈھال</td>
+                <td>Exhausted <button class="speak-btn" onclick="speakWordMeaning('Exhausted', 'تھکا ہوا / نڈھال')">🔊</button></td>
+                <td class="urdu-td">تھکا ہوا / نڈھال</td>
             </tr>
             <tr>
-                <td>Frustrated <button class="speak-dfn speak-btn" onclick="speakWord('Frustrated')">🔊</button></td>
-                <td>مایوس / پریشان</td>
+                <td>Frustrated <button class="speak-btn" onclick="speakWordMeaning('Frustrated', 'مایوس / پریشان')">🔊</button></td>
+                <td class="urdu-td">مایوس / پریشان</td>
             </tr>
             <tr>
-                <td>Muttered <button class="speak-dfn speak-btn" onclick="speakWord('Muttered')">🔊</button></td>
-                <td>بڑبڑایا</td>
+                <td>Muttered <button class="speak-btn" onclick="speakWordMeaning('Muttered', 'بڑبڑایا')">🔊</button></td>
+                <td class="urdu-td">بڑبڑایا</td>
             </tr>
             <tr>
-                <td>Sour <button class="speak-dfn speak-btn" onclick="speakWord('Sour')">🔊</button></td>
-                <td>کھٹے</td>
+                <td>Sour <button class="speak-btn" onclick="speakWordMeaning('Sour', 'کھٹے')">🔊</button></td>
+                <td class="urdu-td">کھٹے</td>
             </tr>
             <tr>
-                <td>Despise <button class="speak-dfn speak-btn" onclick="speakWord('Despise')">🔊</button></td>
-                <td>حقارت کرنا / برا بھلا کہنا</td>
+                <td>Despise <button class="speak-btn" onclick="speakWordMeaning('Despise', 'حقارت کرنا / برا بھلا کہنا')">🔊</button></td>
+                <td class="urdu-td">حقارت کرنا / برا بھلا کہنا</td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<!-- Google Translate Script -->
+<!-- Google Translate Script with Multiple Languages -->
 <script type="text/javascript">
     function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ur,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        new google.translate.TranslateElement({
+            pageLanguage: 'en', 
+            includedLanguages: 'ur,hi,fr,it,fa,bn,en', 
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<!-- Text-to-Speech Script -->
+<!-- Text-to-Speech Bilingual Logic -->
 <script>
-    function playStory() {
+    function speakText(text, lang, callback) {
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const text = document.getElementById('storyText').innerText;
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
+            utterance.lang = lang;
+            if (callback) {
+                utterance.onend = callback;
+            }
             window.speechSynthesis.speak(utterance);
-        } else {
-            alert('Sorry, your browser does not support text-to-speech audio.');
+        } else if (callback) {
+            callback();
         }
     }
 
-    function speakWord(word) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = 'en-US';
-            window.speechSynthesis.speak(utterance);
-        } else {
+    function playBilingualStory() {
+        if (!('speechSynthesis' in window)) {
             alert('Sorry, your browser does not support text-to-speech audio.');
+            return;
         }
+        window.speechSynthesis.cancel();
+
+        const blocks = document.querySelectorAll('.story-block');
+        let index = 0;
+
+        function readNextBlock() {
+            if (index >= blocks.length) return;
+
+            const engText = blocks[index].getAttribute('data-eng');
+            const urduText = blocks[index].getAttribute('data-urdu');
+
+            index++;
+
+            speakText(engText, 'en-US', function() {
+                setTimeout(function() {
+                    speakText(urduText, 'ur-PK', function() {
+                        setTimeout(readNextBlock, 600);
+                    });
+                }, 400);
+            });
+        }
+
+        readNextBlock();
+    }
+
+    function speakWordMeaning(engWord, urduMeaning) {
+        if (!('speechSynthesis' in window)) {
+            alert('Sorry, your browser does not support text-to-speech audio.');
+            return;
+        }
+        window.speechSynthesis.cancel();
+
+        speakText(engWord, 'en-US', function() {
+            setTimeout(function() {
+                speakText(urduMeaning, 'ur-PK');
+            }, 400);
+        });
     }
 </script>
 
 </body>
-</html>
+    </html>
 
