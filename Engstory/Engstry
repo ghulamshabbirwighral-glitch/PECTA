@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fox and the Grapes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .story {
+            margin-bottom: 30px;
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .vocab-table th, .vocab-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .vocab-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .vocab-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .voice-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .voice-btn:hover {
+            background-color: #219653;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>The Fox and the Grapes</h1>
+    
+    <!-- Voice Button -->
+    <button class="voice-btn" onclick="playStory()">🔊 Listen to Story</button>
+
+    <!-- Story Content -->
+    <div class="story" id="storyText">
+        <p>One hot summer day, a hungry fox was walking through an orchard. He spotted a bunch of juicy, purple grapes hanging high from a vine.</p>
+        <p>The fox jumped high to reach the grapes, but he missed them. He tried again and again, running and leaping, but the grapes were simply too high.</p>
+        <p>Exhausted and frustrated, the fox finally gave up. As he walked away, he turned up his nose and muttered, "I am sure they are sour anyway. I do not want those grapes."</p>
+        <p><strong>Moral:</strong> It is easy to despise what you cannot get.</p>
+    </div>
+
+    <hr>
+
+    <!-- Vocabulary Table -->
+    <h2>Difficult Words and Meanings</h2>
+    <table class="vocab-table">
+        <thead>
+            <tr>
+                <th>English Word</th>
+                <th>Urdu Meaning (معیٰ)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Orchard</td>
+                <td>باغ (پھلوں کا باغ)</td>
+            </tr>
+            <tr>
+                <td>Spotted</td>
+                <td>دیکھا / نظر ڈالی</td>
+            </tr>
+            <tr>
+                <td>Juicy</td>
+                <td>رسیلے</td>
+            </tr>
+            <tr>
+                <td>Leaping</td>
+                <td>چھلانگ لگانا</td>
+            </tr>
+            <tr>
+                <td>Exhausted</td>
+                <td>تھکا ہوا / نڈھال</td>
+            </tr>
+            <tr>
+                <td>Frustrated</td>
+                <td>مایوس / پریشان</td>
+            </tr>
+            <tr>
+                <td>Muttered</td>
+                <td>بڑبڑایا</td>
+            </tr>
+            <tr>
+                <td>Sour</td>
+                <td>کھٹے</td>
+            </tr>
+            <tr>
+                <td>Despise</td>
+                <td>حقارت کرنا / برا بھلا کہنا</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function playStory() {
+        if ('speechSynthesis' in window) {
+            const text = document.getElementById('storyText').innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Sorry, your browser does not support text-to-speech audio.');
+        }
+    }
+</script>
+
+</body>
+</html>
+
