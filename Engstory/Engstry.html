@@ -3,72 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fox and the Grapes</title>
+    <title>The Fox and the Grapes - Wighral Education</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Read The Fox and the Grapes short story with Urdu meanings, voice pronunciation, and Google Translate on Wighral Education.">
+    <meta name="keywords" content="The Fox and the Grapes, English Short Stories, Moral Stories, Kids Stories, English Learning, Wighral Education">
+
+    <!-- Google Analytics (जैसा कि आपके स्क्रीनशॉट में है) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+    
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
         }
         .container {
             max-width: 800px;
             margin: auto;
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         h1 {
+            color: var(--primary-color);
             text-align: center;
-            color: #2c3e50;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 25px;
         }
         .story {
             margin-bottom: 30px;
-        }
-        .vocab-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .vocab-table th, .vocab-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .vocab-table th {
-            background-color: #3498db;
-            color: white;
-        }
-        .vocab-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            font-size: 18px;
         }
         .voice-btn {
             display: block;
             margin: 20px auto;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: #27ae60;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
         .voice-btn:hover {
             background-color: #219653;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Speak button inside table */
+        .speak-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .speak-btn:hover {
+            opacity: 0.9;
+        }
+        /* Google Translate Widget Styling */
+        .translate-container {
+            text-align: right;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Google Translate Element -->
+    <div class="translate-container">
+        <div id="google_translate_element"></div>
+    </div>
+
     <h1>The Fox and the Grapes</h1>
     
-    <!-- Voice Button -->
-    <button class="voice-btn" onclick="playStory()">🔊 Listen to Story</button>
+    <!-- Main Story Voice Button -->
+    <button class="voice-btn" onclick="playStory()">🔊 Listen to Full Story</button>
 
     <!-- Story Content -->
     <div class="story" id="storyText">
@@ -80,9 +134,9 @@
 
     <hr>
 
-    <!-- Vocabulary Table -->
+    <!-- Vocabulary Table with Voice Buttons -->
     <h2>Difficult Words and Meanings</h2>
-    <table class="vocab-table">
+    <table>
         <thead>
             <tr>
                 <th>English Word</th>
@@ -91,50 +145,71 @@
         </thead>
         <tbody>
             <tr>
-                <td>Orchard</td>
+                <td>Orchard <button class="speak-dfn speak-btn" onclick="speakWord('Orchard')">🔊</button></td>
                 <td>باغ (پھلوں کا باغ)</td>
             </tr>
             <tr>
-                <td>Spotted</td>
+                <td>Spotted <button class="speak-dfn speak-btn" onclick="speakWord('Spotted')">🔊</button></td>
                 <td>دیکھا / نظر ڈالی</td>
             </tr>
             <tr>
-                <td>Juicy</td>
+                <td>Juicy <button class="speak-dfn speak-btn" onclick="speakWord('Juicy')">🔊</button></td>
                 <td>رسیلے</td>
             </tr>
             <tr>
-                <td>Leaping</td>
+                <td>Leaping <button class="speak-dfn speak-btn" onclick="speakWord('Leaping')">🔊</button></td>
                 <td>چھلانگ لگانا</td>
             </tr>
             <tr>
-                <td>Exhausted</td>
+                <td>Exhausted <button class="speak-dfn speak-btn" onclick="speakWord('Exhausted')">🔊</button></td>
                 <td>تھکا ہوا / نڈھال</td>
             </tr>
             <tr>
-                <td>Frustrated</td>
+                <td>Frustrated <button class="speak-dfn speak-btn" onclick="speakWord('Frustrated')">🔊</button></td>
                 <td>مایوس / پریشان</td>
             </tr>
             <tr>
-                <td>Muttered</td>
+                <td>Muttered <button class="speak-dfn speak-btn" onclick="speakWord('Muttered')">🔊</button></td>
                 <td>بڑبڑایا</td>
             </tr>
             <tr>
-                <td>Sour</td>
+                <td>Sour <button class="speak-dfn speak-btn" onclick="speakWord('Sour')">🔊</button></td>
                 <td>کھٹے</td>
             </tr>
             <tr>
-                <td>Despise</td>
+                <td>Despise <button class="speak-dfn speak-btn" onclick="speakWord('Despise')">🔊</button></td>
                 <td>حقارت کرنا / برا بھلا کہنا</td>
             </tr>
         </tbody>
     </table>
 </div>
 
+<!-- Google Translate Script -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ur,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- Text-to-Speech Script -->
 <script>
     function playStory() {
         if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
             const text = document.getElementById('storyText').innerText;
             const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Sorry, your browser does not support text-to-speech audio.');
+        }
+    }
+
+    function speakWord(word) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(word);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
         } else {
