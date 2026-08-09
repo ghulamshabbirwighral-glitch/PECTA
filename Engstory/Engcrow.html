@@ -135,12 +135,14 @@
         </div>
 
         <div class="title-box">
-            <h1 class="notranslate">The Thirsty Crow</h1>
+            <h1 id="page-title" class="notranslate">The Thirsty Crow</h1>
             <div class="urdu-title">प्यासा कौवा (The Thirsty Crow)</div>
             <p class="notranslate">Read and listen to the classic moral story with Urdu translation and multi-language support.</p>
+            <!-- Title Section Voice Button -->
+            <button class="voice-btn notranslate" onclick="speakText(document.getElementById('page-title').innerText)">🔊 Listen to Title</button>
         </div>
 
-        <button class="voice-btn notranslate" onclick="alert('Voice pronunciation feature coming soon!')">🔊 Listen to Story</button>
+        <button class="voice-btn notranslate" onclick="speakFullStory()">🔊 Listen to Full Story</button>
 
         <div class="story-block">
             <div class="eng-sentence notranslate">1. Once upon a time, a thirsty crow flew all over in search of water.</div>
@@ -154,7 +156,7 @@
 
         <div class="story-block">
             <div class="eng-sentence notranslate">3. At last, he saw a pitcher of water in a garden.</div>
-            <div class="urdu-sentence">آخرکار، اس نے ایک باغ میں پانی کا ایک گھڑا دیکھا।</div>
+            <div class="urdu-sentence">آخرکار، اس نے ایک باغ میں پانی کا ایک گھڑا دیکھا۔</div>
         </div>
 
         <div class="story-block">
@@ -194,7 +196,7 @@
         </div>
 
         <h2 class="notranslate">Vocabulary / الفاظ معنی</h2>
-        <table>
+        <table id="vocab-table">
             <tr>
                 <th class="notranslate">English Word</th>
                 <th class="notranslate">Meaning in Urdu</th>
@@ -220,7 +222,44 @@
                 <td dir="rtl">ہوشیار / چالاک</td>
             </tr>
         </table>
+        
+        <!-- Vocabulary Section Voice Button -->
+        <button class="voice-btn notranslate" onclick="speakVocabulary()">🔊 Listen to Vocabulary</button>
     </div>
+
+    <!-- JavaScript for Text-to-Speech -->
+    <script>
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop any ongoing speech
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Normal speaking speed
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+
+        function speakFullStory() {
+            let sentences = document.querySelectorAll('.eng-sentence');
+            let fullText = "";
+            sentences.forEach(function(el) {
+                fullText += el.innerText + ". ";
+            });
+            speakText(fullText);
+        }
+
+        function speakVocabulary() {
+            let rows = document.querySelectorAll('#vocab-table tr');
+            let vocabText = "Vocabulary words: ";
+            for (let i = 1; i < rows.length; i++) {
+                let word = rows[i].cells[0].innerText;
+                vocabText += word + ". ";
+            }
+            speakText(vocabText);
+        }
+    </script>
 
     <!-- Google Translate Script -->
     <script type="text/javascript">
@@ -235,5 +274,5 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-</html>
+                                                  </html>
 
