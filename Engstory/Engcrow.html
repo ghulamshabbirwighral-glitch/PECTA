@@ -136,13 +136,13 @@
 
         <div class="title-box">
             <h1 id="page-title" class="notranslate">The Thirsty Crow</h1>
-            <div class="urdu-title">प्यासा कौवा (The Thirsty Crow)</div>
+            <div id="urdu-page-title" class="urdu-title">प्यासा कौवा (The Thirsty Crow)</div>
             <p class="notranslate">Read and listen to the classic moral story with Urdu translation and multi-language support.</p>
             <!-- Title Section Voice Button -->
-            <button class="voice-btn notranslate" onclick="speakText(document.getElementById('page-title').innerText)">🔊 Listen to Title</button>
+            <button class="voice-btn notranslate" onclick="speakBilingual(document.getElementById('page-title').innerText, document.getElementById('urdu-page-title').innerText)">🔊 Listen to Title</button>
         </div>
 
-        <button class="voice-btn notranslate" onclick="speakFullStory()">🔊 Listen to Full Story</button>
+        <button class="voice-btn notranslate" onclick="speakFullStory()">🔊 Listen to Full Story (English & Urdu)</button>
 
         <div class="story-block">
             <div class="eng-sentence notranslate">1. Once upon a time, a thirsty crow flew all over in search of water.</div>
@@ -171,7 +171,7 @@
 
         <div class="story-block">
             <div class="eng-sentence notranslate">6. He saw some small stones nearby and got a clever idea.</div>
-            <div class="urdu-sentence">اس نے پاس ہی کچھ چھوٹے کنکر دیکھے اور اسے ایک ترکیب सूझی (خیال آیا)۔</div>
+            <div class="urdu-sentence">اس نے پاس ہی کچھ چھوٹے کنکر دیکھے اور اسے ایک ترکیب సూझی (خیال آیا)۔</div>
         </div>
 
         <div class="story-block">
@@ -227,37 +227,78 @@
         <button class="voice-btn notranslate" onclick="speakVocabulary()">🔊 Listen to Vocabulary</button>
     </div>
 
-    <!-- JavaScript for Text-to-Speech -->
+    <!-- JavaScript for Bilingual Text-to-Speech -->
     <script>
-        function speakText(text) {
+        function speakText(text, lang = 'en-US') {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Stop any ongoing speech
                 let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9; // Normal speaking speed
+                utterance.lang = lang;
+                utterance.rate = 0.85; // Thoda aaram se bolne ke liye
                 window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakBilingual(engText, urduText) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Purani awaaz rokein
+                speakText(engText, 'en-US');     // Pehle English padhega
+                setTimeout(() => {
+                    speakText(urduText, 'ur-PK'); // Uske baad Urdu padhega
+                }, 1000);
             } else {
                 alert("Sorry, your browser does not support text-to-speech.");
             }
         }
 
         function speakFullStory() {
-            let sentences = document.querySelectorAll('.eng-sentence');
-            let fullText = "";
-            sentences.forEach(function(el) {
-                fullText += el.innerText + ". ";
-            });
-            speakText(fullText);
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let blocks = document.querySelectorAll('.story-block');
+                let delay = 0;
+
+                blocks.forEach(function(block) {
+                    let engEl = block.querySelector('.eng-sentence');
+                    let urduEl = block.querySelector('.urdu-sentence');
+
+                    if (engEl && urduEl) {
+                        let engText = engEl.innerText;
+                        let urduText = urduEl.innerText;
+
+                        setTimeout(() => {
+                            speakText(engText, 'en-US');
+                        }, delay);
+                        delay += (engText.split(' ').length * 350); // English ke hisaab se waqt
+
+                        setTimeout(() => {
+                            speakText(urduText, 'ur-PK');
+                        }, delay);
+                        delay += (urduText.split(' ').length * 400); // Urdu ke hisaab se waqt
+                    }
+                });
+            }
         }
 
         function speakVocabulary() {
-            let rows = document.querySelectorAll('#vocab-table tr');
-            let vocabText = "Vocabulary words: ";
-            for (let i = 1; i < rows.length; i++) {
-                let word = rows[i].cells[0].innerText;
-                vocabText += word + ". ";
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let rows = document.querySelectorAll('#vocab-table tr');
+                let delay = 0;
+
+                for (let i = 1; i < rows.length; i++) {
+                    let engWord = rows[i].cells[0].innerText;
+                    let urduMeaning = rows[i].cells[1].innerText;
+
+                    setTimeout(() => {
+                        speakText(engWord, 'en-US');
+                    }, delay);
+                    delay += 1200;
+
+                    setTimeout(() => {
+                        speakText(urduMeaning, 'ur-PK');
+                    }, delay);
+                    delay += 1500;
+                }
             }
-            speakText(vocabText);
         }
     </script>
 
@@ -274,5 +315,5 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-                                                  </html>
-
+                    </html>
+                    
