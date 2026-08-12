@@ -79,7 +79,7 @@
         .eng-sentence {
             font-size: 17px;
             font-weight: bold;
-            color: #2c3e50;
+            color: var(--primary-color);
             margin-bottom: 8px;
         }
         .urdu-sentence {
@@ -96,7 +96,7 @@
             background-color: #27ae60;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
@@ -104,6 +104,7 @@
             display: block;
             margin: 25px auto;
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
         }
         .voice-btn:hover {
             background-color: #219653;
@@ -112,11 +113,15 @@
             background-color: #27ae60;
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 6px;
             font-size: 13px;
             cursor: pointer;
             font-weight: bold;
+            transition: 0.2s;
+        }
+        .small-btn:hover {
+            background-color: #219653;
         }
         .vocab-section {
             margin-top: 35px;
@@ -132,7 +137,7 @@
         }
         .vocab-table th, .vocab-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
             font-size: 14px;
         }
@@ -145,6 +150,7 @@
             direction: rtl;
             text-align: right;
             color: #c0392b;
+            font-size: 15px;
         }
         .moral-box {
             background: #e8f8f5;
@@ -174,47 +180,47 @@
         <div class="title-box">
             <div class="urdu-title">لالچی کتا</div>
             <h1>The Greedy Dog</h1>
-            <button class="small-btn" onclick="speakText('The Greedy Dog. لالچی کتا')">🔊 Listen Title</button>
+            <button class="small-btn" onclick="speakText('The Greedy Dog. لالچی کتا')">🔊 سنیں (Listen Title)</button>
         </div>
 
-        <button class="voice-btn" onclick="readFullStory()">🔊 Read Full Story (English & Urdu)</button>
+        <button class="voice-btn" onclick="readFullStory()">🔊 پوری کہانی سنیں (Read Full Story - Eng & Urdu)</button>
 
-        <div class="story-block" id="p1">
+        <div class="story-block">
             <div class="eng-sentence">1. Once upon a time, a dog stole a piece of meat from a butcher's shop.</div>
             <div class="urdu-sentence">۱. ایک دفعہ کا ذکر ہے، ایک کتے نے قصاب کی دکان سے گوشت کا ایک ٹکڑا چرا لیا۔</div>
         </div>
 
-        <div class="story-block" id="p2">
+        <div class="story-block">
             <div class="eng-sentence">2. He ran away with the piece of meat in his mouth to eat it in a safe place.</div>
             <div class="urdu-sentence">۲. وہ گوشت کا ٹکڑا منہ میں دبا کر کسی محفوظ جگہ پر کھانے کے لیے بھاگ گیا۔</div>
         </div>
 
-        <div class="story-block" id="p3">
+        <div class="story-block">
             <div class="eng-sentence">3. On his way, he had to cross a small wooden bridge over a stream.</div>
             <div class="urdu-sentence">۳. راستے میں اسے ایک ندی کے اوپر بنے ہوئے چھوٹے سے لکڑی کے پل کو عبور کرنا پڑا۔</div>
         </div>
 
-        <div class="story-block" id="p4">
+        <div class="story-block">
             <div class="eng-sentence">4. As he walked across, he looked down into the clear water and saw his own reflection.</div>
             <div class="urdu-sentence">۴. جب وہ چل کر پار جا رہا تھا، اس نے صاف پانی میں نیچے دیکھا اور اپنا ہی عکس دیکھ لیا۔</div>
         </div>
 
-        <div class="story-block" id="p5">
+        <div class="story-block">
             <div class="eng-sentence">5. The foolish dog thought it was another dog carrying a bigger piece of meat.</div>
             <div class="urdu-sentence">۵. بیوقوف کتے نے سمجھا کہ یہ کوئی دوسرا کتا ہے جس کے پاس اس سے بڑا گوشت کا ٹکڑا ہے۔</div>
         </div>
 
-        <div class="story-block" id="p6">
+        <div class="story-block">
             <div class="eng-sentence">6. Being greedy, he wanted that piece for himself too and opened his mouth to bark.</div>
             <div class="urdu-sentence">۶. لالچی ہونے کی وجہ سے وہ وہ ٹکڑا بھی خود حاصل کرنا چاہتا تھا اور اس نے بھونکنے کے لیے اپنا منہ کھولا۔</div>
         </div>
 
-        <div class="story-block" id="p7">
+        <div class="story-block">
             <div class="eng-sentence">7. As he opened his mouth, his own piece of meat fell from his mouth into the water and sank.</div>
             <div class="urdu-sentence">۷. جیسے ہی اس نے منہ کھولا، اس کے اپنے منہ سے گوشت کا ٹکڑا پانی میں گر گیا اور ڈوب گیا۔</div>
         </div>
 
-        <div class="story-block" id="p8">
+        <div class="story-block">
             <div class="eng-sentence">8. The greedy dog was left with nothing and went away sadly.</div>
             <div class="urdu-sentence">۸. لالچی کتے کے پاس کچھ نہ بچا اور وہ اداس ہو کر چلا گیا۔</div>
         </div>
@@ -225,32 +231,32 @@
                 <tr>
                     <th>English Word</th>
                     <th style="text-align: right;">اردو معنی</th>
-                    <th>Audio</th>
+                    <th>Audio (Eng + Urdu)</th>
                 </tr>
                 <tr>
                     <td>Greedy</td>
                     <td class="urdu-col">لالچی</td>
-                    <td><button class="small-btn" onclick="speakText('Greedy. لالچی')">🔊 Speak</button></td>
+                    <td><button class="small-btn" onclick="speakText('Greedy means لالچی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Butcher</td>
                     <td class="urdu-col">قصاب (قصائی)</td>
-                    <td><button class="small-btn" onclick="speakText('Butcher. قصاب')">🔊 Speak</button></td>
+                    <td><button class="small-btn" onclick="speakText('Butcher means قصاب')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Stream</td>
                     <td class="urdu-col">ندی / نالہ</td>
-                    <td><button class="small-btn" onclick="speakText('Stream. ندی')">🔊 Speak</button></td>
+                    <td><button class="small-btn" onclick="speakText('Stream means ندی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Reflection</td>
                     <td class="urdu-col">عکس / پرچھائی</td>
-                    <td><button class="small-btn" onclick="speakText('Reflection. عکس یا پرچھائی')">🔊 Speak</button></td>
+                    <td><button class="small-btn" onclick="speakText('Reflection means عکس یا پرچھائی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Foolish</td>
                     <td class="urdu-col">بیوقوف</td>
-                    <td><button class="small-btn" onclick="speakText('Foolish. بیوقوف')">🔊 Speak</button></td>
+                    <td><button class="small-btn" onclick="speakText('Foolish means بیوقوف')">🔊 Speak</button></td>
                 </tr>
             </table>
         </div>
@@ -259,17 +265,16 @@
             <h3>Moral / نتیجہ:</h3>
             <p><strong>English:</strong> Greed is a curse.</p>
             <p style="font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif; direction: rtl; text-align: right; color: #c0392b; font-size: 16px;"><strong>اردو:</strong> لالچ بری بلا ہے۔</p>
-            <button class="small-btn" onclick="speakText('Moral. Greed is a curse. لالچ بری بلا ہے۔')">🔊 Read Moral</button>
+            <button class="small-btn" style="margin-top: 10px;" onclick="speakText('Moral. Greed is a curse. نتیجہ. لالچ بری بلا ہے۔')">🔊 Read Moral</button>
         </div>
     </div>
 
     <script>
         function speakText(text) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel(); // Stop previous audio
                 let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9;
+                utterance.rate = 0.85; // Natural clear speed
                 window.speechSynthesis.speak(utterance);
             } else {
                 alert("Sorry, speech synthesis is not supported in this browser.");
@@ -291,7 +296,6 @@
                     "Moral. Greed is a curse. نتیجہ. لالچ بری بلا ہے۔";
 
                 let utterance = new SpeechSynthesisUtterance(storyText);
-                utterance.lang = 'en-US';
                 utterance.rate = 0.85;
                 window.speechSynthesis.speak(utterance);
             } else {
@@ -312,5 +316,5 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-                </html>
+</html>
 
