@@ -8,7 +8,6 @@
     <meta name="description" content="Read The Greedy Dog short story with English & Urdu translation, voice pronunciation, word meanings, and multi-language support on Wighral Education.">
     <meta name="keywords" content="The Greedy Dog, English Short Stories, Moral Stories, Word Meanings, English Learning, Wighral Education">
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -92,24 +91,32 @@
             background: #fef9e7;
             padding: 8px 12px;
             border-radius: 4px;
-            margin-bottom: 12px;
         }
         .voice-btn {
             background-color: #27ae60;
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            display: block;
+            margin: 25px auto;
             transition: 0.3s;
         }
         .voice-btn:hover {
             background-color: #219653;
+        }
+        .small-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: bold;
         }
         .vocab-section {
             margin-top: 35px;
@@ -155,74 +162,63 @@
 <body>
 
     <div class="container">
-        <!-- Top Bar with Home Link and Google Translate Widget -->
         <div class="top-bar">
             <div>
                 <a href="https://wighraleducation.online" style="text-decoration: none; color: var(--secondary-color); font-weight: bold; font-size: 16px;">← Back to Home</a>
             </div>
             <div class="translate-box">
-                <!-- Google Translate Element -->
                 <div id="google_translate_element"></div>
             </div>
         </div>
 
-        <!-- Title Section with Voice Button -->
         <div class="title-box">
             <div class="urdu-title">لالچی کتا</div>
             <h1>The Greedy Dog</h1>
-            <button class="voice-btn" onclick="speakText('The Greedy Dog. لالچی کتا')">🔊 Listen Title</button>
+            <button class="small-btn" onclick="speakText('The Greedy Dog. لالچی کتا')">🔊 Listen Title</button>
         </div>
 
-        <!-- Story Paragraphs with Individual Voice Buttons -->
-        <div class="story-block">
+        <button class="voice-btn" onclick="readFullStory()">🔊 Read Full Story (English & Urdu)</button>
+
+        <div class="story-block" id="p1">
             <div class="eng-sentence">1. Once upon a time, a dog stole a piece of meat from a butcher's shop.</div>
             <div class="urdu-sentence">۱. ایک دفعہ کا ذکر ہے، ایک کتے نے قصاب کی دکان سے گوشت کا ایک ٹکڑا چرا لیا۔</div>
-            <button class="voice-btn" onclick="speakText('Once upon a time, a dog stole a piece of meat from a butcher shop.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p2">
             <div class="eng-sentence">2. He ran away with the piece of meat in his mouth to eat it in a safe place.</div>
             <div class="urdu-sentence">۲. وہ گوشت کا ٹکڑا منہ میں دبا کر کسی محفوظ جگہ پر کھانے کے لیے بھاگ گیا۔</div>
-            <button class="voice-btn" onclick="speakText('He ran away with the piece of meat in his mouth to eat it in a safe place.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p3">
             <div class="eng-sentence">3. On his way, he had to cross a small wooden bridge over a stream.</div>
             <div class="urdu-sentence">۳. راستے میں اسے ایک ندی کے اوپر بنے ہوئے چھوٹے سے لکڑی کے پل کو عبور کرنا پڑا۔</div>
-            <button class="voice-btn" onclick="speakText('On his way, he had to cross a small wooden bridge over a stream.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p4">
             <div class="eng-sentence">4. As he walked across, he looked down into the clear water and saw his own reflection.</div>
             <div class="urdu-sentence">۴. جب وہ چل کر پار جا رہا تھا، اس نے صاف پانی میں نیچے دیکھا اور اپنا ہی عکس دیکھ لیا۔</div>
-            <button class="voice-btn" onclick="speakText('As he walked across, he looked down into the clear water and saw his own reflection.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p5">
             <div class="eng-sentence">5. The foolish dog thought it was another dog carrying a bigger piece of meat.</div>
             <div class="urdu-sentence">۵. بیوقوف کتے نے سمجھا کہ یہ کوئی دوسرا کتا ہے جس کے پاس اس سے بڑا گوشت کا ٹکڑا ہے۔</div>
-            <button class="voice-btn" onclick="speakText('The foolish dog thought it was another dog carrying a bigger piece of meat.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p6">
             <div class="eng-sentence">6. Being greedy, he wanted that piece for himself too and opened his mouth to bark.</div>
             <div class="urdu-sentence">۶. لالچی ہونے کی وجہ سے وہ وہ ٹکڑا بھی خود حاصل کرنا چاہتا تھا اور اس نے بھونکنے کے لیے اپنا منہ کھولا۔</div>
-            <button class="voice-btn" onclick="speakText('Being greedy, he wanted that piece for himself too and opened his mouth to bark.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p7">
             <div class="eng-sentence">7. As he opened his mouth, his own piece of meat fell from his mouth into the water and sank.</div>
             <div class="urdu-sentence">۷. جیسے ہی اس نے منہ کھولا، اس کے اپنے منہ سے گوشت کا ٹکڑا پانی میں گر گیا اور ڈوب گیا۔</div>
-            <button class="voice-btn" onclick="speakText('As he opened his mouth, his own piece of meat fell from his mouth into the water and sank.')">🔊 Read Sentence</button>
         </div>
 
-        <div class="story-block">
+        <div class="story-block" id="p8">
             <div class="eng-sentence">8. The greedy dog was left with nothing and went away sadly.</div>
             <div class="urdu-sentence">۸. لالچی کتے کے پاس کچھ نہ بچا اور وہ اداس ہو کر چلا گیا۔</div>
-            <button class="voice-btn" onclick="speakText('The greedy dog was left with nothing and went away sadly.')">🔊 Read Sentence</button>
         </div>
 
-        <!-- Vocabulary / Word Meanings Section -->
         <div class="vocab-section">
             <h2>Important Word Meanings / الفاظ کے معنی</h2>
             <table class="vocab-table">
@@ -234,45 +230,43 @@
                 <tr>
                     <td>Greedy</td>
                     <td class="urdu-col">لالچی</td>
-                    <td><button class="voice-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakText('Greedy')">🔊 Pronounce</button></td>
+                    <td><button class="small-btn" onclick="speakText('Greedy. لالچی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Butcher</td>
                     <td class="urdu-col">قصاب (قصائی)</td>
-                    <td><button class="voice-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakText('Butcher')">🔊 Pronounce</button></td>
+                    <td><button class="small-btn" onclick="speakText('Butcher. قصاب')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Stream</td>
                     <td class="urdu-col">ندی / نالہ</td>
-                    <td><button class="voice-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakText('Stream')">🔊 Pronounce</button></td>
+                    <td><button class="small-btn" onclick="speakText('Stream. ندی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Reflection</td>
                     <td class="urdu-col">عکس / پرچھائی</td>
-                    <td><button class="voice-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakText('Reflection')">🔊 Pronounce</button></td>
+                    <td><button class="small-btn" onclick="speakText('Reflection. عکس یا پرچھائی')">🔊 Speak</button></td>
                 </tr>
                 <tr>
                     <td>Foolish</td>
                     <td class="urdu-col">بیوقوف</td>
-                    <td><button class="voice-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakText('Foolish')">🔊 Pronounce</button></td>
+                    <td><button class="small-btn" onclick="speakText('Foolish. بیوقوف')">🔊 Speak</button></td>
                 </tr>
             </table>
         </div>
 
-        <!-- Moral Box -->
         <div class="moral-box">
             <h3>Moral / نتیجہ:</h3>
             <p><strong>English:</strong> Greed is a curse.</p>
             <p style="font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif; direction: rtl; text-align: right; color: #c0392b; font-size: 16px;"><strong>اردو:</strong> لالچ بری بلا ہے۔</p>
-            <button class="voice-btn" onclick="speakText('Moral. Greed is a curse. لالچ بری بلا ہے۔')">🔊 Read Moral</button>
+            <button class="small-btn" onclick="speakText('Moral. Greed is a curse. لالچ بری بلا ہے۔')">🔊 Read Moral</button>
         </div>
     </div>
 
-    <!-- JavaScript for Text-to-Speech Voice -->
     <script>
         function speakText(text) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Stop previous audio
+                window.speechSynthesis.cancel();
                 let utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
@@ -281,9 +275,31 @@
                 alert("Sorry, speech synthesis is not supported in this browser.");
             }
         }
+
+        function readFullStory() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let storyText = "The Greedy Dog. لالچی کتا. " +
+                    "Once upon a time, a dog stole a piece of meat from a butcher's shop. ایک دفعہ کا ذکر ہے، ایک کتے نے قصاب کی دکان سے گوشت کا ایک ٹکڑا چرا لیا۔ " +
+                    "He ran away with the piece of meat in his mouth to eat it in a safe place. وہ گوشت کا ٹکڑا منہ میں دبا کر کسی محفوظ جگہ پر کھانے کے لیے بھاگ گیا۔ " +
+                    "On his way, he had to cross a small wooden bridge over a stream. راستے میں اسے ایک ندی کے اوپر بنے ہوئے چھوٹے سے لکڑی کے پل کو عبور کرنا پڑا۔ " +
+                    "As he walked across, he looked down into the clear water and saw his own reflection. جب وہ چل کر پار جا رہا تھا، اس نے صاف پانی میں نیچے دیکھا اور اپنا ہی عکس دیکھ لیا۔ " +
+                    "The foolish dog thought it was another dog carrying a bigger piece of meat. بیوقوف کتے نے سمجھا کہ یہ کوئی دوسرا کتا ہے جس کے پاس اس سے بڑا گوشت کا ٹکڑا ہے۔ " +
+                    "Being greedy, he wanted that piece for himself too and opened his mouth to bark. لالچی ہونے کی وجہ سے وہ وہ ٹکڑا بھی خود حاصل کرنا چاہتا تھا اور اس نے بھونکنے کے لیے اپنا منہ کھولا۔ " +
+                    "As he opened his mouth, his own piece of meat fell from his mouth into the water and sank. جیسے ہی اس نے منہ کھولا، اس کے اپنے منہ سے گوشت کا ٹکڑا پانی میں گر گیا اور ڈوب گیا۔ " +
+                    "The greedy dog was left with nothing and went away sadly. لالچی کتے کے پاس کچھ نہ بچا اور وہ اداس ہو کر چلا گیا۔ " +
+                    "Moral. Greed is a curse. نتیجہ. لالچ بری بلا ہے۔";
+
+                let utterance = new SpeechSynthesisUtterance(storyText);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, speech synthesis is not supported.");
+            }
+        }
     </script>
 
-    <!-- Google Translate Script -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -296,5 +312,5 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-</html>
+                </html>
 
