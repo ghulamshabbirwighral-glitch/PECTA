@@ -1,111 +1,287 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Short Stories Dashboard</title>
+    <title>The Greedy Dog - Wighral Education</title>
     
-    <meta name="description" content="English Short Stories for kids and students. Read and practice interesting stories on Wighral Education.">
-    <meta name="keywords" content="English Short Stories, Kids Stories, Moral Stories, Fox and Grapes, English Practice, Wighral Education">
+    <meta name="description" content="Read The Greedy Dog short story with English & Urdu translation, voice pronunciation, word meanings, and multi-language support on Wighral Education.">
+    <meta name="keywords" content="The Greedy Dog, English Short Stories, Moral Stories, Word Meanings, English Learning, Wighral Education">
 
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-4NHR43XLF6');
     </script>
     
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
-        body { 
-            font-family: sans-serif; 
-            text-align: center; 
-            padding: 40px 15px; 
-            background: #f8f9fa; 
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .translate-box {
+            text-align: right;
+            margin-bottom: 15px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
-        h1 { 
-            color: #343a40; 
-            font-size: 26px;
-            margin-bottom: 12px;
+        .title-box {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
-        p {
-            font-size: 16px;
-            margin-bottom: 30px;
-            color: #495057;
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 8px 0;
+            font-size: 28px;
         }
-        /* بٹنوں کو ایک کے نیچے ایک اور خوبصورت دکھانے کے لیے کنٹینر */
-        .btn-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+        .urdu-title {
+            font-size: 22px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            margin-bottom: 10px;
         }
-        /* बटन का नया साइज और लुक जो मोबाइल पर बड़ा और साफ़ दिखेगा */
-        .nav-btn { 
-            width: 90%; 
-            max-width: 550px; /* डेस्कटॉप पर बटन को बहुत ज़्यादा फैलने से रोकेगा */
-            padding: 18px 24px; 
-            cursor: pointer; 
-            font-size: 18px; 
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+        }
+        .story-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            background: #fdfdfd;
+            border-radius: 4px;
+        }
+        .eng-sentence {
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 10px; 
-            border: none; 
-            background: #27ae60; /* کہانیوں کے لیے ہرہ رنگ */
-            color: white; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: 0.2s ease-in-out;
-            line-height: 1.4;
+            color: #2c3e50;
+            margin-bottom: 8px;
         }
-        /* डेस्कटॉप पर माउस ले जाने का इफेक्ट */
-        @media (hover: hover) {
-            .nav-btn:hover { 
-                background: #219653; 
-                transform: translateY(-2px);
-                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            }
+        .urdu-sentence {
+            font-size: 17px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background: #fef9e7;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
-        /* मोबाइल पर टच करने का इफेक्ट (Active State) */
-        .nav-btn:active {
-            transform: scale(0.98);
-            background: #1e8449;
+        .voice-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+        .voice-btn:hover {
+            background-color: #219653;
+        }
+        .vocab-section {
+            margin-top: 35px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e1e1;
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .vocab-table th, .vocab-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .vocab-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .vocab-table td.urdu-col {
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            direction: rtl;
+            text-align: right;
+            color: #c0392b;
+        }
+        .moral-box {
+            background: #e8f8f5;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+        .moral-box h3 {
+            color: #27ae60;
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
 
-    <h1>English Short Stories Dashboard</h1>
-    
-    <p>Select a story to open in a new full-screen window:</p>
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="translate-box">
+            <a href="https://wighraleducation.online" style="text-decoration: none; color: var(--secondary-color); font-weight: bold;">← Back to Home</a>
+            <div id="google_translate_element"></div>
+        </div>
 
-    <p style="max-width: 550px; margin: 10px auto 25px auto; line-height: 1.6; color: #495057; padding: 0 15px; text-align: center;">
-        Welcome to the English Short Stories section of Wighral Education. This specialized digital space is designed for kids and school students to enhance their reading, listening, and vocabulary skills through moral and engaging short stories. Explore our interactive modules below!
-    </p>
-        
-    <div class="btn-container">
-        <button class="nav-btn" onclick="openFullscreen('Engstry.html')">The Fox and the Grapes</button>
-        <button class="nav-btn" onclick="openFullscreen('Engcrow.html')">A Thirsty Crow</button>
-<button class="nav-btn" onclick="openFullscreen('Enggred.html')">A Gready Dog</button>
+        <!-- Title Section with Voice Button -->
+        <div class="title-box">
+            <div class="urdu-title">لالچی کتا</div>
+            <h1>The Greedy Dog</h1>
+            <button class="voice-btn" onclick="speakText('The Greedy Dog. لالچی کتا')">🔊 Listen Title</button>
+        </div>
 
-    
+        <!-- Story Paragraphs with Individual Voice Buttons -->
+        <div class="story-block">
+            <div class="eng-sentence">1. Once upon a time, a dog stole a piece of meat from a butcher's shop.</div>
+            <div class="urdu-sentence">۱. ایک دفعہ کا ذکر ہے، ایک کتے نے قصاب کی دکان سے گوشت کا ایک ٹکڑا چرا لیا۔</div>
+            <button class="voice-btn" onclick="speakText('Once upon a time, a dog stole a piece of meat from a butcher shop.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">2. He ran away with the piece of meat in his mouth to eat it in a safe place.</div>
+            <div class="urdu-sentence">۲. وہ گوشت کا ٹکڑا منہ میں دبا کر کسی محفوظ جگہ پر کھانے کے لیے بھاگ گیا۔</div>
+            <button class="voice-btn" onclick="speakText('He ran away with the piece of meat in his mouth to eat it in a safe place.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">3. On his way, he had to cross a small wooden bridge over a stream.</div>
+            <div class="urdu-sentence">۳. راستے میں اسے ایک ندی کے اوپر بنے ہوئے چھوٹے سے لکڑی کے پل کو عبور کرنا پڑا۔</div>
+            <button class="voice-btn" onclick="speakText('On his way, he had to cross a small wooden bridge over a stream.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">4. As he walked across, he looked down into the clear water and saw his own reflection.</div>
+            <div class="urdu-sentence">۴. جب وہ چل کر پار جا رہا تھا، اس نے صاف پانی میں نیچے دیکھا اور اپنا ہی عکس دیکھ لیا۔</div>
+            <button class="voice-btn" onclick="speakText('As he walked across, he looked down into the clear water and saw his own reflection.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">5. The foolish dog thought it was another dog carrying a bigger piece of meat.</div>
+            <div class="urdu-sentence">۵. بیوقوف کتے نے سمجھا کہ یہ کوئی دوسرا کتا ہے جس کے پاس اس سے بڑا گوشت کا ٹکڑا ہے۔</div>
+            <button class="voice-btn" onclick="speakTest('The foolish dog thought it was another dog carrying a bigger piece of meat.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">6. Being greedy, he wanted that piece for himself too and opened his mouth to bark.</div>
+            <div class="urdu-sentence">۶. لالچی ہونے کی وجہ سے وہ وہ ٹکڑا بھی خود حاصل کرنا چاہتا تھا اور اس نے بھونکنے کے لیے اپنا منہ کھولا۔</div>
+            <button class="voice-btn" onclick="speakTest('Being greedy, he wanted that piece for himself too and opened his mouth to bark.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">7. As he opened his mouth, his own piece of meat fell from his mouth into the water and sank.</div>
+            <div class="urdu-sentence">۷. جیسے ہی اس نے منہ کھولا، اس کے اپنے منہ سے گوشت کا ٹکڑا پانی میں گر گیا اور ڈوب گیا۔</div>
+            <button class="voice-btn" onclick="speakTest('As he opened his mouth, his own piece of meat fell from his mouth into the water and sank.')">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">8. The greedy dog was left with nothing and went away sadly.</div>
+            <div class="urdu-sentence">۸. لالچی کتے کے پاس کچھ نہ بچا اور وہ اداس ہو کر چلا گیا۔</div>
+            <button class="voice-btn" onclick="speakTest('The greedy dog was left with nothing and went away sadly.')">🔊 Read Sentence</button>
+        </div>
+
+        <!-- Vocabulary / Word Meanings Section -->
+        <div class="vocab-section">
+            <h2>Important Word Meanings / الفاظ کے معنی</h2>
+            <table class="vocab-table">
+                <tr>
+                    <th>English Word</th>
+                    <th style="text-align: right;">اردو معنی</th>
+                    <th>Pronunciation Button</th>
+                </tr>
+                <tr>
+                    <td>Greedy</td>
+                    <td class="urdu-col">لالچی</td>
+                    <td><button class="voice-btn" onclick="speakText('Greedy')">🔊 Pronounce</button></td>
+                </tr>
+                <tr>
+                    <td>Butcher</td>
+                    <td class="urdu-col">قصاب (قصائی)</td>
+                    <td><button class="voice-btn" onclick="speakText('Butcher')">🔊 Pronounce</button></td>
+                </tr>
+                <tr>
+                    <td>Stream</td>
+                    <td class="urdu-col">ندی / نالہ</td>
+                    <td><button class="voice-btn" onclick="speakText('Stream')">🔊 Pronounce</button></td>
+                </tr>
+                <tr>
+                    <td>Reflection</td>
+                    <td class="urdu-col">عکس / پرچھائی</td>
+                    <td><button class="voice-btn" onclick="speakText('Reflection')">🔊 Pronounce</button></td>
+                </tr>
+                <tr>
+                    <td>Foolish</td>
+                    <td class="urdu-col">بیوقوف</td>
+                    <td><button class="voice-btn" onclick="speakText('Foolish')">🔊 Pronounce</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Moral Box -->
+        <div class="moral-box">
+            <h3>Moral / نتیجہ:</h3>
+            <p><strong>English:</strong> Greed is a curse.</p>
+            <p style="font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif; direction: rtl; text-align: right; color: #c0392b; font-size: 17px;"><strong>اردو:</strong> لالچ بری بلا ہے۔</p>
+            <button class="voice-btn" onclick="speakText('Moral. Greed is a curse. لالچ بری بلا ہے۔')">🔊 Read Moral</button>
+        </div>
     </div>
 
+    <!-- JavaScript for Text-to-Speech Voice -->
     <script>
-        function openFullscreen(url) {
-            // آپ ضرورت کے مطابق یہاں فل سکرین یا نئی ونڈو کھولنے کا فنکشن سیٹ کر سکتے ہیں
-            window.open(url, '_blank');
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop any ongoing speech
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Normal reading speed
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser doesn't support text to speech!");
+            }
         }
     </script>
 
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,ur,hi,ar,es,fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
+
 
