@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Tortoise and the Hare - Wighral Education</title>
     
-    <meta name="description" content="Read The Tortoise and the Hare short story with English & Urdu translation, voice pronunciation, and multi-language support on Wighral Education.">
+    <meta name="description" content="Read The Tortoise and the Hare short story with English & Urdu translation, voice pronunciation, word meanings, and multi-language support on Wighral Education.">
     <meta name="keywords" content="The Tortoise and the Hare, English Short Stories, Moral Stories, Kids Stories, English Learning, Wighral Education">
 
     <!-- Google Analytics -->
@@ -85,14 +85,14 @@
             border-radius: 4px;
         }
         .voice-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 24px;
+            display: inline-block;
+            margin: 10px auto;
+            padding: 8px 16px;
             background-color: #27ae60;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
@@ -100,126 +100,200 @@
         .voice-btn:hover {
             background-color: #219653;
         }
+        /* Table Styles for Word Meanings */
+        .meaning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+        .meaning-table th, .meaning-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .meaning-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .meaning-table td.urdu-col {
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            direction: rtl;
+            text-align: right;
+            color: #c0392b;
+        }
         /* Google Translate Widget Styling */
         .translate-box {
             text-align: center;
             margin-bottom: 20px;
         }
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: var(--primary-color);
-            color: white;
-        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <!-- Google Translate Widget Integration -->
-    <div class="translate-box">
-        <div id="google_translate_element"></div>
+    <div class="container">
+        <!-- Google Translate Integration -->
+        <div class="translate-box">
+            <div id="google_translate_element"></div>
+        </div>
+
+        <!-- Title Section with Voice Button -->
+        <div class="title-box">
+            <h1 id="engTitle">The Tortoise and the Hare</h1>
+            <div class="urdu-title" id="urduTitle">کچھوا اور خرگوش</div>
+            <button class="voice-btn" onclick="speakTitle()">🔊 Listen to Title</button>
+        </div>
+
+        <!-- Story Body Section -->
+        <h2>Story / کہانی</h2>
+        
+        <div class="story-block">
+            <div class="eng-sentence">Once upon a time, a proud hare mocked a slow tortoise.</div>
+            <div class="urdu-sentence">ایک دفعہ کا ذکر ہے کہ ایک غرور کرنے والے خرگوش نے ایک سست کچھوے کا مذاق اڑایا۔</div>
+            <button class="voice-btn" onclick="speakBody(0)">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">Tired of the hare's boasting, the tortoise challenged him to a race.</div>
+            <div class="urdu-sentence">خرگوش کی شیخی سے تنگ آ کر، کچھوے نے اسے دوڑ کا چیلنج دیا۔</div>
+            <button class="voice-btn" onclick="speakBody(1)">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">The hare quickly ran ahead and decided to take a nap, feeling confident he would win.</div>
+            <div class="urdu-sentence">خرگوش تیزی سے آگے دوڑا اور یہ سوچ کر سونے کا فیصلہ کیا کہ وہ جیت جائے گا۔</div>
+            <button class="voice-btn" onclick="speakBody(2)">🔊 Read Sentence</button>
+        </div>
+
+        <div class="story-block">
+            <div class="eng-sentence">Meanwhile, the tortoise kept walking steadily and crossed the finish line first, winning the race.</div>
+            <div class="urdu-sentence">اس دوران، کچھوا مستقل مزاجی سے چلتا رہا اور پہلے فنش لائن عبور کر کے دوڑ جیت گیا۔</div>
+            <button class="voice-btn" onclick="speakBody(3)">🔊 Read Sentence</button>
+        </div>
+
+        <!-- Word Meanings Section -->
+        <h2>Important Word Meanings / اہم الفاظ کے معنی</h2>
+        <table class="meaning-table">
+            <thead>
+                <tr>
+                    <th>English Word</th>
+                    <th>Urdu Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tortoise</td>
+                    <td class="urdu-col">کچھوا</td>
+                </tr>
+                <tr>
+                    <td>Hare</td>
+                    <td class="urdu-col">خرگوش</td>
+                </tr>
+                <tr>
+                    <td>Mocked</td>
+                    <td class="urdu-col">مذاق اڑایا</td>
+                </tr>
+                <tr>
+                    <td>Boasting</td>
+                    <td class="urdu-col">شیخی بگھارنا / فخر کرنا</td>
+                </tr>
+                <tr>
+                    <td>Steadily</td>
+                    <td class="urdu-col">مستقل مزاجی سے</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+            <button class="voice-btn" onclick="speakWordMeanings()">🔊 Read Word Meanings</button>
+        </div>
+
     </div>
 
-    <div class="title-box">
-        <h1>The Tortoise and the Hare</h1>
-        <div class="urdu-title">کچھوا اور خرگوش</div>
-        <p>A classic moral story in easy English and Urdu for learners.</p>
-    </div>
-
-    <!-- Voice Pronunciation Button -->
-    <button class="voice-btn" onclick="speakStory()">🔊 Listen to Story (آواز سنیں)</button>
-
-    <div class="story-block">
-        <div class="eng-sentence">1. Once upon a time, a hare and a tortoise lived in a forest.</div>
-        <div class="urdu-sentence">۱۔ ایک دفعہ کا ذکر ہے، ایک جنگل میں ایک خرگوش اور ایک کچھوا رہتے تھے۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">2. The hare was very proud of his fast speed.</div>
-        <div class="urdu-sentence">۲۔ خرگوش کو اپنی تیز رفتار پر بہت غرور تھا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">3. He always laughed at the slow-walking tortoise.</div>
-        <div class="urdu-sentence">۳۔ وہ ہمیشہ آہستہ چلنے والے کچھوے پر ہنستا تھا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">4. One day, the tortoise challenged the hare to a running race.</div>
-        <div class="urdu-sentence">۴۔ ایک دن کچھوے نے خرگوش کو دوڑ کا مقابلہ کرنے کا چیلنج دیا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">5. The race started, and the hare ran very fast like the wind.</div>
-        <div class="urdu-sentence">۵۔ دوڑ شروع ہوئی، اور خرگوش ہوا کی طرح بہت تیز دوڑا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">6. Soon, the hare was far ahead and decided to take a short nap under a tree.</div>
-        <div class="urdu-sentence">۶۔ جلد ہی، خرگوش بہت آگے نکل گیا اور ایک درخت کے نیچے تھوڑی دیر آرام کرنے کا فیصلہ کیا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">7. The tortoise kept walking slowly and steadily without stopping.</div>
-        <div class="urdu-sentence">۷۔ کچھوا بغیر روکے آہستہ اور لگاتار چلتا رہا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">8. When the hare woke up, he ran as fast as he could to the finish line.</div>
-        <div class="urdu-sentence">۸۔ جب خرگوش کی آنکھ کھلی، تو وہ جتنی تیزی سے ہو سکتا تھا منزل کی طرف دوڑا۔</div>
-    </div>
-
-    <div class="story-block">
-        <div class="eng-sentence">9. But to his surprise, he saw that the tortoise had already reached the finish line and won the race!</div>
-        <div class="urdu-sentence">۹۔ لیکن اسے یہ دیکھ کر حیرت ہوئی کہ کچھوا پہلے ہی منزل پر پہنچ چکا تھا اور دوڑ جیت گیا تھا!</div>
-    </div>
-
-    <h2>Moral / نتیجہ:</h2>
-    <div class="story-block">
-        <div class="eng-sentence">Moral: Slow and steady wins the race.</div>
-        <div class="urdu-sentence">نتیجہ: جو محنت اور استقامت سے کام کرتا ہے، وہی کامیاب ہوتا ہے (کوشش کرنے والوں کی ہار نہیں ہوتی)۔</div>
-    </div>
-
-</div>
-
-<!-- Google Translate Script -->
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'ur,hi,ar,es,fr,de,zh-CN,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<!-- Speech Synthesis Script for Voice Pronunciation -->
-<script>
-    function speakStory() {
-        if ('speechSynthesis' in window) {
-            let textToSpeak = "Once upon a time, a hare and a tortoise lived in a forest. The hare was very proud of his fast speed. He always laughed at the slow-walking tortoise. One day, the tortoise challenged the hare to a running race. The race started, and the hare ran very fast. Soon, the hare was far ahead and decided to take a nap. The tortoise kept walking slowly and steadily. When the hare woke up, he ran to the finish line, but the tortoise had already won the race. Moral: Slow and steady wins the race.";
-            let utterance = new SpeechSynthesisUtterance(textToSpeak);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.9;
-            window.speechSynthesis.speak(utterance);
-        } else {
-            alert("Sorry, your browser does not support text-to-speech audio.");
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
         }
-    }
-</script>
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <!-- Text-to-Speech JavaScript Logic -->
+    <script>
+        function speakText(text, lang) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop any ongoing speech
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+
+        // Title Speech (Reads English then Urdu)
+        function speakTitle() {
+            let eng = document.getElementById("engTitle").innerText;
+            let urdu = document.getElementById("urduTitle").innerText;
+            
+            let utteranceEng = new SpeechSynthesisUtterance(eng);
+            utteranceEng.lang = 'en-US';
+            
+            let utteranceUrdu = new SpeechSynthesisUtterance(urdu);
+            utteranceUrdu.lang = 'ur-PK';
+
+            utteranceEng.onend = function() {
+                window.speechSynthesis.speak(utteranceUrdu);
+            };
+
+            window.speechSynthesis.speak(utteranceEng);
+        }
+
+        // Body Sentence Speech (Reads English sentence then Urdu sentence)
+        function speakBody(index) {
+            let blocks = document.querySelectorAll(".story-block");
+            let eng = blocks[index].querySelector(".eng-sentence").innerText;
+            let urdu = blocks[index].querySelector(".urdu-sentence").innerText;
+
+            let utteranceEng = new SpeechSynthesisUtterance(eng);
+            utteranceEng.lang = 'en-US';
+
+            let utteranceUrdu = new SpeechSynthesisUtterance(urdu);
+            utteranceUrdu.lang = 'ur-PK';
+
+            utteranceEng.onend = function() {
+                window.speechSynthesis.speak(utteranceUrdu);
+            };
+
+            window.speechSynthesis.speak(utteranceEng);
+        }
+
+        // Word Meanings Speech (Reads all rows: English word then Urdu meaning)
+        function speakWordMeanings() {
+            let rows = document.querySelectorAll(".meaning-table tbody tr");
+            let textQueue = [];
+
+            rows.forEach(row => {
+                let engWord = row.cells[0].innerText;
+                let urduMeaning = row.cells[1].innerText;
+                textQueue.push({ text: engWord, lang: 'en-US' });
+                textQueue.push({ text: urduMeaning, lang: 'ur-PK' });
+            });
+
+            function playQueue(index) {
+                if (index >= textQueue.length) return;
+                let item = textQueue[index];
+                let utterance = new SpeechSynthesisUtterance(item.text);
+                utterance.lang = item.lang;
+                utterance.onend = function() {
+                    playQueue(index + 1);
+                };
+                window.speechSynthesis.speak(utterance);
+            }
+
+            window.speechSynthesis.cancel();
+            playQueue(0);
+        }
+    </script>
 </body>
 </html>
 
