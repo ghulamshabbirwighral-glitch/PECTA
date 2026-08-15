@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tortoise and the Hare - Wighral Education</title>
+    
+    <meta name="description" content="Read The Tortoise and the Hare short story with English & Urdu translation, voice pronunciation, and multi-language support on Wighral Education.">
+    <meta name="keywords" content="The Tortoise and the Hare, English Short Stories, Moral Stories, Kids Stories, English Learning, Wighral Education">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHR43XLF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4NHR43XLF6');
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .title-box {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+        .urdu-title {
+            font-size: 22px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+        }
+        .story-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            background: #fdfdfd;
+            border-radius: 4px;
+        }
+        .eng-sentence {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .urdu-sentence {
+            font-size: 17px;
+            color: #c0392b;
+            font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background: #fef9e7;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        .voice-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .voice-btn:hover {
+            background-color: #219653;
+        }
+        /* Google Translate Widget Styling */
+        .translate-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- Google Translate Widget Integration -->
+    <div class="translate-box">
+        <div id="google_translate_element"></div>
+    </div>
+
+    <div class="title-box">
+        <h1>The Tortoise and the Hare</h1>
+        <div class="urdu-title">کچھوا اور خرگوش</div>
+        <p>A classic moral story in easy English and Urdu for learners.</p>
+    </div>
+
+    <!-- Voice Pronunciation Button -->
+    <button class="voice-btn" onclick="speakStory()">🔊 Listen to Story (آواز سنیں)</button>
+
+    <div class="story-block">
+        <div class="eng-sentence">1. Once upon a time, a hare and a tortoise lived in a forest.</div>
+        <div class="urdu-sentence">۱۔ ایک دفعہ کا ذکر ہے، ایک جنگل میں ایک خرگوش اور ایک کچھوا رہتے تھے۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">2. The hare was very proud of his fast speed.</div>
+        <div class="urdu-sentence">۲۔ خرگوش کو اپنی تیز رفتار پر بہت غرور تھا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">3. He always laughed at the slow-walking tortoise.</div>
+        <div class="urdu-sentence">۳۔ وہ ہمیشہ آہستہ چلنے والے کچھوے پر ہنستا تھا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">4. One day, the tortoise challenged the hare to a running race.</div>
+        <div class="urdu-sentence">۴۔ ایک دن کچھوے نے خرگوش کو دوڑ کا مقابلہ کرنے کا چیلنج دیا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">5. The race started, and the hare ran very fast like the wind.</div>
+        <div class="urdu-sentence">۵۔ دوڑ شروع ہوئی، اور خرگوش ہوا کی طرح بہت تیز دوڑا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">6. Soon, the hare was far ahead and decided to take a short nap under a tree.</div>
+        <div class="urdu-sentence">۶۔ جلد ہی، خرگوش بہت آگے نکل گیا اور ایک درخت کے نیچے تھوڑی دیر آرام کرنے کا فیصلہ کیا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">7. The tortoise kept walking slowly and steadily without stopping.</div>
+        <div class="urdu-sentence">۷۔ کچھوا بغیر روکے آہستہ اور لگاتار چلتا رہا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">8. When the hare woke up, he ran as fast as he could to the finish line.</div>
+        <div class="urdu-sentence">۸۔ جب خرگوش کی آنکھ کھلی، تو وہ جتنی تیزی سے ہو سکتا تھا منزل کی طرف دوڑا۔</div>
+    </div>
+
+    <div class="story-block">
+        <div class="eng-sentence">9. But to his surprise, he saw that the tortoise had already reached the finish line and won the race!</div>
+        <div class="urdu-sentence">۹۔ لیکن اسے یہ دیکھ کر حیرت ہوئی کہ کچھوا پہلے ہی منزل پر پہنچ چکا تھا اور دوڑ جیت گیا تھا!</div>
+    </div>
+
+    <h2>Moral / نتیجہ:</h2>
+    <div class="story-block">
+        <div class="eng-sentence">Moral: Slow and steady wins the race.</div>
+        <div class="urdu-sentence">نتیجہ: جو محنت اور استقامت سے کام کرتا ہے، وہی کامیاب ہوتا ہے (کوشش کرنے والوں کی ہار نہیں ہوتی)۔</div>
+    </div>
+
+</div>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'ur,hi,ar,es,fr,de,zh-CN,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- Speech Synthesis Script for Voice Pronunciation -->
+<script>
+    function speakStory() {
+        if ('speechSynthesis' in window) {
+            let textToSpeak = "Once upon a time, a hare and a tortoise lived in a forest. The hare was very proud of his fast speed. He always laughed at the slow-walking tortoise. One day, the tortoise challenged the hare to a running race. The race started, and the hare ran very fast. Soon, the hare was far ahead and decided to take a nap. The tortoise kept walking slowly and steadily. When the hare woke up, he ran to the finish line, but the tortoise had already won the race. Moral: Slow and steady wins the race.";
+            let utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Sorry, your browser does not support text-to-speech audio.");
+        }
+    }
+</script>
+
+</body>
+</html>
+
