@@ -171,40 +171,48 @@
             <button class="voice-btn" onclick="speakBody(3)">🔊 Read Sentence</button>
         </div>
 
-        <!-- Word Meanings Section -->
+        <!-- Word Meanings Section with Individual Voice Buttons -->
         <h2>Important Word Meanings / اہم الفاظ کے معنی</h2>
         <table class="meaning-table">
             <thead>
                 <tr>
                     <th>English Word</th>
                     <th>Urdu Meaning</th>
+                    <th>Pronunciation</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Tortoise</td>
-                    <td class="urdu-col">کچھوا</td>
+                    <td class="eng-word">Tortoise</td>
+                    <td class="urdu-col urdu-word">کچھوا</td>
+                    <td><button class="voice-btn" onclick="speakWord('Tortoise', 'کچھوا')">🔊 Read Word</button></td>
                 </tr>
                 <tr>
-                    <td>Hare</td>
-                    <td class="urdu-col">خرگوش</td>
+                    <td class="eng-word">Hare</td>
+                    <td class="urdu-col urdu-word">خرگوش</td>
+                    <td><button class="voice-btn" onclick="speakWord('Hare', 'خرگوش')">🔊 Read Word</button></td>
                 </tr>
                 <tr>
-                    <td>Mocked</td>
-                    <td class="urdu-col">مذاق اڑایا</td>
+                    <td class="eng-word">Mocked</td>
+                    <td class="urdu-col urdu-word">مذاق اڑایا</td>
+                    <td><button class="voice-btn" onclick="speakWord('Mocked', 'مذاق اڑایا')">🔊 Read Word</button></td>
                 </tr>
                 <tr>
-                    <td>Boasting</td>
-                    <td class="urdu-col">شیخی بگھارنا / فخر کرنا</td>
+                    <td class="eng-word">Boasting</td>
+                    <td class="urdu-col urdu-word">شیخی بگھارنا / فخر کرنا</td>
+                    <td><button class="voice-btn" onclick="speakWord('Boasting', 'شیخی بگھارنا فخر کرنا')">🔊 Read Word</button></td>
                 </tr>
                 <tr>
-                    <td>Steadily</td>
-                    <td class="urdu-col">مستقل مزاجی سے</td>
+                    <td class="eng-word">Steadily</td>
+                    <td class="urdu-col urdu-word">مستقل مزاجی سے</td>
+                    <td><button class="voice-btn" onclick="speakWord('Steadily', 'مستقل مزاجی سے')">🔊 Read Word</button></td>
                 </tr>
             </tbody>
         </table>
+        
+        <!-- Button to Read All Word Meanings Together -->
         <div style="text-align: center;">
-            <button class="voice-btn" onclick="speakWordMeanings()">🔊 Read Word Meanings</button>
+            <button class="voice-btn" onclick="speakAllWordMeanings()">🔊 Read All Word Meanings</button>
         </div>
 
     </div>
@@ -219,17 +227,6 @@
 
     <!-- Text-to-Speech JavaScript Logic -->
     <script>
-        function speakText(text, lang) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Stop any ongoing speech
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = lang;
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Sorry, your browser does not support text-to-speech.");
-            }
-        }
-
         // Title Speech (Reads English then Urdu)
         function speakTitle() {
             let eng = document.getElementById("engTitle").innerText;
@@ -245,6 +242,7 @@
                 window.speechSynthesis.speak(utteranceUrdu);
             };
 
+            window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utteranceEng);
         }
 
@@ -264,17 +262,34 @@
                 window.speechSynthesis.speak(utteranceUrdu);
             };
 
+            window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utteranceEng);
         }
 
-        // Word Meanings Speech (Reads all rows: English word then Urdu meaning)
-        function speakWordMeanings() {
+        // Individual Word Meaning Speech (Reads English word then Urdu meaning)
+        function speakWord(engWord, urduMeaning) {
+            let utteranceEng = new SpeechSynthesisUtterance(engWord);
+            utteranceEng.lang = 'en-US';
+
+            let utteranceUrdu = new SpeechSynthesisUtterance(urduMeaning);
+            utteranceUrdu.lang = 'ur-PK';
+
+            utteranceEng.onend = function() {
+                window.speechSynthesis.speak(utteranceUrdu);
+            };
+
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utteranceEng);
+        }
+
+        // Read All Word Meanings Speech (Reads all rows: English word then Urdu meaning sequentially)
+        function speakAllWordMeanings() {
             let rows = document.querySelectorAll(".meaning-table tbody tr");
             let textQueue = [];
 
             rows.forEach(row => {
-                let engWord = row.cells[0].innerText;
-                let urduMeaning = row.cells[1].innerText;
+                let engWord = row.querySelector(".eng-word").innerText;
+                let urduMeaning = row.querySelector(".urdu-word").innerText;
                 textQueue.push({ text: engWord, lang: 'en-US' });
                 textQueue.push({ text: urduMeaning, lang: 'ur-PK' });
             });
@@ -295,5 +310,5 @@
         }
     </script>
 </body>
-</html>
+    </html>
 
