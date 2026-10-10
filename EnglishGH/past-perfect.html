@@ -20,13 +20,17 @@
     <style>
         body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f8f9fa; }
         .viewer { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: right; }
-        h2 { font-size: 42px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
-        p { font-size: 28px; line-height: 1.8; margin: 15px 0; }
-        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
+        h2 { font-size: 38px; margin-bottom: 20px; color: #2c3e50; text-align: center; }
+        h3 { font-size: 28px; color: #2980b9; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+        p { font-size: 22px; line-height: 1.8; margin: 15px 0; }
+        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 12px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
         .speaker-btn:hover { background: #2980b9; }
-        .ex-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
-        .ex-item { font-size: 32px; margin-bottom: 20px; padding: 10px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .opt-btn { display: block; width: 100%; padding: 20px; font-size: 28px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; }
+        .ex-section { margin-top: 20px; }
+        .ex-item { font-size: 24px; margin-bottom: 15px; padding: 12px 18px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; text-align: left; }
+        .ex-item-ur { font-size: 20px; color: #555; text-align: right; margin-top: 5px; margin-bottom: 15px; padding-right: 15px; }
+        .opt-btn { display: block; width: 100%; padding: 18px; font-size: 24px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; box-sizing: border-box; }
+        .opt-btn:hover { background-color: #a93226; }
+        .formula-box { background: #eaf2f8; padding: 15px; border-radius: 8px; font-weight: bold; border-right: 5px solid #3498db; margin: 10px 0; }
     </style>
 </head>
 <body>
@@ -36,45 +40,100 @@
 <div class="viewer">
     <h2 class="notranslate">Past Perfect Tense</h2>
   
-    <p><strong>Def:</strong> <span id="def-en" class="notranslate">Past completed action. Formula: Subject + had + V3 + Object.</span>
+    <!-- General Definition -->
+    <h3>1. Definition (تعریف)</h3>
+    <p><strong>Def:</strong> <span id="def-en" class="notranslate">Used to describe an action that was completed before another action or time in the past.</span>
         <button class="speaker-btn" onclick="speak('def-en', 'en')">🔊 Listen</button>
     </p>
     
-    <p><strong>تعريف:</strong> <span id="def-ur">فعل ماضی مکمل۔ subject کے بعد had کا استعمال پھر ورب کی تیسری فارم۔</span>
+    <p><strong>تعريف:</strong> <span id="def-ur">یہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں کسی دوسرے کام یا وقت سے پہلے مکمل ہو چکا تھا۔ اردو پہچان: جملے کے آخر میں 'چکا تھا'، 'چکی تھی'، 'چکے تھے' یا 'یا تھا'، 'یی تھی' وغیرہ آتا ہے۔</span>
         <button class="speaker-btn" onclick="speak('def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+
+    <!-- 1. Positive / Affirmative Sentences -->
+    <h3>2. Positive Sentences (مثبت جملے)</h3>
+    <p class="formula-box"><strong>Formula:</strong> <span class="notranslate">Subject + had + V3 (3rd Form) + Object</span></p>
+    <p><strong>Rule (Urdu):</strong> 
+        تمام سبجیکٹس (I, We, You, They, He, She, It, Single Name) کے ساتھ امدادی فعل **Had** کا استعمال ہوتا ہے اور فعل (Verb) کی **تیسری فارم (V3)** لگائی جاتی ہے۔
     </p>
     
     <div class="ex-section">
         <p><strong>Examples (مثالیں):</strong></p>
-        <div id="ex-content"></div>
+        <div id="pos-ex-content"></div>
     </div>
+
+    <!-- 2. Negative Sentences -->
+    <h3>3. Negative Sentences (منفی جملے)</h3>
+    <p class="formula-box"><strong>Formula:</strong> <span class="notranslate">Subject + had + not + V3 (3rd Form) + Object</span></p>
+    <p><strong>Rule (Urdu):</strong> منفی جملہ بنانے کے لیے امدادی فعل **had** کے فوراً بعد **not** لگایا جاتا ہے۔</p>
     
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="neg-ex-content"></div>
+    </div>
+
+    <!-- 3. Interrogative Sentences -->
+    <h3>4. Interrogative Sentences (سوالیہ جملے)</h3>
+    <p class="formula-box"><strong>Formula:</strong> <span class="notranslate">Had + Subject + V3 (3rd Form) + Object?</span></p>
+    <p><strong>Rule (Urdu):</strong> سوالیہ جملہ بنانے کے لیے امدادی فعل **Had** کو جملے کے شروع میں لکھا جاتا ہے اور آخر میں سوالیہ نشان (?) لگایا جاتا ہے۔</p>
+    
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="int-ex-content"></div>
+    </div>
+
     <a href="index.html" class="opt-btn">واپس (Back)</a>
 </div>
 
 <script>
-    const examples = [
-        "He had eaten.",
-        "I had played.",
-        "They had run.",
-        "She had read.",
-        "We had gone.",
-        "It had rained.",
-        "Ali had worked.",
-        "Sun had risen.",
-        "Birds had flown.",
-        "Dogs had barked."
+    // Positive Examples Data
+    const posExamples = [
+        { en: "He had eaten food.", ur: "وہ کھانا کھا چکا تھا،" },
+        { en: "They had run away.", ur: "وہ بھاگ چکے تھے،" },
+        { en: "We had gone to Lahore.", ur: "ہم لاہور جا چکے تھے،" },
+        { en: "Birds had flown away.", ur: "پرندے اڑ چکے تھے،" },
+        { en: "The sun had risen.", ur: "سورج طلوع ہو چکا تھا،" }
     ];
-    
-    const exContent = document.getElementById('ex-content');
-    examples.forEach((ex, index) => {
-        exContent.innerHTML += `
-            <div class="ex-item">
-                <span id="ex-${index}" class="notranslate">${ex}</span>
-                <button class="speaker-btn" onclick="speak('ex-${index}', 'en')">🔊</button>
-            </div>`;
-    });
 
+    // Negative Examples Data
+    const negExamples = [
+        { en: "He had not eaten food.", ur: "وہ کھانا نہیں کھا چکا تھا،" },
+        { en: "I had not played cricket.", ur: "میں نے کرکٹ نہیں کھیلی تھی،" },
+        { en: "Dogs had not barked.", ur: "کتے نہیں بھونکے تھے،" },
+        { en: "Ali had not worked in the office.", ur: "علی نے دفتر میں کام نہیں کیا تھا،" }
+    ];
+
+    // Interrogative Examples Data
+    const intExamples = [
+        { en: "Had he eaten food?", ur: "کیا وہ کھانا کھا چکا تھا؟" },
+        { en: "Had it rained yesterday?", ur: "کیا کل بارش ہو چکی تھی؟" },
+        { en: "Had she read the book?", ur: "کیا وہ کتاب پڑھ چکی تھی؟" },
+        { en: "Had they gone to school?", ur: "کیا وہ اسکول جا چکے تھے؟" }
+    ];
+
+    // Helper function to render examples
+    function renderExamples(containerId, list, prefix) {
+        const container = document.getElementById(containerId);
+        list.forEach((ex, index) => {
+            container.innerHTML += `
+                <div class="ex-item">
+                    <span id="${prefix}-en-${index}" class="notranslate">${ex.en}</span>
+                    <button class="speaker-btn" onclick="speak('${prefix}-en-${index}', 'en')">🔊</button>
+                </div>
+                <div class="ex-item-ur">
+                    <span id="${prefix}-ur-${index}">${ex.ur}</span>
+                    <button class="speaker-btn" onclick="speak('${prefix}-ur-${index}', 'ur')">🔊</button>
+                </div>
+            `;
+        });
+    }
+
+    // Render all categories
+    renderExamples('pos-ex-content', posExamples, 'pos');
+    renderExamples('neg-ex-content', negExamples, 'neg');
+    renderExamples('int-ex-content', intExamples, 'int');
+
+    // Speech Synthesis Function
     function speak(elementId, lang) {
         let text = document.getElementById(elementId).innerText;
         let utterance = new SpeechSynthesisUtterance(text);
@@ -82,6 +141,7 @@
         window.speechSynthesis.speak(utterance);
     }
 
+    // Google Translate Initialization
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
