@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Indefinite Tense - PECTA English Grammar Hub</title>
-    <meta name="description" content="Learn Future Indefinite Tense (Will/Shall) with full grammar instructions, definitions, and examples.">
+    <meta name="description" content="Learn Future Indefinite Tense (Will/Shall) with full grammar instructions, definitions, negative, interrogative, and TTS engine integration.">
     <meta name="keywords" content="Future Indefinite Tense, Simple Future, English Grammar, PECTA Class 8, Wighral Education">
     
     <!-- Google tag (gtag.js) -->
@@ -20,13 +20,15 @@
     <style>
         body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f8f9fa; }
         .viewer { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: right; }
-        h2 { font-size: 42px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
-        p { font-size: 28px; line-height: 1.8; margin: 15px 0; }
-        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
+        h2 { font-size: 38px; margin-bottom: 20px; color: #2c3e50; text-align: left; }
+        h3 { font-size: 30px; margin-top: 30px; color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+        p { font-size: 24px; line-height: 1.8; margin: 15px 0; }
+        .speaker-btn { background: #3498db; color: white; border: none; padding: 5px 15px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-right: 10px; margin-left: 10px; }
         .speaker-btn:hover { background: #2980b9; }
-        .ex-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
-        .ex-item { font-size: 32px; margin-bottom: 20px; padding: 10px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .opt-btn { display: block; width: 100%; padding: 20px; font-size: 28px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; }
+        .ex-section { margin-top: 20px; }
+        .ex-item { font-size: 24px; margin-bottom: 15px; padding: 12px 15px; background: #f1f2f6; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .opt-btn { display: block; width: 100%; padding: 18px; font-size: 26px; background-color: #c0392b; color: white; border: none; border-radius: 12px; text-align: center; cursor: pointer; margin-top: 40px; text-decoration: none; }
+        .opt-btn:hover { background-color: #e74c3c; }
     </style>
 </head>
 <body>
@@ -36,44 +38,91 @@
 <div class="viewer">
     <h2 class="notranslate">Future Indefinite Tense</h2>
   
+    <!-- Affirmative Section -->
+    <h3>1. Simple / Affirmative Sentences (سادھ جملے)</h3>
     <p><strong>Def:</strong> <span id="def-en" class="notranslate">Used to express an action that will happen in the coming time. Formula: Subject + will/shall + V1 + Object.</span>
         <button class="speaker-btn" onclick="speak('def-en', 'en')">🔊 Listen</button>
     </p>
-    
-    <p><strong>تعريف:</strong> <span id="def-ur">یہ ایسے کام کو ظاہر کرتا ہے جو آنے والے وقت (مستقبل) میں کیا جائے گا۔ اردو پہچان: جملے کے آخر میں 'گا'، 'گی'، 'گے' آتا ہے۔</span>
+    <p><strong>تعريف:</strong> <span id="def-ur">یہ ایسے کام کو ظاہر کرتا ہے جو آنے والے وقت (مستقبل) میں کیا جائے گا۔ I اور We کے ساتھ Shall اور باقی تمام فاعل (Subjects) کے ساتھ Will کا استعمال ہوتا ہے۔</span>
         <button class="speaker-btn" onclick="speak('def-ur', 'ur')">🔊 سنیں</button>
     </p>
-    
     <div class="ex-section">
         <p><strong>Examples (مثالیں):</strong></p>
-        <div id="ex-content"></div>
+        <div id="aff-ex-content"></div>
+    </div>
+
+    <!-- Negative Section -->
+    <h3>2. Negative Sentences (منفی جملے)</h3>
+    <p><strong>Def:</strong> <span id="neg-def-en" class="notranslate">Used to negate a future action. Formula: Subject + will/shall + not + V1 + Object.</span>
+        <button class="speaker-btn" onclick="speak('neg-def-en', 'en')">🔊 Listen</button>
+    </p>
+    <p><strong>تعريف:</strong> <span id="neg-def-ur">منفی جملے بنانے کے لیے امدادی فعل (will / shall) کے بعد not لگایا جاتا ہے۔</span>
+        <button class="speaker-btn" onclick="speak('neg-def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="neg-ex-content"></div>
+    </div>
+
+    <!-- Interrogative Section -->
+    <h3>3. Interrogative Sentences (سوالیہ جملے)</h3>
+    <p><strong>Def:</strong> <span id="int-def-en" class="notranslate">Used to ask questions about future actions. Formula: Will/Shall + Subject + V1 + Object?</span>
+        <button class="speaker-btn" onclick="speak('int-def-en', 'en')">🔊 Listen</button>
+    </p>
+    <p><strong>تعريف:</strong> <span id="int-def-ur">سوالیہ جملے بنانے کے لیے امدادی فعل (Will / Shall) کو جملے کے شروع میں لگایا جاتا ہے اور آخر میں سوالیہ نشان (?) لگایا جاتا ہے۔</span>
+        <button class="speaker-btn" onclick="speak('int-def-ur', 'ur')">🔊 سنیں</button>
+    </p>
+    <div class="ex-section">
+        <p><strong>Examples (مثالیں):</strong></p>
+        <div id="int-ex-content"></div>
     </div>
     
     <a href="index.html" class="opt-btn">واپس (Back)</a>
 </div>
 
 <script>
-    const examples = [
-        "He will go to school tomorrow.", 
-        "I shall write a letter.", 
-        "They will play a football match.", 
-        "She will cook rice today.", 
-        "We shall visit Lahore next week.", 
-        "Will you help me?", 
-        "He will not speak lies.", 
-        "Will she pass the exam?", 
-        "Ali will buy a laptop.", 
-        "The doctors will perform the operation."
+    // Affirmative Examples
+    const affExamples = [
+        "He will go to school tomorrow.",
+        "I shall write a letter.",
+        "They will play a football match.",
+        "She will cook rice today.",
+        "We shall visit Lahore next week."
     ];
-    
-    const exContent = document.getElementById('ex-content');
-    examples.forEach((ex, index) => {
-        exContent.innerHTML += `
-            <div class="ex-item">
-                <span id="ex-${index}" class="notranslate">${ex}</span>
-                <button class="speaker-btn" onclick="speak('ex-${index}', 'en')">🔊</button>
-            </div>`;
-    });
+
+    // Negative Examples
+    const negExamples = [
+        "He will not go to school tomorrow.",
+        "I shall not write a letter.",
+        "They will not play a football match.",
+        "She will not cook rice today.",
+        "He will not speak lies."
+    ];
+
+    // Interrogative Examples
+    const intExamples = [
+        "Will he go to school tomorrow?",
+        "Shall I write a letter?",
+        "Will they play a football match?",
+        "Will she cook rice today?",
+        "Will she pass the exam?"
+    ];
+
+    function renderExamples(dataArray, targetContainerId, prefix) {
+        const container = document.getElementById(targetContainerId);
+        dataArray.forEach((ex, index) => {
+            container.innerHTML += `
+                <div class="ex-item">
+                    <span id="${prefix}-${index}" class="notranslate">${ex}</span>
+                    <button class="speaker-btn" onclick="speak('${prefix}-${index}', 'en')">🔊</button>
+                </div>`;
+        });
+    }
+
+    // Render all categories
+    renderExamples(affExamples, 'aff-ex-content', 'aff');
+    renderExamples(negExamples, 'neg-ex-content', 'neg');
+    renderExamples(intExamples, 'int-ex-content', 'int');
 
     function speak(elementId, lang) {
         let text = document.getElementById(elementId).innerText;
@@ -94,4 +143,3 @@
 
 </body>
 </html>
-
